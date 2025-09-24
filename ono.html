@@ -3,213 +3,584 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Input Data PL VIP</title>
+    <title>Database FAQ Customer Service</title>
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        
         body {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
             background-color: #f5f5f5;
             color: #333;
+            line-height: 1.6;
+            padding: 20px;
         }
+        
         .container {
+            max-width: 1200px;
+            margin: 0 auto;
             background-color: white;
-            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
         }
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        input, select, textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
-        }
-        .btn-submit {
-            background-color: #3498db;
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
             color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .search-container {
+            padding: 20px;
+            background-color: #f0f4f8;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        #searchInput {
             width: 100%;
-            transition: background-color 0.3s;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s;
         }
-        .btn-submit:hover {
-            background-color: #2980b9;
+        
+        #searchInput:focus {
+            border-color: #2a5298;
+            box-shadow: 0 0 0 2px rgba(42, 82, 152, 0.2);
         }
-        .required {
-            color: #e74c3c;
-        }
-        .success-message {
-            background-color: #d4edda;
-            color: #155724;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 20px;
-            display: none;
-        }
-        .error-message {
-            background-color: #f8d7da;
-            color: #721c24;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 20px;
-            display: none;
-        }
-        .form-row {
+        
+        .filters {
             display: flex;
-            gap: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
         }
-        .form-row .form-group {
-            flex: 1;
+        
+        .filter-btn {
+            padding: 8px 15px;
+            background-color: #e9ecef;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
         }
-        @media (max-width: 600px) {
-            .form-row {
-                flex-direction: column;
-                gap: 0;
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: #2a5298;
+            color: white;
+        }
+        
+        .faq-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        
+        .faq-column {
+            border-right: 1px solid #eee;
+        }
+        
+        .faq-column:last-child {
+            border-right: none;
+        }
+        
+        .faq-item {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #1e3c72;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .faq-question::before {
+            content: "Q:";
+            font-weight: bold;
+            margin-right: 8px;
+            color: #2a5298;
+        }
+        
+        .faq-answer {
+            color: #555;
+            white-space: pre-line;
+        }
+        
+        .faq-answer::before {
+            content: "A:";
+            font-weight: bold;
+            margin-right: 8px;
+            color: #2a5298;
+        }
+        
+        .category-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background-color: #e9ecef;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            color: #555;
+        }
+        
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            color: #777;
+        }
+        
+        @media (max-width: 768px) {
+            .faq-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-column {
+                border-right: none;
+                border-bottom: 1px solid #eee;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Form Input Data PL VIP</h1>
+        <header>
+            <h1>Database FAQ Customer Service</h1>
+            <p class="subtitle">Kumpulan template respons untuk berbagai situasi customer service, termasuk deposit, withdraw, dan masalah teknis.</p>
+        </header>
         
-        <form id="dataForm">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="tanggal">Tanggal <span class="required">*</span></label>
-                    <input type="date" id="tanggal" name="tanggal" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="jam">Jam <span class="required">*</span></label>
-                    <input type="time" id="jam" name="jam" required>
-                </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Cari pertanyaan atau kata kunci...">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="deposit">Deposit</button>
+                <button class="filter-btn" data-filter="withdraw">Withdraw</button>
+                <button class="filter-btn" data-filter="technical">Teknis</button>
+                <button class="filter-btn" data-filter="account">Akun</button>
+                <button class="filter-btn" data-filter="other">Lainnya</button>
             </div>
-            
-            <div class="form-group">
-                <label for="pair">Pair <span class="required">*</span></label>
-                <input type="text" id="pair" name="pair" placeholder="Contoh: EUR/USD" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="timeframe">Timeframe <span class="required">*</span></label>
-                <select id="timeframe" name="timeframe" required>
-                    <option value="">Pilih Timeframe</option>
-                    <option value="M1">M1</option>
-                    <option value="M5">M5</option>
-                    <option value="M15">M15</option>
-                    <option value="M30">M30</option>
-                    <option value="H1">H1</option>
-                    <option value="H4">H4</option>
-                    <option value="D1">D1</option>
-                    <option value="W1">W1</option>
-                    <option value="MN1">MN1</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="signal">Signal <span class="required">*</span></label>
-                <select id="signal" name="signal" required>
-                    <option value="">Pilih Signal</option>
-                    <option value="BUY">BUY</option>
-                    <option value="SELL">SELL</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="open_price">Open Price <span class="required">*</span></label>
-                <input type="number" step="0.00001" id="open_price" name="open_price" placeholder="Contoh: 1.12345" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="tp">TP (Take Profit)</label>
-                <input type="number" step="0.00001" id="tp" name="tp" placeholder="Contoh: 1.13000">
-            </div>
-            
-            <div class="form-group">
-                <label for="sl">SL (Stop Loss)</label>
-                <input type="number" step="0.00001" id="sl" name="sl" placeholder="Contoh: 1.12000">
-            </div>
-            
-            <div class="form-group">
-                <label for="result">Result</label>
-                <select id="result" name="result">
-                    <option value="">Pilih Result</option>
-                    <option value="WIN">WIN</option>
-                    <option value="LOSS">LOSS</option>
-                    <option value="BREAKEVEN">BREAKEVEN</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="keterangan">Keterangan</label>
-                <textarea id="keterangan" name="keterangan" rows="3" placeholder="Tambahkan keterangan jika diperlukan"></textarea>
-            </div>
-            
-            <button type="submit" class="btn-submit">Simpan Data</button>
-        </form>
-        
-        <div id="successMessage" class="success-message">
-            Data berhasil disimpan!
         </div>
         
-        <div id="errorMessage" class="error-message">
-            Terjadi kesalahan saat menyimpan data. Silakan coba lagi.
+        <div class="faq-container" id="faqContainer">
+            <!-- Data FAQ akan dimasukkan di sini oleh JavaScript -->
         </div>
     </div>
 
     <script>
-        document.getElementById('dataForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Data FAQ
+        const faqData = [
+            {
+                question: "DANA VIZ",
+                answer: "Yth, kami informasikan bahwa untuk saat ini sedang terjadi kendala akses masuk pada rekening\nNama : \nJenis : E-wallet ( DANA )\nYang dimana saat ini untuk tujuan transfer tersebut tidak dapat di akses masuk\nperihal permintaan deposit anda akan kami proses ketika rekening tersebut telah dapat kami akses ya bosku\nuntuk estimasi selambatnya mohon menunggu dalam 3x24 jam\nmohon maaf atas kendala yang terjadi dan terima kasih atas pengertian nya ya bosku",
+                category: "deposit"
+            },
+            {
+                question: "WITHDRAW PENDING",
+                answer: "untuk permintaan penarikan dana anda sudah kami proses ya bosku\nuntuk status pengiriman sedang dalam proses dan telah mengurangi saldo bank kami ya bosku\njika terjadi keterlambatan dan masuk pada rekening anda maka kami sarankan di tunggu dalam estimasi selambatanya 7x24 jam ya bos\nterima kasih",
+                category: "withdraw"
+            },
+            {
+                question: "DANA GAGAL",
+                answer: "Mohon maaf bosku, dana yang anda kirimkan Gagal ( tulisan kuning diatas )  ya bosku\nDana yang anda kirimkan akan kembali lagi ke rekening anda paling lama 1x24 jam kedepan ya bosku. \nTerima Kasih.",
+                category: "deposit"
+            },
+            {
+                question: "WITHDRAW INPROGRESS",
+                answer: "Mohon maaf bosku sebelumnya withdraw anda sudah kami proseskan namun untuk status transaksi tersebut sedang dalam proses\ndan kemungkinan dana withdraw yang kami kirimkan terpending oleh pihak bank terkait namun\npada saldo bank kami sudah terpotong ya bosku.\n\n==============================\n\nMohon maaf bosku kami harus konfirmasi kendala tersebut kepada pihak bank terkait terlebih dahulu karena\nuntuk saldo bank kami sudah terpotong dan belum ada dana kembali ke rekening kami ya bosku,\nMohon maaf atas ketidaknyamanannya ya bosku dan mohon ditunggu hingga 7x24 jam ya bosku.\n\n======================\nMohon maaf bosku jika dana yang dikirimkan sudah kembali ke rekening kami maka akan langsung kami proseskan\nkembali withdraw anda ke nomor rekening yang terdaftar pada User ID anda ya bosku.\nMohon maaf atas ketidaknyamanannya ya bosku. Terima kasih atas pengertiannya.",
+                category: "withdraw"
+            },
+            {
+                question: "KOLOM USER ID",
+                answer: "Mohon maaf bosku kami ingin mengkonfirmasi untuk bukti anda yang benar yang mana ya bosku ? untuk pengiriman bukti yang gagal sebelumnya di atas anda mengirim ke bank , dan bukti kedua anda mengirim ke qris ya bosku",
+                category: "account"
+            },
+            {
+                question: "DEPO BISA WD GAK BISA",
+                answer: "Untuk perihal tersebut Deposit anda mengirimkan dana , sedangkan withdraw kami mengirimkan dana kepada anda. Namun anda dapat melakukan transaksi deposit / pengiriman dana anda dikarenakan di saat anda melakukan pendaftaran pada Nama rekening benar namun Nomor rekening salah / sudah terdaftar, kami memproseskan deposit bedasarkan nama rekening yang sama ya bosku bukan nomor rekening.\nJika anda mendaftar dengan nomor rekening yang salah maka kami tidak dapat memproses dana withdraw anda ya bosku",
+                category: "withdraw"
+            },
+            {
+                question: "HANYA DAPAT BERMAIN SAJA",
+                answer: "untuk akun anda dapat kami aktfikan kembali namun anda hanya dapat untuk bermain saja ya bosku dan tidak dapat melakukan withdraw , jika anda melakukan withdraw kembali maka akun anda akan terblokir kembali secara otomatis oleh sistem kami ya bosku, dan untuk dapat membuka akun anda hanya dapat kami bantu satu kali saja ya bosku.\nKlien\n\n=================================\n\nuntuk akun anda sudah kami aktifkan kembali dan untuk saldo anda sudah kami kembalikan ke akun anda, namun anda untuk saat ini hanya dapat bermain saja ya bosku dan tidak dapat melakukan wd kembali, jika anda melakukan wd kembali maka untuk akun anda akan terblokir oleh sistem kami di karenakan rekening anda ..... ya bosku",
+                category: "account"
+            },
+            {
+                question: "Withdraw dana",
+                answer: "untuk withdraw DANA kami menggunakan bank dengan metode Top Up melalui bank ya bosku, yang dimana untuk maximal topup ke rekening DANA sebesar 20,000,000\n\n===========================\n\nLimit transaksi pengiriman top up dana ya bosku , bukan limit bulanan dana anda ya bosku",
+                category: "withdraw"
+            },
+            {
+                question: "BUKTI DEPOSIT PENDING",
+                answer: "Mohon maaf bosku untuk bukti transfer tersebut tidak berhasil ya bosku\nDibantu bukti transfer anda yang berhasil ya bosku\n\n===================\n\nMohon maaf bosku untuk bukti transfer yang anda kirimkan pada kami tidak berhasil atau sedang diproses ya bosku mohon untuk mengirimkan Bukti berhasil anda kepada kami ya bosku. Terima kasih",
+                category: "deposit"
+            },
+            {
+                question: "Sudah premium tapi tidak keluar nama",
+                answer: "silahkan anda menghubungi pihak dana dikarenakan perihal nama rekening anda masih tertera no rekening yakni dikarenakan anda barusan mempremiumkan dana anda sehingga untuk profil akun dana anda belum sycron antara nama rekening tersebut bosku",
+                category: "technical"
+            },
+            {
+                question: "ADA TITIK DI FORM DEPOSIT",
+                answer: "Mohon maaf bosku, silahkan tidak menambahkan titik ataupun koma pada kolom Nominal ya bosku, dikarenakan titik tersebut otomatis dari sistem kami ya bosku, Terima kasih",
+                category: "deposit"
+            },
+            {
+                question: "KAMI TIDAK MENGETAHUI BANK ONLINE",
+                answer: "Mohon maaf bos ku,kami disini adalah sebagai pihak situs ya bos ku, sementara yang gangguan adalah langsung pihak bank, dan kami bukanlah pihak bank ya bos ku, oleh karena itu kami tidak dapat mengetahui dikarenakan perihala apa terjadinya bank gangguan / sampai kapan bank akan gangguan atau kapan akan normal kembali,namun permintaan DEPOSIT anda akan segera kami proses ketika bank bank normal kembali ya bos ku. Terima kasih.",
+                category: "technical"
+            },
+            {
+                question: "MAKSIMAL DEPOSIT",
+                answer: "Untuk maksimal deposit tidak ada batasan ya bos ku, namun deposit anda akan kami proses maksimal 100,000,000 \nper 1 kali transaksi",
+                category: "deposit"
+            },
+            {
+                question: "UPGRADE PREMIUM",
+                answer: "kami sarankan untuk melakukan aktivasi/upgrade premium ulang pada akun GOPAY anda menggunakan KTP dengan atas nama yang sama seperti yang terdaftar pada akun anda saat ini ya bosku",
+                category: "account"
+            },
+            {
+                question: "SILAHKAN MENGHUBUNGI PIHAK TERKAIT",
+                answer: "untuk perihal tersebut silahkan anda menghubungi pihak bank yang terkait ya bosku di karenakan untuk bukti yang anda kirimkan belum berhasil terkirim dan tidak ada masuk ke mutasi bank kami ya bosku",
+                category: "other"
+            },
+            {
+                question: "WITHDRAW GAGAL DAN BANK TEBLOKIR",
+                answer: "Yth, Kepada member LINE TOGEL,untuk withdraw anda sebelum nya sudah kami proseskan namun terjadi kegagalan dari pihak bank serta bank yang mengirimkan dana tersebut  terblokir  dan saat ini masih belum dapat kami proseskan ya bosku di karenakan bank pengirim dana anda saat ini sedang terjadi kendala ya bosku dan kami belum dapat mengecek mutasi pengirim kami ya bosku , akan kami proseskan ketika kami sudah dapat mengakses bank terkendala tersebut ya bosku terimakasih\n\n=================================\n\nsebelumnya sudah di coba untuk proses pengiriman namun bank yang mengirimkan terblokir sehingga kami tidak bisa memastikan apakah gagal atau berhasil ya bosku untuk estimasi waktu di luar kuasa kami ya bosku apabila bank pengirim dana tersebut sudah dapat diakses dan transaksi bosku tidak berhasil di proses maka akan kami proses kembali ya bosku\nterima kasih\n\n==================================\n\nperihal pengiriman dana tersebut belum dapat kami memastikan apakah gagal atau berhasil dikarenakan bank yang mengirimkan terblokir ya bosku\nperihal tersebut sedang melakukan konfirmasikan kepada pihak bank terlebih dahulu\nuntuk estimasi waktu di luar kuasa kami ya bosku\napabila transaksi bosku tidak berhasil di proses maka akan kami proses kembali\nmohon maaf atas ketidaknyamananya",
+                category: "withdraw"
+            },
+            {
+                question: "TERDAFTAR 2 USER ID",
+                answer: "Mohon maaf bosku, kami checkan untuk nomor rekening tersebut sudah terdaftar pada user id lain ya bosku, Untuk 1 nomor rekening hanya bisa mendaftarkan satu akun saja ya bosku.\n======================\nJika anda setuju User ID lain tersebut akan kami Non Aktifkan secara permanen ya bosku.\nUntuk User ID anda yang Terblokir akan kami bantu Pulihkan ya bosku\nJika setuju silahkan balas setuju ya bosku.",
+                category: "account"
+            },
+            {
+                question: "Reset hanya user id saja",
+                answer: "mohon maaf bosku untuk nomor rekening yang anda berikan tidak terdaftar pada situs kami ya bosku\nnamun untuk user id tersebut terdaftar dan untuk melakukan reset pasword tidak bisa melalui user id bosku",
+                category: "account"
+            },
+            {
+                question: "2 USER ID REFFERAL  BERBEDA",
+                answer: "Mohon maaf bosku, apakah pendaftaran akun ( isi user id baru ) anda dilakukan atas kemauan anda sendiri atau terdapat pihak lain yang menyarankan untuk mendaftarkan akun tersebut ya bosku?",
+                category: "account"
+            },
+            {
+                question: "Bukti palsu",
+                answer: "Mohon maaf bosku, mohon tidak melakukan pengiriman bukti transfer dengan bukti editan, dan akun anda akan terblokir secara permanen dikarenakan melakukan penipuan deposit",
+                category: "other"
+            },
+            {
+                question: "TURN OVER",
+                answer: "Kami cek saat ini untuk TO / Turn Over anda belum tercapai ya bosku oleh karna itu withdraw anda belum disetujui dan dikembalikan dana anda,\nuntuk TO / Turn Over adalah x1 atau 300,000     ya bosku silahkan bosku bermain kembali agar TO / Turn Over anda tercapai.\njika sudah tercapai otomatis withdraw anda terproses.",
+                category: "withdraw"
+            },
+            {
+                question: "RAHASIA USER ID",
+                answer: "untuk perihal tersebut kami sarankan anda untuk menjaga data login anda berupa password anda tersebut agar akun anda tidak di salah gunakan oleh orang lain ya bosku\n=================\nseperti peraturan kami no 2 Setiap member wajib menjaga kerahasiaan akun masing-masing ya bosku \n=================\nuntuk keamanan akun anda tersebut seperti yang kami sampaikan di atas ya bosku agar menjaga kerahasian password dan user id anda agar akun anda aman ya bosku",
+                category: "account"
+            },
+            {
+                question: "CARA PREMIUM GOPAY",
+                answer: "langkah -langkah Upgrade GoPay ke Premium :\n-Buka aplikasi Gojek\n-Pilih menu GoPay → tekan Lainnya → pilih Upgrade ke GoPay Plus\n-Klik Upgrade Sekarang\n-Foto e-KTP atau Paspor (pastikan jelas dan asli, bukan fotokopi)\n-Ambil selfie sambil memegang identitas\n-Tekan Kirim Dokumen untuk verifikasi",
+                category: "technical"
+            },
+            {
+                question: "SAAT LOGIN FAILED",
+                answer: "Mohon maaf ya bosku, untuk perihal tersebut jika terjadi Failed pada saat anda melakukan login saran kami silakan melakukan clear history cache (membersihkan riwayat penjelajahan) pada browser anda ya bosku.\nPertama-tama, anda close dahulu semua TAB Browser anda ya bosku.\nLalu melakukan clear history cache pada browser anda ya bosku",
+                category: "technical"
+            },
+            {
+                question: "PASARAN YANG TIDAK ADA DI TANYA",
+                answer: "Mohon maaf bosku untuk pasaran tersebut kami tidak menyediakannya ya bosku\nSaran kami silahkan bermain pada pasaran lain yang tersedia di Line Togel ya bosku\nTerima Kasih.",
+                category: "other"
+            },
+            {
+                question: "CEK KIRIM DANA KE REKENING SEBELUM NYA",
+                answer: "Mohon maaf bosku, Dikarenakan anda mengirimkan dana ke rekening kami yang tidak aktif,\nKami membutuhkan waktu beberapa menit untuk mengecek dana anda ke rekening tersebut.\nSilahkan menunggu sebentar ya bossku.",
+                category: "deposit"
+            },
+            {
+                question: "RTP APA",
+                answer: "Untuk RTP hanya jadi Pedoman/Panduan berdasarkan data kemenangan yang tinggi hari ini ya bosku. Namun untuk kemenangan kembali ke hoki masing-masing user ya bosku. Kami doakan anda agar beruntung ya bosku",
+                category: "other"
+            },
+            {
+                question: "TIDAK ADA DI BANK LIST",
+                answer: "Mohon maaf bosku, jika anda mengirimkan dana ke rekening kami yang tidak ada di bank list, maka anda harus menunggu hingga 1x24 jam, dan dana anda tidak dapat di proses dengan cepat ya bosku, terima kasih\n\n==========================================================\n\nBosku untuk nomor rekening tujuan bukan untuk dihafal atau disimpan, saran kami selalu mengecek nomor rekening tujuan anda dimenu deposit sebelum anda mengirimkan dana, dikarenakan nomor rekening tujuan tidak bersifat permanen atau dapat berubah sewaktu-waktu ya bosku\n\n==========================================================\n\nUntuk nomor rekening tujuan wajib di cek pada menu deposit ya bosku, dikarenakan nomor rekening deposit tidak bersifat permanent dan dapat berubah sewaktu-waktu ya bosku, saran kami silahkan di transfer dana anda sesuai dengan nomor rekening yang tertera pada menu deposit yang tersedia ya bosku",
+                category: "deposit"
+            },
+            {
+                question: "KEI PLUS & KEI MINUS",
+                answer: "Kei + (Kei Plus): Pemain mendapatkan tambahan bayaran (komisi) jika menang\nKei - (Kei Minus): Pemain akan dikenai potongan dari jumlah taruhan",
+                category: "other"
+            },
+            {
+                question: "CEK RRN WONDER BNI",
+                answer: "Langkah-langkah pengecekan bukti transfer Qris di BNI WONDR :\n1. Buka aplikasi Wondr by BNI di smartphone kamu.\n2. Masuk ke akun kamu jika belum masuk.\n3. Pilih menu \"QRIS\" yang terletak di bagian atas layar.\n4. Cari bukti transaksi yang kamu inginkan di riwayat transaksi QRIS.\n5. Kamu bisa menyimpan bukti transaksi tersebut dengan melakukan screenshot atau tangkapan layar.\nseperti contoh berikut bosku https://imghostr.com/16253e_7x8",
+                category: "technical"
+            },
+            {
+                question: "TELAT RESULT PASARAN",
+                answer: "Yth kami ingin menginformasikan bahwa untuk pasaran tersebut untuk saat ini terjadi keterlambatan result dari pihak penyedia belum mengeluarkan angka result. Mohon untuk menunggu dan bersabar estimasi waktu tidak dapat kami tentukan, Terima kasih.",
+                category: "other"
+            },
+            {
+                question: "USER ID / DP BERHASIL",
+                answer: "kami cekkan untuk user id tersebut tidak terdaftar pada situs kami ya bosku\n\n================================================\n\nkami cek deposit anda tidak salah dan sudah berhasil ya bosku",
+                category: "account"
+            },
+            {
+                question: "PERIHAL VIP",
+                answer: "Perihal tersebut jika anda sudah menghubungi layanan whatsaap VIP maka silahkan melakukan konfirmasi lanjut pada layanan whatsapp ya bos\n\n=================================================\nuntuk whatsapp pihak vip silahkan anda melakukan klik pada link ini ya bosku  https://heylink.me/linetogeltergacor/\n\n================================================\n\nperihal tersebut silahkan anda kofirmasi kembali ke whatsapp pihak vip kami ya bosku",
+                category: "other"
+            },
+            {
+                question: "LOGIN DI TEMPAT BERBEDA",
+                answer: "jika anda mengalami kendala akun anda login keperangkat lain kami sarankan anda melakukan clear cache atau cookies perihal tersebut kemungkinan muncul karena akun anda double login pada perangkat anda bosku",
+                category: "account"
+            },
+            {
+                question: "TIDAK MENYIMPAN SANDI",
+                answer: "saran kami login secara manual dan tidak menyimpan data userid dan password anda",
+                category: "account"
+            },
+            {
+                question: "KEPUTUSAN PROVIDER",
+                answer: "untuk hal tersebut sudah menjadi ketentuan dari  pihak penyedia permainan yah bosku",
+                category: "other"
+            },
+            {
+                question: "SESUAI DANA YANG ANDA KIRIMKAN",
+                answer: "silahkan anda isi form deposit sesuai dana yang anda kirimkan, jangan\ndikurangi dan ditambahi bosku.\nterima kasih",
+                category: "deposit"
+            },
+            {
+                question: "CAPTCHA",
+                answer: "Kolom terakhir adalah kolom validasi, silahkan lihat angka yang ada disamping kolom dan masukan pada kolom yang sudah kami sediakan.",
+                category: "technical"
+            },
+            {
+                question: "TIDAK BISA MENAMBAH BANK",
+                answer: "Kami informasikan kepada anda bosku untuk 1 akun hanya dapat menggunakan 1 nomor rekening saja ya bosku, tidak dapat melakukan penambahan nomor rekening pada akun anda ya bosku.",
+                category: "account"
+            },
+            {
+                question: "OVO GESER",
+                answer: "Mohon di cek kembali ya bosku untuk nomor rekening tujuan deposit yang baru sudah kami bantu gantikan ya bosku.",
+                category: "deposit"
+            },
+            {
+                question: "MEMBER TIDAK MAU KIRIM BUKTI",
+                answer: "untuk perihal tersebut jika anda melakukan deposit dan mengklaim dana ke live chat diwajibkan mengirimkan bukti transfer ya bosku",
+                category: "deposit"
+            },
+            {
+                question: "KEMENANGAN TIDAK TERBAYARKAN",
+                answer: "untuk perihal kendala saldo kemenangan anda yang belum masuk, sedang kami lakukan pengecekan lebih lanjut bosku,\nsilahkan di tunggu 1x24 jam kedepan, apabila dalam estimasi waktu tersebut kemenangan anda masih belum terbayar silahkan hubungi kami kembali bosku\n===============================================================================================\nmohon maaf bosku, jika dalam waktu 1 x 24 jam kemenangan anda masih belum terbayar silakan hubungin kami kembali ya bosku\nmohon maaf atas ketidaknyamanannya ya bosku\n=================================================================================================\nBaik bosku mohon ditunggu sedang diusahakan secepatnya ya bosku\nmohon maaf atas ketidaknyamanannya ya bosku",
+                category: "withdraw"
+            },
+            {
+                question: "TIDAK ADA KENDALA / PL HANTU",
+                answer: "Akun anda akan kami buka kembali jika anda setuju untuk mengirimkan dana deposit ke rekening deposit kami dengan minimal deposit 10,000.\nuntuk perihal rekening depositnya akan kami kirimkan jika anda setuju untuk mengirimkan dana kepada kami agar akun anda dapat kami bantu buka kembali",
+                category: "account"
+            },
+            {
+                question: "keterangan TURNOVER",
+                answer: "Untuk keterangan tersebut di karenakan anda terpilih sebagai member yang mendapat bonus dari kami ya bosku, namun anda dapat melakukan withdraw dengan catatan harus mencapai TURNOVER x1 ya bosku",
+                category: "withdraw"
+            },
+            {
+                question: "TUJUAN FORM",
+                answer: "silahkan isi form deposit anda sesuai dengan bank yang anda kirimkan ya bosku , jika deposit ke BCA silahkan isi form deposit anda dengan tujuan BCA  juga ya bosku",
+                category: "deposit"
+            },
+            {
+                question: "PERUBAHAN RESULT",
+                answer: "Untuk perihal tersbeut belum ada pemberitahuan jika ada perubahan akan kami informasikan melalui memo ya bosku",
+                category: "other"
+            },
+            {
+                question: "BUKTI QRIS SAH",
+                answer: "Dibantu bukti transfer yang sah harus mencantumkan nama QRIS (nama atau nomor rekening kami),\nlengkap dengan waktu pengiriman, serta lampirkan nama rekening pengirimnya.",
+                category: "deposit"
+            },
+            {
+                question: "riwayat / periode",
+                answer: "mohon maaf bosku untuk Perihal transaksi anda dapat anda cek pada menu transaksi pada akun anda bosku\nhttps://prnt.sc/Wxh2vnWzklDV",
+                category: "technical"
+            },
+            {
+                question: "BANK 24 JAM",
+                answer: "untuk layanan bank BRI online 24 jam ya bosku, namun untuk saat ini sedang terjadi gangguan ya bosku",
+                category: "technical"
+            },
+            {
+                question: "PL MINTA DANA DI KEMBALIKAN",
+                answer: "Mohon maaf bosku untuk dana deposit yang sudah dikirimkan tidak dapat dikembalikan yah bosku",
+                category: "deposit"
+            },
+            {
+                question: "ALL PASARAN SITUS",
+                answer: "KENTUCKY\nTOTO MACAU 4D\nTOTO MACAU 5D\nFLORIDA\nHUAHIN\nNEW YORK\nBANGKOK\nCAROLINA\nBRUNEI\nOREGON\nCALIFORNIA\nCHELSEA\nTOTO CAMBODIA\nBULLSEYE\nPOIPET\nSYDNEY\nSINGAPORE\nMAGNUM4D\nPCSO\nNEVADA\nKINGKONG 4D\nHONGKONG\nJAKARTA\nTOTO MALI\nHOKIDRAW",
+                category: "other"
+            },
+            {
+                question: "SALAH TUJUAN JENIS EWALLET",
+                answer: "Mohon maaf bosku, yang kami cantumkan di form deposit adalah nomor OVO , namun anda transfer ke nomor tersebut ke DANA nya, sementara nomor tersebut tidak memiliki akun DANA .\nKedepannya mohon lebih teliti ya bosku dalam melakukan pengiriman dana agar tidak terjadi hal seperti ini lagi.\n===========================================================================================================================\nuntuk nomor tujuan tersebut kami hanya memiliki akun E-WALLET OVO ya bosku\nmohon maaf bosku, untuk dana deposit anda tidak bisa kami bantu dikarenakan untuk nomor tersebut kami hanya memiliki akun OVO  ya bosku\n==================================================================================================================================\nBaik bosku untuk tujuan akun yang anda kirim pada akun E-WALLET OVO ya bosku\nuntuk tujuan akun E-WALLET DANA tersebut bukan akun LINETOGEL ya bosku\n=============================================================================================================================\nmohon maaf bosku, untuk dana deposit anda kami tidak bisa membantu dikarenakan untuk nomor tujuan tersebut kami hanya memiliki akun OVO ya bosku\nuntuk tujuan akun E-WALLET DANA  tersebut bukan akun LINETOGEL ya bosku",
+                category: "deposit"
+            },
+            {
+                question: "Pasaran kingkong",
+                answer: "Pasaran tersebut pasaran yang tidak mewakili nama negara ya bosku. kelebihan pasaran tersebut diputar secara langsung bosku.",
+                category: "other"
+            },
+            {
+                question: "user id",
+                answer: "Untuk user id yang anda gunakan dapat anda cek pada pojok kiri atas pada akun anda ya bosku\n\nContoh : https://prnt.sc/hu21nK_ehoTj",
+                category: "account"
+            },
+            {
+                question: "Tidak ada Batasan IP",
+                answer: "untuk perihal tersebut di perbolehkan ya bosku di karenakan di sini tidak ada batasan ip ya bosku",
+                category: "technical"
+            },
+            {
+                question: "QRIS BCA",
+                answer: "Mohon maaf ya bosku, dibantu dengan tertera RRN QRISnya ya bosku\n\nCara mengecek Mutasi / Bukti transfer QRIS menggunakan Layanan Bank BCA :\n\n1. Silahkan login terlebih dahulu dan silahkan klik Logo Qris yang ada di bawah seperti gambar berikut\nContoh : https://prnt.sc/3vxdh-8D-036\n2. Silahkan di klik Inbox untuk mengecek bukti transfer yang di anda lakukan\nContoh : https://prnt.sc/WC3ySyLteRpo\n3. Setelah itu akan muncul seluruh transaksi anda melakukan pengiriman dana ke Qris / Scan Barcode ya bosku\nContoh : https://prnt.sc/d2VrM_cAr3HR\n\n------------------------------------------------\n\nMohon maaf ya bosku, untuk bukti bca menggunakan qris diwajibkan melampirkan tampilan seperti di atas ya bosku dengan tertera RRN qris nya ya bosku\n\n------------------------------------------------\n\nPerihal kendala anda silahkan menghubungi pihak bank ya bosku agar kendala anda dapat terselesaikan ya bosku\n\n------------------------------------------------\n\nMohon maaf ya bosku, perihal tersebut tidak berhasil ya bosku apabila tanpa ada bukti berhasil yang dimana bukti dari inbox qris anda tidak masuk ya bosku , saran kami silahkan hubungi pihak bank ya bosku\n\n------------------------------------------------\n\nBaik bosku apabila tidak ada/ tidak tercetak pada Inbox Qris anda maka transaksi anda dinyatakan gagal ya bosku\nsaran kami silahkan hubungi pihak bank terkait dikarenakan saldo anda sudah terpotong ya bosku , terima kasih",
+                category: "deposit"
+            },
+            {
+                question: "betingan dibatalkan saldo terpotong",
+                answer: "untuk perihal kendala anda sedang kami lakukan pengecekan lebih lanjut bosku, silahkan di tunggu 1x24 jam kedepan, apabila dalam estimasi waktu tersebut  Saldo dari taruhan anda yang tidak kembali dikarenakan betingan anda yang dibatalkan silahkan hubungi kami kembali bosku\n==========================================================================================================================================\nuntuk perihal kendala anda yang sedang kami lakukan pengecekan lebih lanjut bosku,\nsilahkan di tunggu 1x24 jam kedepan, apabila dalam estimasi waktu tersebut taruhan anda yang tidak kembali dikarenakan betingan anda yang dibatalkan silahkan hubungi kami kembali boskumohon maaf bosku\n=============================================================================================================================================\nmohon ditunggu dalam waktu 1 x 24 jam jika saldo anda masih belum terbayar silakan hubungin kami kembali ya bosku",
+                category: "technical"
+            },
+            {
+                question: "PASARAN SINGAPORE",
+                answer: "Untuk pasaran SINGAPORE saat ini normal ya bosku\nJika ada pengunduran hasil Result akan kami informasikan melalui memo pada akun anda ya bosku.",
+                category: "other"
+            },
+            {
+                question: "MELIHAT REPLAY SCATER",
+                answer: "Untuk melihat kembali replay / putar ulang history permainan slot bosku maka silahkan login ke permainan yang bosku mainkan sebelunya\nKemudian pilih tanda titik tiga di pojok kanan atas kemudian pilih putar ulang\n\nHanya kemenangan di atas atau setara 10x total taruhan yang di tampilkan di Putar Ulang\nSeperti contoh pada gambar https://prnt.sc/dPwngOn14cgp",
+                category: "technical"
+            }
+        ];
+
+        // Fungsi untuk menampilkan FAQ
+        function displayFAQs(filteredData = faqData) {
+            const faqContainer = document.getElementById('faqContainer');
+            faqContainer.innerHTML = '';
             
-            // Ambil nilai dari form
-            const formData = new FormData(this);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
+            if (filteredData.length === 0) {
+                faqContainer.innerHTML = '<div class="no-results">Tidak ada hasil yang ditemukan untuk pencarian Anda.</div>';
+                return;
+            }
+            
+            // Membagi data menjadi dua kolom
+            const midIndex = Math.ceil(filteredData.length / 2);
+            const firstColumn = filteredData.slice(0, midIndex);
+            const secondColumn = filteredData.slice(midIndex);
+            
+            // Membuat kolom pertama
+            const firstColumnDiv = document.createElement('div');
+            firstColumnDiv.className = 'faq-column';
+            
+            firstColumn.forEach(item => {
+                const faqItem = document.createElement('div');
+                faqItem.className = 'faq-item';
+                faqItem.innerHTML = `
+                    <div class="faq-question">${item.question}</div>
+                    <div class="faq-answer">${item.answer}</div>
+                    <div class="category-tag">${item.category}</div>
+                `;
+                firstColumnDiv.appendChild(faqItem);
             });
             
-            // Simulasi penyimpanan data (gantikan dengan koneksi ke Google Sheets)
-            console.log('Data yang akan disimpan:', data);
+            // Membuat kolom kedua
+            const secondColumnDiv = document.createElement('div');
+            secondColumnDiv.className = 'faq-column';
             
-            // Tampilkan pesan sukses
-            document.getElementById('successMessage').style.display = 'block';
-            document.getElementById('errorMessage').style.display = 'none';
+            secondColumn.forEach(item => {
+                const faqItem = document.createElement('div');
+                faqItem.className = 'faq-item';
+                faqItem.innerHTML = `
+                    <div class="faq-question">${item.question}</div>
+                    <div class="faq-answer">${item.answer}</div>
+                    <div class="category-tag">${item.category}</div>
+                `;
+                secondColumnDiv.appendChild(faqItem);
+            });
             
-            // Reset form setelah 2 detik
-            setTimeout(() => {
-                document.getElementById('dataForm').reset();
-                document.getElementById('successMessage').style.display = 'none';
-            }, 2000);
+            faqContainer.appendChild(firstColumnDiv);
+            faqContainer.appendChild(secondColumnDiv);
+        }
+
+        // Fungsi untuk mencari dan memfilter FAQ
+        function searchFAQs() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+            
+            let filteredData = faqData;
+            
+            // Filter berdasarkan kategori
+            if (activeFilter !== 'all') {
+                filteredData = filteredData.filter(item => item.category === activeFilter);
+            }
+            
+            // Filter berdasarkan pencarian
+            if (searchTerm) {
+                filteredData = filteredData.filter(item => 
+                    item.question.toLowerCase().includes(searchTerm) || 
+                    item.answer.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            displayFAQs(filteredData);
+        }
+
+        // Inisialisasi
+        document.addEventListener('DOMContentLoaded', () => {
+            displayFAQs();
+            
+            // Event listener untuk pencarian
+            document.getElementById('searchInput').addEventListener('input', searchFAQs);
+            
+            // Event listener untuk filter
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    searchFAQs();
+                });
+            });
         });
     </script>
 </body>
