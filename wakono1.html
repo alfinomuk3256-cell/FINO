@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template Balasan Customer Service</title>
+    <title>Template Respons Customer Service</title>
     <style>
         * {
             box-sizing: border-box;
@@ -13,7 +13,7 @@
         }
         
         body {
-            background-color: #f5f7fa;
+            background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
             padding: 20px;
@@ -28,9 +28,9 @@
             text-align: center;
             margin-bottom: 30px;
             padding: 20px;
-            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            background: linear-gradient(135deg, #2c3e50, #4a6491);
             color: white;
-            border-radius: 10px;
+            border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
@@ -39,45 +39,30 @@
             margin-bottom: 10px;
         }
         
-        .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        
         .search-container {
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: center;
+            margin: 20px 0;
         }
         
         #searchInput {
-            width: 70%;
-            padding: 12px 20px;
+            width: 100%;
+            padding: 12px 15px;
             border: 1px solid #ddd;
-            border-radius: 50px;
-            font-size: 1rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        #searchInput:focus {
-            outline: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            border-color: #4b6cb7;
+            border-radius: 4px;
+            font-size: 16px;
         }
         
         .template-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
         
         .template-card {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
             position: relative;
             overflow: hidden;
@@ -85,88 +70,113 @@
         
         .template-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .template-card h3 {
             color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            border-bottom: 2px solid #4b6cb7;
-            padding-bottom: 8px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
         }
         
-        .template-content {
-            max-height: 200px;
-            overflow-y: auto;
-            padding-right: 10px;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
+        .template-card p {
             color: #555;
-        }
-        
-        .template-content::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        .template-content::-webkit-scrollbar-thumb {
-            background: #c5c5c5;
-            border-radius: 10px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            max-height: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .copy-btn {
-            background: #4b6cb7;
+            background-color: #3498db;
             color: white;
             border: none;
             padding: 8px 15px;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             font-size: 0.9rem;
-            transition: background 0.3s ease;
-            width: 100%;
+            transition: background-color 0.3s;
         }
         
         .copy-btn:hover {
-            background: #3a5a9c;
+            background-color: #2980b9;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .modal-title {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .modal-text {
+            white-space: pre-line;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .copy-full-btn {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        
+        .copy-full-btn:hover {
+            background-color: #27ae60;
         }
         
         .notification {
             position: fixed;
-            top: 20px;
+            bottom: 20px;
             right: 20px;
-            background: #2ecc71;
+            background-color: #2ecc71;
             color: white;
             padding: 15px 25px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            display: none;
-            animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; transform: translateY(0); }
-            to { opacity: 0; transform: translateY(-20px); }
-        }
-        
-        .tag {
-            display: inline-block;
-            background: #e74c3c;
-            color: white;
-            padding: 3px 8px;
             border-radius: 4px;
-            font-size: 0.8rem;
-            margin-right: 5px;
-            margin-bottom: 5px;
-        }
-        
-        .tags {
-            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1001;
         }
         
         @media (max-width: 768px) {
@@ -174,8 +184,9 @@
                 grid-template-columns: 1fr;
             }
             
-            #searchInput {
-                width: 90%;
+            .modal-content {
+                width: 95%;
+                padding: 20px;
             }
         }
     </style>
@@ -183,233 +194,202 @@
 <body>
     <div class="container">
         <header>
-            <h1>Template Balasan Customer Service</h1>
-            <p class="subtitle">Klik pada template untuk menyalin ke clipboard</p>
+            <h1>Template Respons Customer Service</h1>
+            <p>Klik pada template untuk melihat detail dan menyalin teks</p>
         </header>
         
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Cari template berdasarkan kata kunci...">
+            <input type="text" id="searchInput" placeholder="Cari template...">
         </div>
         
         <div class="template-grid" id="templateContainer">
-            <!-- Template akan diisi oleh JavaScript -->
+            <!-- Template cards will be generated here -->
         </div>
     </div>
     
-    <div class="notification" id="notification">Template berhasil disalin!</div>
+    <div class="modal" id="templateModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h2 class="modal-title" id="modalTitle">Judul Template</h2>
+            <div class="modal-text" id="modalText">Isi template akan muncul di sini</div>
+            <button class="copy-full-btn" id="copyFullBtn">Salin Teks Lengkap</button>
+        </div>
+    </div>
     
+    <div class="notification" id="notification">Teks berhasil disalin!</div>
+
     <script>
         // Data template
         const templates = [
             {
-                title: "WITHDRAW PENDING",
-                content: `untuk permintaan penarikan dana anda sudah kami proses ya bosku
-untuk status pengiriman sedang dalam proses dan telah mengurangi saldo bank kami ya bosku
-jika terjadi keterlambatan dan masuk pada rekening anda maka kami sarankan di tunggu dalam estimasi selambatanya 7x24 jam ya bos
-terima kasih`,
-                tags: ["withdraw", "pending", "proses", "7x24 jam"]
+                title: "Reset hanya user id saja",
+                content: "mohon maaf bosku untuk nomor rekening yang anda berikan tidak terdaftar pada situs kami ya bosku\nnamun untuk user id tersebut terdaftar dan untuk melakukan reset pasword tidak bisa melalui user id bosku"
             },
             {
-                title: "WITHDRAW INPROGRESS",
-                content: `Mohon maaf bosku sebelumnya withdraw anda sudah kami proseskan namun untuk status transaksi tersebut sedang dalam proses
-dan kemungkinan dana withdraw yang kami kirimkan terpending oleh pihak bank terkait namun
-pada saldo bank kami sudah terpotong ya bosku.
-
-==============================
-
-Mohon maaf bosku kami harus konfirmasi kendala tersebut kepada pihak bank terkait terlebih dahulu karena
-untuk saldo bank kami sudah terpotong dan belum ada dana kembali ke rekening kami ya bosku,
-Mohon maaf atas ketidaknyamanannya ya bosku dan mohon ditunggu hingga 7x24 jam ya bosku.
-
-======================
-Mohon maaf bosku jika dana yang dikirimkan sudah kembali ke rekening kami maka akan langsung kami proseskan
-kembali withdraw anda ke nomor rekening yang terdaftar pada User ID anda ya bosku.
-Mohon maaf atas ketidaknyamanannya ya bosku. Terima kasih atas pengertiannya.`,
-                tags: ["withdraw", "inprogress", "bank", "kendala", "7x24 jam"]
+                title: "Bukti palsu",
+                content: "Mohon maaf bosku, mohon tidak melakukan pengiriman bukti transfer dengan bukti editan, dan akun anda akan terblokir secara permanen dikarenakan melakukan penipuan deposit"
             },
             {
-                title: "DEPO BISA WD GAK BISA",
-                content: `Untuk perihal tersebut Deposit anda mengirimkan dana , sedangkan withdraw kami mengirimkan dana kepada anda. Namun anda dapat melakukan transaksi deposit / pengiriman dana anda dikarenakan di saat anda melakukan pendaftaran pada Nama rekening benar namun Nomor rekening salah / sudah terdaftar, kami memproseskan deposit bedasarkan nama rekening yang sama ya bosku bukan nomor rekening.
-Jika anda mendaftar dengan nomor rekening yang salah maka kami tidak dapat memproses dana withdraw anda ya bosku`,
-                tags: ["deposit", "withdraw", "rekening", "salah", "nama rekening"]
+                title: "RAHASIA USER ID",
+                content: "untuk perihal tersebut kami sarankan anda untuk menjaga data login anda berupa password anda tersebut agar akun anda tidak di salah gunakan oleh orang lain ya bosku\n=================\nseperti peraturan kami no 2 Setiap member wajib menjaga kerahasiaan akun masing-masing ya bosku \n=================\nuntuk keamanan akun anda tersebut seperti yang kami sampaikan di atas ya bosku agar menjaga kerahasian password dan user id anda agar akun anda aman ya bosku"
             },
             {
-                title: "Withdraw dana",
-                content: `untuk withdraw DANA kami menggunakan bank dengan metode Top Up melalui bank ya bosku, yang dimana untuk maximal topup ke rekening DANA sebesar 20,000,000
-
-===========================
-
-Limit transaksi pengiriman top up dana ya bosku , bukan limit bulanan dana anda ya bosku`,
-                tags: ["withdraw", "dana", "top up", "limit", "20 juta"]
+                title: "SAAT LOGIN FAILED",
+                content: "Mohon maaf ya bosku, untuk perihal tersebut jika terjadi Failed pada saat anda melakukan login saran kami silakan melakukan clear history cache (membersihkan riwayat penjelajahan) pada browser anda ya bosku.\nPertama-tama, anda close dahulu semua TAB Browser anda ya bosku.\nLalu melakukan clear history cache pada browser anda ya bosku"
             },
             {
-                title: "Sudah premium tapi tidak keluar nama",
-                content: `silahkan anda menghubungi pihak dana dikarenakan perihal nama rekening anda masih tertera no rekening yakni dikarenakan anda barusan mempremiumkan dana anda sehingga untuk profil akun dana anda belum sycron antara nama rekening tersebut bosku`,
-                tags: ["premium", "nama", "rekening", "sinkronisasi", "dana"]
+                title: "CEK KIRIM DANA KE REKENING SEBELUM NYA",
+                content: "Mohon maaf bosku, Dikarenakan anda mengirimkan dana ke rekening kami yang tidak aktif,\nKami membutuhkan waktu beberapa menit untuk mengecek dana anda ke rekening tersebut.\nSilahkan menunggu sebentar ya bossku."
             },
             {
-                title: "KAMI TIDAK MENGETAHUI BANK ONLINE",
-                content: `Mohon maaf bos ku,kami disini adalah sebagai pihak situs ya bos ku, sementara yang gangguan adalah langsung pihak bank, dan kami bukanlah pihak bank ya bos ku, oleh karena itu kami tidak dapat mengetahui dikarenakan perihala apa terjadinya bank gangguan / sampai kapan bank akan gangguan atau kapan akan normal kembali,namun permintaan DEPOSIT anda akan segera kami proses ketika bank bank normal kembali ya bos ku. Terima kasih.`,
-                tags: ["bank", "gangguan", "deposit", "pihak bank", "tidak tahu"]
+                title: "TIDAK ADA DI BANK LIST",
+                content: "Mohon maaf bosku, jika anda mengirimkan dana ke rekening kami yang tidak ada di bank list, maka anda harus menunggu hingga 1x24 jam, dan dana anda tidak dapat di proses dengan cepat ya bosku, terima kasih\n\n==========================================================\n\nBosku untuk nomor rekening tujuan bukan untuk dihafal atau disimpan, saran kami selalu mengecek nomor rekening tujuan anda dimenu deposit sebelum anda mengirimkan dana, dikarenakan nomor rekening tujuan tidak bersifat permanen atau dapat berubah sewaktu-waktu ya bosku\n\n==========================================================\n\nUntuk nomor rekening tujuan wajib di cek pada menu deposit ya bosku, dikarenakan nomor rekening deposit tidak bersifat permanent dan dapat berubah sewaktu-waktu ya bosku, saran kami silahkan di transfer dana anda sesuai dengan nomor rekening yang tertera pada menu deposit yang tersedia ya bosku"
             },
             {
-                title: "UPGRADE PREMIUM",
-                content: `kami sarankan untuk melakukan aktivasi/upgrade premium ulang pada akun GOPAY anda menggunakan KTP dengan atas nama yang sama seperti yang terdaftar pada akun anda saat ini ya bosku`,
-                tags: ["upgrade", "premium", "gopay", "ktp", "aktivasi"]
+                title: "CEK RRN WONDER BNI",
+                content: "Langkah-langkah pengecekan bukti transfer Qris di BNI WONDR :\n1. Buka aplikasi Wondr by BNI di smartphone kamu.\n2. Masuk ke akun kamu jika belum masuk.\n3. Pilih menu \"QRIS\" yang terletak di bagian atas layar.\n4. Cari bukti transaksi yang kamu inginkan di riwayat transaksi QRIS.\n5. Kamu bisa menyimpan bukti transaksi tersebut dengan melakukan screenshot atau tangkapan layar.\nseperti contoh berikut bosku https://imghostr.com/16253e_7x8"
             },
             {
-                title: "WITHDRAW GAGAL DAN BANK TEBLOKIR",
-                content: `Yth, Kepada member LINE TOGEL,untuk withdraw anda sebelum nya sudah kami proseskan namun terjadi kegagalan dari pihak bank serta bank yang mengirimkan dana tersebut  terblokir  dan saat ini masih belum dapat kami proseskan ya bosku di karenakan bank pengirim dana anda saat ini sedang terjadi kendala ya bosku dan kami belum dapat mengecek mutasi pengirim kami ya bosku , akan kami proseskan ketika kami sudah dapat mengakses bank terkendala tersebut ya bosku terimakasih
-
-=================================
-
-sebelumnya sudah di coba untuk proses pengiriman namun bank yang mengirimkan terblokir sehingga kami tidak bisa memastikan apakah gagal atau berhasil ya bosku untuk estimasi waktu di luar kuasa kami ya bosku apabila bank pengirim dana tersebut sudah dapat diakses dan transaksi bosku tidak berhasil di proses maka akan kami proses kembali ya bosku
-terima kasih
-
-==================================
-
-perihal pengiriman dana tersebut belum dapat kami memastikan apakah gagal atau berhasil dikarenakan bank yang mengirimkan terblokir ya bosku
-perihal tersebut sedang melakukan konfirmasikan kepada pihak bank terlebih dahulu
-untuk estimasi waktu di luar kuasa kami ya bosku
-apabila transaksi bosku tidak berhasil di proses maka akan kami proses kembali
-mohon maaf atas ketidaknyamananya`,
-                tags: ["withdraw", "gagal", "bank", "terblokir", "kendala", "konfirmasi"]
+                title: "USER ID / DP BERHASIL",
+                content: "kami cekkan untuk user id tersebut tidak terdaftar pada situs kami ya bosku\n\n================================================\n\nkami cek deposit anda tidak salah dan sudah berhasil ya bosku"
             },
             {
-                title: "2 USER ID REFFERAL BERBEDA",
-                content: `Mohon maaf bosku, apakah pendaftaran akun ( isi user id baru ) anda dilakukan atas kemauan anda sendiri atau terdapat pihak lain yang menyarankan untuk mendaftarkan akun tersebut ya bosku?`,
-                tags: ["user id", "referral", "beda", "pendaftaran", "akun"]
+                title: "TIDAK MENYIMPAN SANDI",
+                content: "saran kami login secara manual dan tidak menyimpan data userid dan password anda"
             },
             {
-                title: "TURN OVER",
-                content: `Kami cek saat ini untuk TO / Turn Over anda belum tercapai ya bosku oleh karna itu withdraw anda belum disetujui dan dikembalikan dana anda,
-untuk TO / Turn Over adalah x1 atau 300,000 ya bosku silahkan bosku bermain kembali agar TO / Turn Over anda tercapai.
-jika sudah tercapai otomatis withdraw anda terproses.`,
-                tags: ["turn over", "to", "withdraw", "300000", "x1"]
+                title: "SESUAI DANA YANG ANDA KIRIMKAN",
+                content: "silahkan anda isi form deposit sesuai dana yang anda kirimkan, jangan\ndikurangi dan ditambahi bosku.\nterima kasih"
             },
             {
-                title: "CARA PREMIUM GOPAY",
-                content: `langkah -langkah Upgrade GoPay ke Premium :
--Buka aplikasi Gojek
--Pilih menu GoPay → tekan Lainnya → pilih Upgrade ke GoPay Plus
--Klik Upgrade Sekarang
--Foto e-KTP atau Paspor (pastikan jelas dan asli, bukan fotokopi)
--Ambil selfie sambil memegang identitas
--Tekan Kirim Dokumen untuk verifikasi`,
-                tags: ["gopay", "premium", "upgrade", "cara", "verifikasi"]
+                title: "TIDAK BISA MENAMBAH BANK",
+                content: "Kami informasikan kepada anda bosku untuk 1 akun hanya dapat menggunakan 1 nomor rekening saja ya bosku, tidak dapat melakukan penambahan nomor rekening pada akun anda ya bosku."
             },
             {
-                title: "PASARAN YANG TIDAK ADA DI TANYA",
-                content: `Mohon maaf bosku untuk pasaran tersebut kami tidak menyediakannya ya bosku
-Saran kami silahkan bermain pada pasaran lain yang tersedia di Line Togel ya bosku
-Terima Kasih.`,
-                tags: ["pasaran", "tidak ada", "tidak tersedia", "line togel"]
+                title: "MEMBER TIDAK MAU KIRIM BUKTI",
+                content: "untuk perihal tersebut jika anda melakukan deposit dan mengklaim dana ke live chat diwajibkan mengirimkan bukti transfer ya bosku"
             },
             {
-                title: "RTP APA",
-                content: `Untuk RTP hanya jadi Pedoman/Panduan berdasarkan data kemenangan yang tinggi hari ini ya bosku. Namun untuk kemenangan kembali ke hoki masing-masing user ya bosku. Kami doakan anda agar beruntung ya bosku`,
-                tags: ["rtp", "kemenangan", "pedoman", "panduan", "hoki"]
+                title: "TIDAK ADA KENDALA / PL HANTU",
+                content: "Akun anda akan kami buka kembali jika anda setuju untuk mengirimkan dana deposit ke rekening deposit kami dengan minimal deposit 10,000.\nuntuk perihal rekening depositnya akan kami kirimkan jika anda setuju untuk mengirimkan dana kepada kami agar akun anda dapat kami bantu buka kembali"
             },
             {
-                title: "KEI PLUS & KEI MINUS",
-                content: `Kei + (Kei Plus): Pemain mendapatkan tambahan bayaran (komisi) jika menang
-Kei - (Kei Minus): Pemain akan dikenai potongan dari jumlah taruhan`,
-                tags: ["kei", "plus", "minus", "komisi", "potongan", "taruhan"]
+                title: "TUJUAN FORM",
+                content: "silahkan isi form deposit anda sesuai dengan bank yang anda kirimkan ya bosku , jika deposit ke BCA silahkan isi form deposit anda dengan tujuan BCA  juga ya bosku"
             },
             {
-                title: "TELAT RESULT PASARAN",
-                content: `Yth kami ingin menginformasikan bahwa untuk pasaran tersebut untuk saat ini terjadi keterlambatan result dari pihak penyedia belum mengeluarkan angka result. Mohon untuk menunggu dan bersabar estimasi waktu tidak dapat kami tentukan, Terima kasih.`,
-                tags: ["telat", "result", "pasaran", "keterlambatan", "estimasi"]
+                title: "BUKTI QRIS SAH",
+                content: "Dibantu bukti transfer yang sah harus mencantumkan nama QRIS (nama atau nomor rekening kami),\nlengkap dengan waktu pengiriman, serta lampirkan nama rekening pengirimnya."
             },
             {
-                title: "PERIHAL VIP",
-                content: `Perihal tersebut jika anda sudah menghubungi layanan whatsaap VIP maka silahkan melakukan konfirmasi lanjut pada layanan whatsapp ya bos
-
-=================================================
-untuk whatsapp pihak vip silahkan anda melakukan klik pada link ini ya bosku  https://heylink.me/linetogeltergacor/
-
-================================================
-
-perihal tersebut silahkan anda kofirmasi kembali ke whatsapp pihak vip kami ya bosku`,
-                tags: ["vip", "whatsapp", "konfirmasi", "link", "layanan"]
+                title: "BANK 24 JAM",
+                content: "untuk layanan bank BRI online 24 jam ya bosku, namun untuk saat ini sedang terjadi gangguan ya bosku"
+            },
+            {
+                title: "SALAH TUJUAN JENIS EWALLET",
+                content: "Mohon maaf bosku, yang kami cantumkan di form deposit adalah nomor OVO , namun anda transfer ke nomor tersebut ke DANA nya, sementara nomor tersebut tidak memiliki akun DANA .\nKedepannya mohon lebih teliti ya bosku dalam melakukan pengiriman dana agar tidak terjadi hal seperti ini lagi.\n===========================================================================================================================\nuntuk nomor tujuan tersebut kami hanya memiliki akun E-WALLET OVO ya bosku\nmohon maaf bosku, untuk dana deposit anda tidak bisa kami bantu dikarenakan untuk nomor tersebut kami hanya memiliki akun OVO  ya bosku\n==================================================================================================================================\nBaik bosku untuk tujuan akun yang anda kirim pada akun E-WALLET OVO ya bosku\nuntuk tujuan akun E-WALLET DANA tersebut bukan akun LINETOGEL ya bosku\n=============================================================================================================================\nmohon maaf bosku, untuk dana deposit anda kami tidak bisa membantu dikarenakan untuk nomor tujuan tersebut kami hanya memiliki akun OVO ya bosku\nuntuk tujuan akun E-WALLET DANA  tersebut bukan akun LINETOGEL ya bosku"
+            },
+            {
+                title: "user id",
+                content: "Untuk user id yang anda gunakan dapat anda cek pada pojok kiri atas pada akun anda ya bosku\n\nContoh : https://prnt.sc/hu21nK_ehoTj"
+            },
+            {
+                title: "QRIS BCA",
+                content: "Mohon maaf ya bosku, dibantu dengan tertera RRN QRISnya ya bosku\n\nCara mengecek Mutasi / Bukti transfer QRIS menggunakan Layanan Bank BCA :\n\n1. Silahkan login terlebih dahulu dan silahkan klik Logo Qris yang ada di bawah seperti gambar berikut\nContoh : https://prnt.sc/3vxdh-8D-036\n2. Silahkan di klik Inbox untuk mengecek bukti transfer yang di anda lakukan\nContoh : https://prnt.sc/WC3ySyLteRpo\n3. Setelah itu akan muncul seluruh transaksi anda melakukan pengiriman dana ke Qris / Scan Barcode ya bosku\nContoh : https://prnt.sc/d2VrM_cAr3HR\n\n------------------------------------------------\n\nMohon maaf ya bosku, untuk bukti bca menggunakan qris diwajibkan melampirkan tampilan seperti di atas ya bosku dengan tertera RRN qris nya ya bosku\n\n------------------------------------------------\n\nPerihal kendala anda silahkan menghubungi pihak bank ya bosku agar kendala anda dapat terselesaikan ya bosku\n\n------------------------------------------------\n\nMohon maaf ya bosku, perihal tersebut tidak berhasil ya bosku apabila tanpa ada bukti berhasil yang dimana bukti dari inbox qris anda tidak masuk ya bosku , saran kami silahkan hubungi pihak bank ya bosku\n\n------------------------------------------------\n\nBaik bosku apabila tidak ada/ tidak tercetak pada Inbox Qris anda maka transaksi anda dinyatakan gagal ya bosku\nsaran kami silahkan hubungi pihak bank terkait dikarenakan saldo anda sudah terpotong ya bosku , terima kasih"
+            },
+            {
+                title: "PASARAN SINGAPORE",
+                content: "Untuk pasaran SINGAPORE saat ini normal ya bosku\nJika ada pengunduran hasil Result akan kami informasikan melalui memo pada akun anda ya bosku."
             }
         ];
 
-        // Fungsi untuk menampilkan template
-        function displayTemplates(filteredTemplates = templates) {
-            const container = document.getElementById('templateContainer');
-            container.innerHTML = '';
+        // DOM Elements
+        const templateContainer = document.getElementById('templateContainer');
+        const searchInput = document.getElementById('searchInput');
+        const templateModal = document.getElementById('templateModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalText = document.getElementById('modalText');
+        const closeModal = document.getElementById('closeModal');
+        const copyFullBtn = document.getElementById('copyFullBtn');
+        const notification = document.getElementById('notification');
+
+        // Generate template cards
+        function generateTemplateCards(templatesArray) {
+            templateContainer.innerHTML = '';
             
-            filteredTemplates.forEach(template => {
+            templatesArray.forEach((template, index) => {
                 const card = document.createElement('div');
                 card.className = 'template-card';
-                
                 card.innerHTML = `
                     <h3>${template.title}</h3>
-                    <div class="tags">
-                        ${template.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                    </div>
-                    <div class="template-content">${template.content.replace(/\n/g, '<br>')}</div>
-                    <button class="copy-btn">Salin Template</button>
+                    <p>${template.content.substring(0, 150)}...</p>
+                    <button class="copy-btn" data-index="${index}">Lihat Detail</button>
                 `;
-                
-                // Event listener untuk menyalin template
-                const copyBtn = card.querySelector('.copy-btn');
-                copyBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    copyToClipboard(template.content);
+                templateContainer.appendChild(card);
+            });
+            
+            // Add event listeners to buttons
+            document.querySelectorAll('.copy-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = this.getAttribute('data-index');
+                    openModal(index);
                 });
-                
-                // Event listener untuk menyalin saat card diklik
-                card.addEventListener('click', () => {
-                    copyToClipboard(template.content);
-                });
-                
-                container.appendChild(card);
             });
         }
 
-        // Fungsi untuk menyalin teks ke clipboard
-        function copyToClipboard(text) {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
+        // Open modal with template content
+        function openModal(index) {
+            const template = templates[index];
+            modalTitle.textContent = template.title;
+            modalText.textContent = template.content;
+            templateModal.style.display = 'flex';
             
-            // Tampilkan notifikasi
-            const notification = document.getElementById('notification');
+            // Update copy button data attribute
+            copyFullBtn.setAttribute('data-index', index);
+        }
+
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            templateModal.style.display = 'none';
+        });
+
+        // Copy full text
+        copyFullBtn.addEventListener('click', function() {
+            const index = this.getAttribute('data-index');
+            const textToCopy = templates[index].content;
+            
+            navigator.clipboard.writeText(textToCopy).then(function() {
+                showNotification();
+            });
+        });
+
+        // Show notification
+        function showNotification() {
             notification.style.display = 'block';
-            
-            setTimeout(() => {
+            setTimeout(function() {
                 notification.style.display = 'none';
-            }, 3000);
+            }, 2000);
         }
 
-        // Fungsi untuk mencari template
-        function searchTemplates() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            
-            if (searchTerm.trim() === '') {
-                displayTemplates();
-                return;
+        // Search functionality
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const filteredTemplates = templates.filter(template => 
+                template.title.toLowerCase().includes(searchTerm) || 
+                template.content.toLowerCase().includes(searchTerm)
+            );
+            generateTemplateCards(filteredTemplates);
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === templateModal) {
+                templateModal.style.display = 'none';
             }
-            
-            const filteredTemplates = templates.filter(template => {
-                return template.title.toLowerCase().includes(searchTerm) ||
-                       template.content.toLowerCase().includes(searchTerm) ||
-                       template.tags.some(tag => tag.toLowerCase().includes(searchTerm));
-            });
-            
-            displayTemplates(filteredTemplates);
-        }
+        });
 
-        // Event listener untuk pencarian
-        document.getElementById('searchInput').addEventListener('input', searchTemplates);
-
-        // Tampilkan template saat halaman dimuat
-        displayTemplates();
+        // Initialize
+        generateTemplateCards(templates);
     </script>
 </body>
 </html>
