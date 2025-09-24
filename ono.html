@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generator Template Customer Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             box-sizing: border-box;
@@ -13,31 +14,58 @@
         }
         
         body {
-            background-color: #f5f7fa;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
             color: #333;
             line-height: 1.6;
             padding: 20px;
+            min-height: 100vh;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         header {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
             color: white;
             padding: 30px 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 15s infinite linear;
+        }
+        
+        @keyframes pulse {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         h1 {
             font-size: 2.2rem;
             margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
         }
         
         .subtitle {
@@ -45,50 +73,78 @@
             opacity: 0.9;
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         
         .search-container {
-            padding: 20px;
-            background-color: #f0f4f8;
-            border-bottom: 1px solid #ddd;
+            padding: 25px;
+            background-color: #f8f9fc;
+            border-bottom: 1px solid #e1e5ee;
         }
         
         #searchInput {
             width: 100%;
-            padding: 12px 20px;
+            padding: 15px 25px;
             font-size: 16px;
-            border: 1px solid #ddd;
+            border: 2px solid #e1e5ee;
             border-radius: 50px;
             outline: none;
             transition: all 0.3s;
+            background-color: white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
         }
         
         #searchInput:focus {
-            border-color: #2a5298;
-            box-shadow: 0 0 0 2px rgba(42, 82, 152, 0.2);
+            border-color: #4b6cb7;
+            box-shadow: 0 0 0 3px rgba(75, 108, 183, 0.2);
         }
         
         .filters {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 12px;
+            margin-top: 20px;
             justify-content: center;
         }
         
         .filter-btn {
-            padding: 8px 15px;
-            background-color: #e9ecef;
+            padding: 10px 20px;
+            background-color: #e8ecf4;
             border: none;
-            border-radius: 20px;
+            border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s;
             font-size: 0.9rem;
+            font-weight: 600;
+            color: #4a5568;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background-color: rgba(75, 108, 183, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+        
+        .filter-btn:hover::before {
+            width: 100%;
+            height: 100%;
         }
         
         .filter-btn:hover, .filter-btn.active {
-            background-color: #2a5298;
+            background-color: #4b6cb7;
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(75, 108, 183, 0.3);
         }
         
         .main-content {
@@ -98,121 +154,163 @@
         
         .template-list {
             width: 40%;
-            border-right: 1px solid #eee;
+            border-right: 1px solid #e1e5ee;
             max-height: 700px;
             overflow-y: auto;
+            background-color: #f8f9fc;
         }
         
         .template-preview {
             width: 60%;
-            padding: 20px;
-            background-color: #f9f9f9;
+            padding: 25px;
+            background-color: #f8f9fc;
             display: flex;
             flex-direction: column;
         }
         
         .template-item {
-            padding: 15px 20px;
-            border-bottom: 1px solid #eee;
+            padding: 18px 25px;
+            border-bottom: 1px solid #e1e5ee;
             cursor: pointer;
             transition: all 0.3s;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .template-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #4b6cb7, #182848);
+            transition: width 0.3s;
         }
         
         .template-item:hover {
-            background-color: #f0f4f8;
+            background-color: #edf2f7;
+            padding-left: 30px;
+        }
+        
+        .template-item:hover::after {
+            width: 100%;
         }
         
         .template-item.active {
-            background-color: #e1e8f0;
-            border-left: 4px solid #2a5298;
+            background-color: #e2e8f0;
+            border-left: 4px solid #4b6cb7;
+            font-weight: 600;
         }
         
         .template-title {
             font-weight: 600;
-            color: #1e3c72;
+            color: #2d3748;
+            margin-bottom: 5px;
         }
         
         .category-tag {
             display: inline-block;
-            padding: 3px 10px;
-            background-color: #e9ecef;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            color: #555;
+            padding: 4px 12px;
+            background-color: #e2e8f0;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: #4a5568;
+            font-weight: 600;
+            text-transform: uppercase;
         }
         
         .preview-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             padding-bottom: 15px;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 2px solid #e1e5ee;
         }
         
         .preview-title {
-            font-size: 1.4rem;
-            color: #1e3c72;
+            font-size: 1.5rem;
+            color: #2d3748;
+            font-weight: 700;
         }
         
         .preview-category {
             font-size: 0.9rem;
-            color: #666;
+            color: #718096;
+            background-color: #edf2f7;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-weight: 600;
         }
         
         .template-content {
             flex-grow: 1;
             background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #e1e5ee;
             white-space: pre-line;
             overflow-y: auto;
             max-height: 500px;
             line-height: 1.8;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            font-size: 1rem;
+            color: #2d3748;
         }
         
         .action-buttons {
             display: flex;
-            gap: 10px;
-            margin-top: 20px;
+            gap: 15px;
+            margin-top: 25px;
         }
         
         .btn {
-            padding: 10px 20px;
+            padding: 12px 25px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.95rem;
         }
         
         .btn-copy {
-            background-color: #2a5298;
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
             color: white;
+            box-shadow: 0 4px 15px rgba(75, 108, 183, 0.3);
         }
         
         .btn-copy:hover {
-            background-color: #1e3c72;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(75, 108, 183, 0.4);
         }
         
         .btn-edit {
-            background-color: #f0f4f8;
-            color: #333;
+            background-color: white;
+            color: #4b6cb7;
+            border: 2px solid #4b6cb7;
         }
         
         .btn-edit:hover {
-            background-color: #e1e8f0;
+            background-color: #4b6cb7;
+            color: white;
+            transform: translateY(-2px);
         }
         
         .no-results {
             text-align: center;
             padding: 40px;
-            color: #777;
+            color: #718096;
             grid-column: 1 / -1;
+            font-size: 1.1rem;
         }
         
         .no-template-selected {
@@ -221,14 +319,45 @@
             justify-content: center;
             align-items: center;
             height: 100%;
-            color: #777;
+            color: #718096;
             text-align: center;
+            padding: 40px;
         }
         
         .no-template-selected i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            opacity: 0.5;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.6;
+            color: #4b6cb7;
+        }
+        
+        .no-template-selected h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #4a5568;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(72, 187, 120, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
         }
         
         @media (max-width: 768px) {
@@ -243,8 +372,34 @@
             .template-list {
                 max-height: 300px;
                 border-right: none;
-                border-bottom: 1px solid #eee;
+                border-bottom: 1px solid #e1e5ee;
             }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #4b6cb7;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #182848;
         }
     </style>
 </head>
@@ -275,13 +430,18 @@
             <div class="template-preview">
                 <div id="templatePreview">
                     <div class="no-template-selected">
-                        <i>📋</i>
+                        <i class="fas fa-clipboard-list"></i>
                         <h3>Pilih template dari daftar</h3>
                         <p>Klik pada salah satu template di sebelah kiri untuk melihat isinya</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Template berhasil disalin!</span>
     </div>
 
     <script>
@@ -353,6 +513,19 @@
         let currentTemplate = null;
         let filteredTemplates = templateData;
 
+        // Fungsi untuk menampilkan notifikasi
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
         // Fungsi untuk menampilkan daftar template
         function displayTemplateList(templates = templateData) {
             const templateList = document.getElementById('templateList');
@@ -373,7 +546,7 @@
                         <div class="template-title">${template.title}</div>
                         <div class="category-tag">${template.category}</div>
                     </div>
-                    <div>▶</div>
+                    <div><i class="fas fa-chevron-right"></i></div>
                 `;
                 
                 templateItem.addEventListener('click', () => {
@@ -407,8 +580,12 @@
                 </div>
                 <div class="template-content">${template.content}</div>
                 <div class="action-buttons">
-                    <button class="btn btn-copy" id="copyBtn">Salin Template</button>
-                    <button class="btn btn-edit" id="editBtn">Edit Template</button>
+                    <button class="btn btn-copy" id="copyBtn">
+                        <i class="fas fa-copy"></i> Salin Template
+                    </button>
+                    <button class="btn btn-edit" id="editBtn">
+                        <i class="fas fa-edit"></i> Edit Template
+                    </button>
                 </div>
             `;
             
@@ -430,16 +607,8 @@
             document.execCommand('copy');
             document.body.removeChild(textarea);
             
-            // Ubah teks tombol sementara
-            const copyBtn = document.getElementById('copyBtn');
-            const originalText = copyBtn.textContent;
-            copyBtn.textContent = 'Tersalin!';
-            copyBtn.style.backgroundColor = '#28a745';
-            
-            setTimeout(() => {
-                copyBtn.textContent = originalText;
-                copyBtn.style.backgroundColor = '';
-            }, 2000);
+            // Tampilkan notifikasi
+            showNotification('Template berhasil disalin ke clipboard!');
         }
 
         // Fungsi untuk mengedit template
@@ -456,8 +625,12 @@
                 </div>
                 <textarea id="editTextarea" class="template-content" style="height: 400px; resize: vertical;">${currentTemplate.content}</textarea>
                 <div class="action-buttons">
-                    <button class="btn btn-copy" id="saveBtn">Simpan Perubahan</button>
-                    <button class="btn btn-edit" id="cancelBtn">Batal</button>
+                    <button class="btn btn-copy" id="saveBtn">
+                        <i class="fas fa-save"></i> Simpan Perubahan
+                    </button>
+                    <button class="btn btn-edit" id="cancelBtn">
+                        <i class="fas fa-times"></i> Batal
+                    </button>
                 </div>
             `;
             
@@ -480,8 +653,8 @@
             // Kembali ke mode preview
             displayTemplatePreview(currentTemplate);
             
-            // Tampilkan pesan sukses
-            alert('Perubahan template berhasil disimpan!');
+            // Tampilkan notifikasi
+            showNotification('Perubahan template berhasil disimpan!');
         }
 
         // Fungsi untuk mencari dan memfilter template
@@ -510,7 +683,7 @@
             if (currentTemplate && !filteredTemplates.some(t => t.id === currentTemplate.id)) {
                 document.getElementById('templatePreview').innerHTML = `
                     <div class="no-template-selected">
-                        <i>📋</i>
+                        <i class="fas fa-clipboard-list"></i>
                         <h3>Pilih template dari daftar</h3>
                         <p>Klik pada salah satu template di sebelah kiri untuk melihat isinya</p>
                     </div>
