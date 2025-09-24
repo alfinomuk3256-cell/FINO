@@ -14,7 +14,7 @@
         }
         
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
             line-height: 1.6;
             padding: 20px;
@@ -26,7 +26,7 @@
             margin: 0 auto;
             background-color: white;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             overflow: hidden;
             animation: fadeIn 0.5s ease-in-out;
         }
@@ -37,7 +37,7 @@
         }
         
         header {
-            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: white;
             padding: 30px 20px;
             text-align: center;
@@ -52,7 +52,7 @@
             right: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
             animation: pulse 15s infinite linear;
         }
         
@@ -66,6 +66,7 @@
             margin-bottom: 10px;
             position: relative;
             z-index: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
         .subtitle {
@@ -79,7 +80,7 @@
         
         .search-container {
             padding: 25px;
-            background-color: #f8f9fc;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
             border-bottom: 1px solid #e1e5ee;
         }
         
@@ -92,12 +93,12 @@
             outline: none;
             transition: all 0.3s;
             background-color: white;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         #searchInput:focus {
-            border-color: #4b6cb7;
-            box-shadow: 0 0 0 3px rgba(75, 108, 183, 0.2);
+            border-color: #f5576c;
+            box-shadow: 0 0 0 3px rgba(245, 87, 108, 0.3);
         }
         
         .filters {
@@ -110,16 +111,17 @@
         
         .filter-btn {
             padding: 10px 20px;
-            background-color: #e8ecf4;
+            background-color: white;
             border: none;
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s;
             font-size: 0.9rem;
             font-weight: 600;
-            color: #4a5568;
+            color: #f5576c;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
         
         .filter-btn::before {
@@ -130,7 +132,7 @@
             width: 0;
             height: 0;
             border-radius: 50%;
-            background-color: rgba(75, 108, 183, 0.2);
+            background-color: rgba(245, 87, 108, 0.2);
             transform: translate(-50%, -50%);
             transition: width 0.5s, height 0.5s;
         }
@@ -141,10 +143,10 @@
         }
         
         .filter-btn:hover, .filter-btn.active {
-            background-color: #4b6cb7;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(75, 108, 183, 0.3);
+            box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
         }
         
         .main-content {
@@ -157,13 +159,13 @@
             border-right: 1px solid #e1e5ee;
             max-height: 700px;
             overflow-y: auto;
-            background-color: #f8f9fc;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fc);
         }
         
         .template-preview {
             width: 60%;
             padding: 25px;
-            background-color: #f8f9fc;
+            background: linear-gradient(to bottom, #f8f9fc, #ffffff);
             display: flex;
             flex-direction: column;
         }
@@ -187,12 +189,12 @@
             left: 0;
             width: 0;
             height: 3px;
-            background: linear-gradient(90deg, #4b6cb7, #182848);
+            background: linear-gradient(90deg, #f093fb, #f5576c);
             transition: width 0.3s;
         }
         
         .template-item:hover {
-            background-color: #edf2f7;
+            background-color: #fff5f7;
             padding-left: 30px;
         }
         
@@ -201,24 +203,24 @@
         }
         
         .template-item.active {
-            background-color: #e2e8f0;
-            border-left: 4px solid #4b6cb7;
+            background: linear-gradient(to right, #fff5f7, #ffffff);
+            border-left: 4px solid #f5576c;
             font-weight: 600;
         }
         
         .template-title {
             font-weight: 600;
-            color: #2d3748;
+            color: #f5576c;
             margin-bottom: 5px;
         }
         
         .category-tag {
             display: inline-block;
             padding: 4px 12px;
-            background-color: #e2e8f0;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
             border-radius: 15px;
             font-size: 0.75rem;
-            color: #4a5568;
+            color: #f5576c;
             font-weight: 600;
             text-transform: uppercase;
         }
@@ -234,17 +236,18 @@
         
         .preview-title {
             font-size: 1.5rem;
-            color: #2d3748;
+            color: #f5576c;
             font-weight: 700;
         }
         
         .preview-category {
             font-size: 0.9rem;
-            color: #718096;
-            background-color: #edf2f7;
+            color: white;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             padding: 5px 12px;
             border-radius: 15px;
             font-weight: 600;
+            box-shadow: 0 3px 10px rgba(245, 87, 108, 0.3);
         }
         
         .template-content {
@@ -257,9 +260,9 @@
             overflow-y: auto;
             max-height: 500px;
             line-height: 1.8;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             font-size: 1rem;
-            color: #2d3748;
+            color: #333;
         }
         
         .action-buttons {
@@ -283,32 +286,34 @@
         }
         
         .btn-copy {
-            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: white;
-            box-shadow: 0 4px 15px rgba(75, 108, 183, 0.3);
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
         }
         
         .btn-copy:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(75, 108, 183, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.5);
         }
         
         .btn-edit {
             background-color: white;
-            color: #4b6cb7;
-            border: 2px solid #4b6cb7;
+            color: #f5576c;
+            border: 2px solid #f5576c;
+            box-shadow: 0 3px 10px rgba(245, 87, 108, 0.2);
         }
         
         .btn-edit:hover {
-            background-color: #4b6cb7;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
         }
         
         .no-results {
             text-align: center;
             padding: 40px;
-            color: #718096;
+            color: #f5576c;
             grid-column: 1 / -1;
             font-size: 1.1rem;
         }
@@ -319,7 +324,7 @@
             justify-content: center;
             align-items: center;
             height: 100%;
-            color: #718096;
+            color: #f5576c;
             text-align: center;
             padding: 40px;
         }
@@ -327,25 +332,25 @@
         .no-template-selected i {
             font-size: 4rem;
             margin-bottom: 20px;
-            opacity: 0.6;
-            color: #4b6cb7;
+            opacity: 0.8;
+            color: #f5576c;
         }
         
         .no-template-selected h3 {
             font-size: 1.5rem;
             margin-bottom: 10px;
-            color: #4a5568;
+            color: #f5576c;
         }
         
         .notification {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: white;
             padding: 15px 25px;
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(72, 187, 120, 0.3);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -394,12 +399,12 @@
         }
         
         ::-webkit-scrollbar-thumb {
-            background: #4b6cb7;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             border-radius: 4px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: #182848;
+            background: #f5576c;
         }
     </style>
 </head>
@@ -504,7 +509,7 @@
             {
                 id: 10,
                 title: "Sudah premium tapi tidak keluar nama",
-                content: "silahkan anda menghubungi pihak dana dikarenakan perihal nama rekening anda masih tertera no rekening yakni dikarenakan anda barusan mempremiumkan dana anda sehingga untuk profil akun dana anda belum sycron antara nama rekening tersebut bosku",
+                content: "silahkan anda menghubungi pihak dana dikarenakan perihal nama rekening anda masih tertera no rekening yakni dikarenakan anda barusan memremiumkan dana anda sehingga untuk profil akun dana anda belum sycron antara nama rekening tersebut bosku",
                 category: "technical"
             }
         ];
