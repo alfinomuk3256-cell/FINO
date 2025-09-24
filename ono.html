@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generator Template Pesan Customer Service</title>
+    <title>Generator Template Pesan - Tema Alam</title>
     <style>
         :root {
-            --primary: #4a6fa5;
-            --secondary: #6b8cbc;
-            --light: #f5f7fa;
-            --dark: #333;
-            --success: #28a745;
-            --warning: #ffc107;
-            --danger: #dc3545;
+            --primary: #2e7d32;
+            --secondary: #4caf50;
+            --light: #e8f5e9;
+            --dark: #1b5e20;
+            --accent: #81c784;
+            --text: #1b5e20;
         }
         
         * {
@@ -23,96 +22,140 @@
         }
         
         body {
-            background-color: var(--light);
-            color: var(--dark);
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            color: var(--text);
             line-height: 1.6;
             padding: 20px;
+            min-height: 100vh;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23e8f5e9"/><path d="M0,50 Q25,30 50,50 T100,50 L100,100 L0,100 Z" fill="%23c8e6c9" opacity="0.5"/><path d="M0,70 Q30,50 60,70 T100,70 L100,100 L0,100 Z" fill="%23a5d6a7" opacity="0.3"/></svg>');
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.2);
             overflow: hidden;
+            border: 1px solid var(--accent);
         }
         
         header {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 20px;
+            padding: 25px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/><path d="M0,0 L0,100 L100,100 Z" fill="rgba(0,0,0,0.1)"/></svg>');
+            background-size: cover;
         }
         
         h1 {
             margin-bottom: 10px;
+            font-size: 2.2rem;
+            position: relative;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
         
         .description {
             font-size: 1.1rem;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            position: relative;
+            opacity: 0.9;
         }
         
         .main-content {
             display: flex;
             flex-wrap: wrap;
             padding: 20px;
+            gap: 20px;
         }
         
         .template-list {
             flex: 1;
             min-width: 300px;
             padding: 15px;
-            border-right: 1px solid #eee;
+            background-color: rgba(232, 245, 233, 0.5);
+            border-radius: 10px;
+            border: 1px solid var(--accent);
         }
         
         .template-preview {
             flex: 2;
             min-width: 400px;
             padding: 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            border: 1px solid var(--accent);
+            display: flex;
+            flex-direction: column;
         }
         
         .template-item {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
+            background: linear-gradient(to right, white, #f1f8e9);
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            padding: 12px;
             margin-bottom: 10px;
             cursor: pointer;
             transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
         
         .template-item:hover {
-            background-color: #e9e9e9;
-            transform: translateY(-2px);
+            background: linear-gradient(to right, #f1f8e9, #e8f5e9);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+            border-color: var(--secondary);
         }
         
         .template-item.active {
-            background-color: var(--secondary);
+            background: linear-gradient(to right, var(--secondary), var(--primary));
             color: white;
-            border-color: var(--primary);
+            border-color: var(--dark);
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
         }
         
         .template-title {
             font-weight: bold;
             margin-bottom: 5px;
+            font-size: 1.1rem;
         }
         
         .template-content {
-            max-height: 150px;
+            max-height: 100px;
             overflow: hidden;
             font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .active .template-content {
+            opacity: 0.9;
         }
         
         .preview-area {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            padding: 20px;
             min-height: 300px;
-            background-color: #f9f9f9;
+            background-color: white;
             margin-bottom: 15px;
             white-space: pre-line;
+            flex-grow: 1;
+            overflow-y: auto;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+            font-size: 1rem;
+            line-height: 1.7;
         }
         
         .actions {
@@ -122,63 +165,101 @@
         }
         
         button {
-            padding: 10px 15px;
+            padding: 12px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
             transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 1rem;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        button:active {
+            transform: translateY(0);
         }
         
         .copy-btn {
-            background-color: var(--success);
+            background: linear-gradient(to right, #4caf50, #2e7d32);
             color: white;
         }
         
         .copy-btn:hover {
-            background-color: #218838;
+            background: linear-gradient(to right, #43a047, #1b5e20);
         }
         
         .format-btn {
-            background-color: var(--primary);
+            background: linear-gradient(to right, #81c784, #4caf50);
             color: white;
         }
         
         .format-btn:hover {
-            background-color: #3a5a8a;
+            background: linear-gradient(to right, #66bb6a, #43a047);
         }
         
         .search-box {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
         }
         
         .category-filter {
             display: flex;
             gap: 10px;
             margin-bottom: 15px;
+            flex-wrap: wrap;
         }
         
         .category-btn {
-            background-color: #e9e9e9;
-            border: 1px solid #ddd;
+            background-color: #e8f5e9;
+            border: 1px solid #a5d6a7;
+            color: var(--dark);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
         }
         
         .category-btn.active {
-            background-color: var(--primary);
+            background: linear-gradient(to right, var(--secondary), var(--primary));
             color: white;
+            border-color: var(--dark);
         }
         
         footer {
             text-align: center;
-            padding: 15px;
-            background-color: #f1f1f1;
-            border-top: 1px solid #ddd;
+            padding: 20px;
+            background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+            border-top: 1px solid #a5d6a7;
             font-size: 0.9rem;
-            color: #666;
+            color: var(--dark);
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 5px;
         }
         
         @media (max-width: 768px) {
@@ -186,23 +267,83 @@
                 flex-direction: column;
             }
             
-            .template-list {
-                border-right: none;
-                border-bottom: 1px solid #eee;
+            .template-list, .template-preview {
+                min-width: 100%;
             }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Animasi untuk efek alam */
+        .leaf {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #4caf50;
+            opacity: 0.7;
+            border-radius: 50% 0;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(100px, 100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Efek sukses saat menyalin */
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(to right, #4caf50, #2e7d32);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.3s;
+        }
+        
+        .success-message.show {
+            transform: translateX(0);
         }
     </style>
 </head>
 <body>
+    <!-- Efek daun jatuh -->
+    <div id="leafContainer"></div>
+    
+    <!-- Pesan sukses -->
+    <div class="success-message" id="successMessage">
+        Template berhasil disalin ke clipboard!
+    </div>
+    
     <div class="container">
         <header>
-            <h1>Generator Template Pesan Customer Service</h1>
+            <h1>🌿 Generator Template Pesan Customer Service</h1>
             <p class="description">Pilih template pesan yang sesuai dengan kebutuhan Anda, salin, dan gunakan untuk komunikasi dengan pelanggan.</p>
         </header>
         
         <div class="main-content">
             <div class="template-list">
-                <input type="text" class="search-box" placeholder="Cari template...">
+                <h2 class="section-title">📋 Daftar Template</h2>
+                
+                <input type="text" class="search-box" placeholder="🔍 Cari template...">
                 
                 <div class="category-filter">
                     <button class="category-btn active" data-category="all">Semua</button>
@@ -212,25 +353,29 @@
                 </div>
                 
                 <div id="templateContainer">
-                    <!-- Template items will be populated by JavaScript -->
+                    <!-- Template items akan diisi oleh JavaScript -->
                 </div>
             </div>
             
             <div class="template-preview">
-                <h2>Preview Template</h2>
+                <h2 class="section-title">👁️ Preview Template</h2>
                 <div class="preview-area" id="previewArea">
                     Pilih template dari daftar di sebelah kiri untuk melihat preview di sini.
                 </div>
                 
                 <div class="actions">
-                    <button class="copy-btn" id="copyBtn">Salin ke Clipboard</button>
-                    <button class="format-btn" id="formatBtn">Rapikan Format</button>
+                    <button class="copy-btn" id="copyBtn">
+                        <span>📋</span> Salin ke Clipboard
+                    </button>
+                    <button class="format-btn" id="formatBtn">
+                        <span>✨</span> Rapikan Format
+                    </button>
                 </div>
             </div>
         </div>
         
         <footer>
-            <p>Generator Template Pesan Customer Service &copy; 2023</p>
+            <p>Generator Template Pesan Customer Service dengan Tema Alam Hijau &copy; 2023</p>
         </footer>
     </div>
 
@@ -339,55 +484,6 @@ Mohon maaf bosku untuk bukti transfer yang anda kirimkan pada kami tidak berhasi
                 title: "Sudah premium tapi tidak keluar nama",
                 content: `Silahkan anda menghubungi pihak dana dikarenakan perihal nama rekening anda masih tertera no rekening yakni dikarenakan anda barusan mempremiumkan dana anda sehingga untuk profil akun dana anda belum sycron antara nama rekening tersebut bosku`,
                 category: "general"
-            },
-            {
-                id: 11,
-                title: "ADA TITIK DI FORM DEPOSIT",
-                content: `Mohon maaf bosku, silahkan tidak menambahkan titik ataupun koma pada kolom Nominal ya bosku, dikarenakan titik tersebut otomatis dari sistem kami ya bosku, Terima kasih`,
-                category: "deposit"
-            },
-            {
-                id: 12,
-                title: "KAMI TIDAK MENGETAHUI BANK ONLINE",
-                content: `Mohon maaf bos ku,kami disini adalah sebagai pihak situs ya bos ku, sementara yang gangguan adalah langsung pihak bank, dan kami bukanlah pihak bank ya bos ku, oleh karena itu kami tidak dapat mengetahui dikarenakan perihala apa terjadinya bank gangguan / sampai kapan bank akan gangguan atau kapan akan normal kembali,namun permintaan DEPOSIT anda akan segera kami proses ketika bank bank normal kembali ya bos ku. Terima kasih.`,
-                category: "deposit"
-            },
-            {
-                id: 13,
-                title: "MAKSIMAL DEPOSIT",
-                content: `Untuk maksimal deposit tidak ada batasan ya bos ku, namun deposit anda akan kami proses maksimal 100,000,000 per 1 kali transaksi`,
-                category: "deposit"
-            },
-            {
-                id: 14,
-                title: "UPGRADE PREMIUM",
-                content: `Kami sarankan untuk melakukan aktivasi/upgrade premium ulang pada akun GOPAY anda menggunakan KTP dengan atas nama yang sama seperti yang terdaftar pada akun anda saat ini ya bosku`,
-                category: "general"
-            },
-            {
-                id: 15,
-                title: "SILAHKAN MENGHUBUNGI PIHAK TERKAIT",
-                content: `Untuk perihal tersebut silahkan anda menghubungi pihak bank yang terkait ya bosku di karenakan untuk bukti yang anda kirimkan belum berhasil terkirim dan tidak ada masuk ke mutasi bank kami ya bosku`,
-                category: "general"
-            },
-            {
-                id: 16,
-                title: "WITHDRAW GAGAL DAN BANK TEBLOKIR",
-                content: `Yth, Kepada member LINE TOGEL,untuk withdraw anda sebelum nya sudah kami proseskan namun terjadi kegagalan dari pihak bank serta bank yang mengirimkan dana tersebut  terblokir  dan saat ini masih belum dapat kami proseskan ya bosku di karenakan bank pengirim dana anda saat ini sedang terjadi kendala ya bosku dan kami belum dapat mengecek mutasi pengirim kami ya bosku , akan kami proseskan ketika kami sudah dapat mengakses bank terkendala tersebut ya bosku terimakasih
-
-=================================
-
-Sebelumnya sudah di coba untuk proses pengiriman namun bank yang mengirimkan terblokir sehingga kami tidak bisa memastikan apakah gagal atau berhasil ya bosku untuk estimasi waktu di luar kuasa kami ya bosku apabila bank pengirim dana tersebut sudah dapat diakses dan transaksi bosku tidak berhasil di proses maka akan kami proses kembali ya bosku
-terima kasih
-
-==================================
-
-Perihal pengiriman dana tersebut belum dapat kami memastikan apakah gagal atau berhasil dikarenakan bank yang mengirimkan terblokir ya bosku
-perihal tersebut sedang melakukan konfirmasikan kepada pihak bank terlebih dahulu
-untuk estimasi waktu di luar kuasa kami ya bosku
-apabila transaksi bosku tidak berhasil di proses maka akan kami proses kembali
-mohon maaf atas ketidaknyamananya`,
-                category: "withdraw"
             }
         ];
 
@@ -398,13 +494,15 @@ mohon maaf atas ketidaknyamananya`,
         const formatBtn = document.getElementById('formatBtn');
         const searchBox = document.querySelector('.search-box');
         const categoryBtns = document.querySelectorAll('.category-btn');
+        const successMessage = document.getElementById('successMessage');
+        const leafContainer = document.getElementById('leafContainer');
 
         // Variables
         let selectedTemplate = null;
         let filteredTemplates = [...templates];
         let currentCategory = 'all';
 
-        // Initialize the template list
+        // Inisialisasi daftar template
         function renderTemplates() {
             templateContainer.innerHTML = '';
             
@@ -433,12 +531,12 @@ mohon maaf atas ketidaknyamananya`,
             });
         }
 
-        // Select a template
+        // Pilih template
         function selectTemplate(template) {
             selectedTemplate = template;
             previewArea.textContent = template.content;
             
-            // Update active state in template list
+            // Perbarui status aktif di daftar template
             document.querySelectorAll('.template-item').forEach(item => {
                 item.classList.remove('active');
             });
@@ -446,7 +544,7 @@ mohon maaf atas ketidaknyamananya`,
             event.currentTarget.classList.add('active');
         }
 
-        // Filter templates by category
+        // Filter template berdasarkan kategori
         function filterTemplatesByCategory(category) {
             currentCategory = category;
             
@@ -456,7 +554,7 @@ mohon maaf atas ketidaknyamananya`,
                 filteredTemplates = templates.filter(template => template.category === category);
             }
             
-            // Apply search filter if any
+            // Terapkan filter pencarian jika ada
             if (searchBox.value) {
                 filterTemplatesBySearch(searchBox.value);
             } else {
@@ -464,7 +562,7 @@ mohon maaf atas ketidaknyamananya`,
             }
         }
 
-        // Filter templates by search term
+        // Filter template berdasarkan kata kunci pencarian
         function filterTemplatesBySearch(term) {
             const searchTerm = term.toLowerCase();
             
@@ -484,9 +582,9 @@ mohon maaf atas ketidaknyamananya`,
             renderTemplates();
         }
 
-        // Format the text (remove extra spaces, fix line breaks)
+        // Format teks (hapus spasi berlebih, perbaiki line breaks)
         function formatText(text) {
-            // Remove extra spaces and fix line breaks
+            // Hapus spasi berlebih dan perbaiki line breaks
             return text
                 .split('\n')
                 .map(line => line.trim())
@@ -494,10 +592,10 @@ mohon maaf atas ketidaknyamananya`,
                 .join('\n\n');
         }
 
-        // Copy to clipboard
+        // Salin ke clipboard
         function copyToClipboard() {
             if (!selectedTemplate) {
-                alert('Pilih template terlebih dahulu!');
+                showMessage('Pilih template terlebih dahulu!', 'error');
                 return;
             }
             
@@ -505,20 +603,47 @@ mohon maaf atas ketidaknyamananya`,
             
             navigator.clipboard.writeText(textToCopy)
                 .then(() => {
-                    // Show success feedback
-                    const originalText = copyBtn.textContent;
-                    copyBtn.textContent = 'Tersalin!';
-                    copyBtn.style.backgroundColor = '#28a745';
-                    
-                    setTimeout(() => {
-                        copyBtn.textContent = originalText;
-                        copyBtn.style.backgroundColor = '';
-                    }, 2000);
+                    showMessage('Template berhasil disalin ke clipboard!', 'success');
                 })
                 .catch(err => {
                     console.error('Gagal menyalin teks: ', err);
-                    alert('Gagal menyalin teks. Silakan coba lagi.');
+                    showMessage('Gagal menyalin teks. Silakan coba lagi.', 'error');
                 });
+        }
+
+        // Tampilkan pesan sukses
+        function showMessage(message, type) {
+            if (type === 'success') {
+                successMessage.textContent = message;
+                successMessage.style.background = 'linear-gradient(to right, #4caf50, #2e7d32)';
+                successMessage.classList.add('show');
+                
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 3000);
+            } else {
+                alert(message);
+            }
+        }
+
+        // Buat efek daun jatuh
+        function createLeaves() {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const leaf = document.createElement('div');
+                    leaf.className = 'leaf';
+                    leaf.style.left = Math.random() * 100 + 'vw';
+                    leaf.style.animationDuration = (15 + Math.random() * 10) + 's';
+                    leaf.style.width = (15 + Math.random() * 10) + 'px';
+                    leaf.style.height = leaf.style.width;
+                    leafContainer.appendChild(leaf);
+                    
+                    // Hapus daun setelah animasi selesai
+                    setTimeout(() => {
+                        leaf.remove();
+                    }, 25000);
+                }, i * 1000);
+            }
         }
 
         // Event Listeners
@@ -526,15 +651,17 @@ mohon maaf atas ketidaknyamananya`,
         
         formatBtn.addEventListener('click', () => {
             if (!selectedTemplate) {
-                alert('Pilih template terlebih dahulu!');
+                showMessage('Pilih template terlebih dahulu!', 'error');
                 return;
             }
             
             const formattedText = formatText(previewArea.textContent);
             previewArea.textContent = formattedText;
             
-            // Update the template content
+            // Perbarui konten template
             selectedTemplate.content = formattedText;
+            
+            showMessage('Format teks telah diperbaiki!', 'success');
         });
         
         searchBox.addEventListener('input', (e) => {
@@ -543,17 +670,21 @@ mohon maaf atas ketidaknyamananya`,
         
         categoryBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                // Update active category button
+                // Perbarui tombol kategori aktif
                 categoryBtns.forEach(b => b.classList.remove('active'));
                 e.target.classList.add('active');
                 
-                // Filter templates
+                // Filter template
                 filterTemplatesByCategory(e.target.dataset.category);
             });
         });
 
-        // Initialize
+        // Inisialisasi
         renderTemplates();
+        createLeaves();
+        
+        // Buat daun baru setiap 20 detik
+        setInterval(createLeaves, 20000);
     </script>
 </body>
 </html>
