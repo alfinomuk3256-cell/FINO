@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generator Template Customer Service</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Template Chat Customer Service</title>
     <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --agent-color: #3498db;
+            --customer-color: #95a5a6;
+        }
+        
         * {
             box-sizing: border-box;
             margin: 0;
@@ -14,705 +24,293 @@
         }
         
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
             padding: 20px;
-            min-height: 100vh;
         }
         
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        header {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-            animation: pulse 15s infinite linear;
-        }
-        
-        @keyframes pulse {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .search-container {
-            padding: 25px;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            border-bottom: 1px solid #e1e5ee;
-        }
-        
-        #searchInput {
-            width: 100%;
-            padding: 15px 25px;
-            font-size: 16px;
-            border: 2px solid #e1e5ee;
-            border-radius: 50px;
-            outline: none;
-            transition: all 0.3s;
             background-color: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        #searchInput:focus {
-            border-color: #f5576c;
-            box-shadow: 0 0 0 3px rgba(245, 87, 108, 0.3);
-        }
-        
-        .filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 20px;
-            justify-content: center;
-        }
-        
-        .filter-btn {
-            padding: 10px 20px;
-            background-color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #f5576c;
-            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
         
-        .filter-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background-color: rgba(245, 87, 108, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.5s, height 0.5s;
-        }
-        
-        .filter-btn:hover::before {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .filter-btn:hover, .filter-btn.active {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
+            padding: 20px;
+            text-align: center;
         }
         
-        .main-content {
-            display: flex;
-            min-height: 600px;
-        }
-        
-        .template-list {
-            width: 40%;
-            border-right: 1px solid #e1e5ee;
-            max-height: 700px;
-            overflow-y: auto;
-            background: linear-gradient(to bottom, #ffffff, #f8f9fc);
-        }
-        
-        .template-preview {
-            width: 60%;
-            padding: 25px;
-            background: linear-gradient(to bottom, #f8f9fc, #ffffff);
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .template-item {
-            padding: 18px 25px;
-            border-bottom: 1px solid #e1e5ee;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .template-item::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #f093fb, #f5576c);
-            transition: width 0.3s;
-        }
-        
-        .template-item:hover {
-            background-color: #fff5f7;
-            padding-left: 30px;
-        }
-        
-        .template-item:hover::after {
-            width: 100%;
-        }
-        
-        .template-item.active {
-            background: linear-gradient(to right, #fff5f7, #ffffff);
-            border-left: 4px solid #f5576c;
-            font-weight: 600;
-        }
-        
-        .template-title {
-            font-weight: 600;
-            color: #f5576c;
+        .header h1 {
+            font-size: 24px;
             margin-bottom: 5px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        
+        .chat-container {
+            padding: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .message {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .agent-message {
+            flex-direction: row;
+        }
+        
+        .customer-message {
+            flex-direction: row-reverse;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            margin: 0 10px;
+            flex-shrink: 0;
+        }
+        
+        .agent-avatar {
+            background-color: var(--agent-color);
+        }
+        
+        .customer-avatar {
+            background-color: var(--customer-color);
+        }
+        
+        .message-content {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .agent-content {
+            background-color: var(--light-color);
+            border-top-left-radius: 5px;
+        }
+        
+        .customer-content {
+            background-color: var(--primary-color);
+            color: white;
+            border-top-right-radius: 5px;
+        }
+        
+        .message-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .message-text {
+            font-size: 14px;
+            white-space: pre-line;
+        }
+        
+        .timestamp {
+            font-size: 11px;
+            opacity: 0.7;
+            margin-top: 5px;
+            text-align: right;
         }
         
         .category-tag {
             display: inline-block;
-            padding: 4px 12px;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            border-radius: 15px;
-            font-size: 0.75rem;
-            color: #f5576c;
-            font-weight: 600;
-            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 8px;
         }
         
-        .preview-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #e1e5ee;
-        }
-        
-        .preview-title {
-            font-size: 1.5rem;
-            color: #f5576c;
-            font-weight: 700;
-        }
-        
-        .preview-category {
-            font-size: 0.9rem;
+        .pending-tag {
+            background-color: var(--warning-color);
             color: white;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-weight: 600;
-            box-shadow: 0 3px 10px rgba(245, 87, 108, 0.3);
         }
         
-        .template-content {
-            flex-grow: 1;
-            background-color: white;
-            padding: 25px;
-            border-radius: 10px;
-            border: 1px solid #e1e5ee;
-            white-space: pre-line;
-            overflow-y: auto;
-            max-height: 500px;
-            line-height: 1.8;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            font-size: 1rem;
-            color: #333;
-        }
-        
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-        }
-        
-        .btn {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 0.95rem;
-        }
-        
-        .btn-copy {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        .failed-tag {
+            background-color: var(--danger-color);
             color: white;
-            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
         }
         
-        .btn-copy:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.5);
-        }
-        
-        .btn-edit {
-            background-color: white;
-            color: #f5576c;
-            border: 2px solid #f5576c;
-            box-shadow: 0 3px 10px rgba(245, 87, 108, 0.2);
-        }
-        
-        .btn-edit:hover {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        .info-tag {
+            background-color: var(--primary-color);
             color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
         }
         
-        .no-results {
+        .success-tag {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .divider {
+            height: 1px;
+            background-color: #eee;
+            margin: 20px 0;
+            position: relative;
             text-align: center;
-            padding: 40px;
-            color: #f5576c;
-            grid-column: 1 / -1;
-            font-size: 1.1rem;
         }
         
-        .no-template-selected {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            color: #f5576c;
-            text-align: center;
-            padding: 40px;
+        .divider-text {
+            background-color: white;
+            padding: 0 15px;
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: #7f8c8d;
         }
         
-        .no-template-selected i {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            opacity: 0.8;
-            color: #f5576c;
-        }
-        
-        .no-template-selected h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #f5576c;
-        }
-        
-        .notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.3s ease-in-out;
-            z-index: 1000;
-        }
-        
-        .notification.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        @media (max-width: 768px) {
-            .main-content {
-                flex-direction: column;
+        @media (max-width: 600px) {
+            .message-content {
+                max-width: 85%;
             }
             
-            .template-list, .template-preview {
-                width: 100%;
+            .chat-container {
+                padding: 15px;
             }
-            
-            .template-list {
-                max-height: 300px;
-                border-right: none;
-                border-bottom: 1px solid #e1e5ee;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .subtitle {
-                font-size: 1rem;
-            }
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #f5576c;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Generator Template Customer Service</h1>
-            <p class="subtitle">Kumpulan template respons untuk berbagai situasi customer service</p>
-        </header>
-        
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Cari template...">
-            <div class="filters">
-                <button class="filter-btn active" data-filter="all">Semua</button>
-                <button class="filter-btn" data-filter="deposit">Deposit</button>
-                <button class="filter-btn" data-filter="withdraw">Withdraw</button>
-                <button class="filter-btn" data-filter="technical">Teknis</button>
-                <button class="filter-btn" data-filter="account">Akun</button>
-                <button class="filter-btn" data-filter="other">Lainnya</button>
-            </div>
+        <div class="header">
+            <h1>Template Chat Customer Service</h1>
+            <p>Contoh respons untuk berbagai situasi customer service</p>
         </div>
         
-        <div class="main-content">
-            <div class="template-list" id="templateList">
-                <!-- Daftar template akan diisi oleh JavaScript -->
+        <div class="chat-container">
+            <!-- DANA VIZ -->
+            <div class="message agent-message">
+                <div class="avatar agent-avatar">CS</div>
+                <div class="message-content agent-content">
+                    <div class="category-tag pending-tag">DANA VIZ</div>
+                    <div class="message-text">Yth, kami informasikan bahwa untuk saat ini sedang terjadi kendala akses masuk pada rekening
+Nama : 
+Jenis : E-wallet ( DANA )
+Yang dimana saat ini untuk tujuan transfer tersebut tidak dapat di akses masuk
+perihal permintaan deposit anda akan kami proses ketika rekening tersebut telah dapat kami akses ya bosku
+untuk estimasi selambatnya mohon menunggu dalam 3x24 jam
+mohon maaf atas kendala yang terjadi dan terima kasih atas pengertian nya ya bosku</div>
+                    <div class="timestamp">10:15 AM</div>
+                </div>
             </div>
             
-            <div class="template-preview">
-                <div id="templatePreview">
-                    <div class="no-template-selected">
-                        <i class="fas fa-clipboard-list"></i>
-                        <h3>Pilih template dari daftar</h3>
-                        <p>Klik pada salah satu template di sebelah kiri untuk melihat isinya</p>
-                    </div>
+            <div class="divider">
+                <span class="divider-text">Pembaruan Status</span>
+            </div>
+            
+            <!-- DANA GAGAL -->
+            <div class="message agent-message">
+                <div class="avatar agent-avatar">CS</div>
+                <div class="message-content agent-content">
+                    <div class="category-tag failed-tag">DANA GAGAL</div>
+                    <div class="message-text">Mohon maaf bosku, dana yang anda kirimkan Gagal ( tulisan kuning diatas )  ya bosku
+Dana yang anda kirimkan akan kembali lagi ke rekening anda paling lama 1x24 jam kedepan ya bosku. 
+Terima Kasih.</div>
+                    <div class="timestamp">10:30 AM</div>
+                </div>
+            </div>
+            
+            <!-- KOLOM USER ID -->
+            <div class="message agent-message">
+                <div class="avatar agent-avatar">CS</div>
+                <div class="message-content agent-content">
+                    <div class="category-tag info-tag">KOLOM USER ID</div>
+                    <div class="message-text">Mohon maaf bosku kami ingin mengkonfirmasi untuk bukti anda yang benar yang mana ya bosku ? untuk pengiriman bukti yang gagal sebelumnya di atas anda mengirim ke bank , dan bukti kedua anda mengirim ke qris ya bosku</div>
+                    <div class="timestamp">11:05 AM</div>
+                </div>
+            </div>
+            
+            <!-- HANYA DAPAT BERMAIN SAJA -->
+            <div class="message agent-message">
+                <div class="avatar agent-avatar">CS</div>
+                <div class="message-content agent-content">
+                    <div class="category-tag info-tag">HANYA DAPAT BERMAIN SAJA</div>
+                    <div class="message-text">untuk akun anda dapat kami aktfikan kembali namun anda hanya dapat untuk bermain saja ya bosku dan tidak dapat melakukan withdraw , jika anda melakukan withdraw kembali maka akun anda akan terblokir kembali secara otomatis oleh sistem kami ya bosku, dan untuk dapat membuka akun anda hanya dapat kami bantu satu kali saja ya bosku.
+
+=================================
+untuk akun anda sudah kami aktifkan kembali dan untuk saldo anda sudah kami kembalikan ke akun anda, namun anda untuk saat ini hanya dapat bermain saja ya bosku dan tidak dapat melakukan wd kembali, jika anda melakukan wd kembali maka untuk akun anda akan terblokir oleh sistem kami di karenakan rekening anda ..... ya bosku</div>
+                    <div class="timestamp">11:45 AM</div>
+                </div>
+            </div>
+            
+            <!-- BUKTI DEPOSIT PENDING -->
+            <div class="message agent-message">
+                <div class="avatar agent-avatar">CS</div>
+                <div class="message-content agent-content">
+                    <div class="category-tag pending-tag">BUKTI DEPOSIT PENDING</div>
+                    <div class="message-text">Mohon maaf bosku untuk bukti transfer tersebut tidak berhasil ya bosku
+Dibantu bukti transfer anda yang berhasil ya bosku
+
+===================
+
+Mohon maaf bosku untuk bukti transfer yang anda kirimkan pada kami tidak berhasil atau sedang diproses ya bosku mohon untuk mengirimkan Bukti berhasil anda kepada kami ya bosku. Terima kasih</div>
+                    <div class="timestamp">12:20 PM</div>
+                </div>
+            </div>
+            
+            <!-- ADA TITIK DI FORM DEPOSIT -->
+            <div class="message agent-message">
+                <div class="avatar agent-avatar">CS</div>
+                <div class="message-content agent-content">
+                    <div class="category-tag info-tag">ADA TITIK DI FORM DEPOSIT</div>
+                    <div class="message-text">Mohon maaf bosku, silahkan tidak menambahkan titik ataupun koma pada kolom Nominal ya bosku, dikarenakan titik tersebut otomatis dari sistem kami ya bosku, Terima kasih</div>
+                    <div class="timestamp">1:10 PM</div>
+                </div>
+            </div>
+            
+            <!-- MAKSIMAL DEPOSIT -->
+            <div class="message agent-message">
+                <div class="avatar agent-avatar">CS</div>
+                <div class="message-content agent-content">
+                    <div class="category-tag info-tag">MAKSIMAL DEPOSIT</div>
+                    <div class="message-text">Untuk maksimal deposit tidak ada batasan ya bos ku, namun deposit anda akan kami proses maksimal 100,000,000 
+per 1 kali transaksi</div>
+                    <div class="timestamp">2:05 PM</div>
+                </div>
+            </div>
+            
+            <!-- SILAHKAN MENGHUBUNGI PIHAK TERKAIT -->
+            <div class="message agent-message">
+                <div class="avatar agent-avatar">CS</div>
+                <div class="message-content agent-content">
+                    <div class="category-tag info-tag">SILAHKAN MENGHUBUNGI PIHAK TERKAIT</div>
+                    <div class="message-text">untuk perihal tersebut silahkan anda menghubungi pihak bank yang terkait ya bosku di karenakan untuk bukti yang anda kirimkan belum berhasil terkirim dan tidak ada masuk ke mutasi bank kami ya bosku</div>
+                    <div class="timestamp">3:15 PM</div>
+                </div>
+            </div>
+            
+            <!-- Contoh respons customer -->
+            <div class="message customer-message">
+                <div class="avatar customer-avatar">C</div>
+                <div class="message-content customer-content">
+                    <div class="message-text">Terima kasih atas informasinya, saya akan menunggu</div>
+                    <div class="timestamp">3:20 PM</div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="notification" id="notification">
-        <i class="fas fa-check-circle"></i>
-        <span id="notificationText">Template berhasil disalin!</span>
-    </div>
-
-    <script>
-        // Data template
-        const templateData = [
-            {
-                id: 1,
-                title: "DANA VIZ",
-                content: "Yth, kami informasikan bahwa untuk saat ini sedang terjadi kendala akses masuk pada rekening\nNama : \nJenis : E-wallet ( DANA )\nYang dimana saat ini untuk tujuan transfer tersebut tidak dapat di akses masuk\nperihal permintaan deposit anda akan kami proses ketika rekening tersebut telah dapat kami akses ya bosku\nuntuk estimasi selambatnya mohon menunggu dalam 3x24 jam\nmohon maaf atas kendala yang terjadi dan terima kasih atas pengertian nya ya bosku",
-                category: "deposit"
-            },
-            {
-                id: 2,
-                title: "WITHDRAW PENDING",
-                content: "untuk permintaan penarikan dana anda sudah kami proses ya bosku\nuntuk status pengiriman sedang dalam proses dan telah mengurangi saldo bank kami ya bosku\njika terjadi keterlambatan dan masuk pada rekening anda maka kami sarankan di tunggu dalam estimasi selambatanya 7x24 jam ya bos\nterima kasih",
-                category: "withdraw"
-            },
-            {
-                id: 3,
-                title: "DANA GAGAL",
-                content: "Mohon maaf bosku, dana yang anda kirimkan Gagal ( tulisan kuning diatas )  ya bosku\nDana yang anda kirimkan akan kembali lagi ke rekening anda paling lama 1x24 jam kedepan ya bosku. \nTerima Kasih.",
-                category: "deposit"
-            },
-            {
-                id: 4,
-                title: "WITHDRAW INPROGRESS",
-                content: "Mohon maaf bosku sebelumnya withdraw anda sudah kami proseskan namun untuk status transaksi tersebut sedang dalam proses\ndan kemungkinan dana withdraw yang kami kirimkan terpending oleh pihak bank terkait namun\npada saldo bank kami sudah terpotong ya bosku.\n\n==============================\n\nMohon maaf bosku kami harus konfirmasi kendala tersebut kepada pihak bank terkait terlebih dahulu karena\nuntuk saldo bank kami sudah terpotong dan belum ada dana kembali ke rekening kami ya bosku,\nMohon maaf atas ketidaknyamanannya ya bosku dan mohon ditunggu hingga 7x24 jam ya bosku.\n\n======================\nMohon maaf bosku jika dana yang dikirimkan sudah kembali ke rekening kami maka akan langsung kami proseskan\nkembali withdraw anda ke nomor rekening yang terdaftar pada User ID anda ya bosku.\nMohon maaf atas ketidaknyamanannya ya bosku. Terima kasih atas pengertiannya.",
-                category: "withdraw"
-            },
-            {
-                id: 5,
-                title: "KOLOM USER ID",
-                content: "Mohon maaf bosku kami ingin mengkonfirmasi untuk bukti anda yang benar yang mana ya bosku ? untuk pengiriman bukti yang gagal sebelumnya di atas anda mengirim ke bank , dan bukti kedua anda mengirim ke qris ya bosku",
-                category: "account"
-            },
-            {
-                id: 6,
-                title: "DEPO BISA WD GAK BISA",
-                content: "Untuk perihal tersebut Deposit anda mengirimkan dana , sedangkan withdraw kami mengirimkan dana kepada anda. Namun anda dapat melakukan transaksi deposit / pengiriman dana anda dikarenakan di saat anda melakukan pendaftaran pada Nama rekening benar namun Nomor rekening salah / sudah terdaftar, kami memproseskan deposit bedasarkan nama rekening yang sama ya bosku bukan nomor rekening.\nJika anda mendaftar dengan nomor rekening yang salah maka kami tidak dapat memproses dana withdraw anda ya bosku",
-                category: "withdraw"
-            },
-            {
-                id: 7,
-                title: "HANYA DAPAT BERMAIN SAJA",
-                content: "untuk akun anda dapat kami aktfikan kembali namun anda hanya dapat untuk bermain saja ya bosku dan tidak dapat melakukan withdraw , jika anda melakukan withdraw kembali maka akun anda akan terblokir kembali secara otomatis oleh sistem kami ya bosku, dan untuk dapat membuka akun anda hanya dapat kami bantu satu kali saja ya bosku.\nKlien\n\n=================================\n\nuntuk akun anda sudah kami aktifkan kembali dan untuk saldo anda sudah kami kembalikan ke akun anda, namun anda untuk saat ini hanya dapat bermain saja ya bosku dan tidak dapat melakukan wd kembali, jika anda melakukan wd kembali maka untuk akun anda akan terblokir oleh sistem kami di karenakan rekening anda ..... ya bosku",
-                category: "account"
-            },
-            {
-                id: 8,
-                title: "Withdraw dana",
-                content: "untuk withdraw DANA kami menggunakan bank dengan metode Top Up melalui bank ya bosku, yang dimana untuk maximal topup ke rekening DANA sebesar 20,000,000\n\n===========================\n\nLimit transaksi pengiriman top up dana ya bosku , bukan limit bulanan dana anda ya bosku",
-                category: "withdraw"
-            },
-            {
-                id: 9,
-                title: "BUKTI DEPOSIT PENDING",
-                content: "Mohon maaf bosku untuk bukti transfer tersebut tidak berhasil ya bosku\nDibantu bukti transfer anda yang berhasil ya bosku\n\n===================\n\nMohon maaf bosku untuk bukti transfer yang anda kirimkan pada kami tidak berhasil atau sedang diproses ya bosku mohon untuk mengirimkan Bukti berhasil anda kepada kami ya bosku. Terima kasih",
-                category: "deposit"
-            },
-            {
-                id: 10,
-                title: "Sudah premium tapi tidak keluar nama",
-                content: "silahkan anda menghubungi pihak dana dikarenakan perihal nama rekening anda masih tertera no rekening yakni dikarenakan anda barusan memremiumkan dana anda sehingga untuk profil akun dana anda belum sycron antara nama rekening tersebut bosku",
-                category: "technical"
-            }
-        ];
-
-        // Variabel global
-        let currentTemplate = null;
-        let filteredTemplates = templateData;
-
-        // Fungsi untuk menampilkan notifikasi
-        function showNotification(message) {
-            const notification = document.getElementById('notification');
-            const notificationText = document.getElementById('notificationText');
-            
-            notificationText.textContent = message;
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-
-        // Fungsi untuk menampilkan daftar template
-        function displayTemplateList(templates = templateData) {
-            const templateList = document.getElementById('templateList');
-            templateList.innerHTML = '';
-            
-            if (templates.length === 0) {
-                templateList.innerHTML = '<div class="no-results">Tidak ada template yang ditemukan untuk pencarian Anda.</div>';
-                return;
-            }
-            
-            templates.forEach(template => {
-                const templateItem = document.createElement('div');
-                templateItem.className = 'template-item';
-                templateItem.dataset.id = template.id;
-                
-                templateItem.innerHTML = `
-                    <div>
-                        <div class="template-title">${template.title}</div>
-                        <div class="category-tag">${template.category}</div>
-                    </div>
-                    <div><i class="fas fa-chevron-right"></i></div>
-                `;
-                
-                templateItem.addEventListener('click', () => {
-                    // Hapus kelas active dari semua item
-                    document.querySelectorAll('.template-item').forEach(item => {
-                        item.classList.remove('active');
-                    });
-                    
-                    // Tambahkan kelas active ke item yang diklik
-                    templateItem.classList.add('active');
-                    
-                    // Tampilkan preview template
-                    displayTemplatePreview(template);
-                });
-                
-                templateList.appendChild(templateItem);
-            });
-        }
-
-        // Fungsi untuk menampilkan preview template
-        function displayTemplatePreview(template) {
-            currentTemplate = template;
-            
-            const templatePreview = document.getElementById('templatePreview');
-            templatePreview.innerHTML = `
-                <div class="preview-header">
-                    <div>
-                        <div class="preview-title">${template.title}</div>
-                        <div class="preview-category">Kategori: ${template.category}</div>
-                    </div>
-                </div>
-                <div class="template-content">${template.content}</div>
-                <div class="action-buttons">
-                    <button class="btn btn-copy" id="copyBtn">
-                        <i class="fas fa-copy"></i> Salin Template
-                    </button>
-                    <button class="btn btn-edit" id="editBtn">
-                        <i class="fas fa-edit"></i> Edit Template
-                    </button>
-                </div>
-            `;
-            
-            // Tambahkan event listener untuk tombol salin
-            document.getElementById('copyBtn').addEventListener('click', copyTemplateToClipboard);
-            
-            // Tambahkan event listener untuk tombol edit
-            document.getElementById('editBtn').addEventListener('click', editTemplate);
-        }
-
-        // Fungsi untuk menyalin template ke clipboard
-        function copyTemplateToClipboard() {
-            if (!currentTemplate) return;
-            
-            const textarea = document.createElement('textarea');
-            textarea.value = currentTemplate.content;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            
-            // Tampilkan notifikasi
-            showNotification('Template berhasil disalin ke clipboard!');
-        }
-
-        // Fungsi untuk mengedit template
-        function editTemplate() {
-            if (!currentTemplate) return;
-            
-            const templatePreview = document.getElementById('templatePreview');
-            templatePreview.innerHTML = `
-                <div class="preview-header">
-                    <div>
-                        <div class="preview-title">Edit Template: ${currentTemplate.title}</div>
-                        <div class="preview-category">Kategori: ${currentTemplate.category}</div>
-                    </div>
-                </div>
-                <textarea id="editTextarea" class="template-content" style="height: 400px; resize: vertical;">${currentTemplate.content}</textarea>
-                <div class="action-buttons">
-                    <button class="btn btn-copy" id="saveBtn">
-                        <i class="fas fa-save"></i> Simpan Perubahan
-                    </button>
-                    <button class="btn btn-edit" id="cancelBtn">
-                        <i class="fas fa-times"></i> Batal
-                    </button>
-                </div>
-            `;
-            
-            // Tambahkan event listener untuk tombol simpan
-            document.getElementById('saveBtn').addEventListener('click', saveTemplateChanges);
-            
-            // Tambahkan event listener untuk tombol batal
-            document.getElementById('cancelBtn').addEventListener('click', () => {
-                displayTemplatePreview(currentTemplate);
-            });
-        }
-
-        // Fungsi untuk menyimpan perubahan template
-        function saveTemplateChanges() {
-            if (!currentTemplate) return;
-            
-            const editedContent = document.getElementById('editTextarea').value;
-            currentTemplate.content = editedContent;
-            
-            // Kembali ke mode preview
-            displayTemplatePreview(currentTemplate);
-            
-            // Tampilkan notifikasi
-            showNotification('Perubahan template berhasil disimpan!');
-        }
-
-        // Fungsi untuk mencari dan memfilter template
-        function searchTemplates() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
-            
-            let filteredTemplates = templateData;
-            
-            // Filter berdasarkan kategori
-            if (activeFilter !== 'all') {
-                filteredTemplates = filteredTemplates.filter(template => template.category === activeFilter);
-            }
-            
-            // Filter berdasarkan pencarian
-            if (searchTerm) {
-                filteredTemplates = filteredTemplates.filter(template => 
-                    template.title.toLowerCase().includes(searchTerm) || 
-                    template.content.toLowerCase().includes(searchTerm)
-                );
-            }
-            
-            displayTemplateList(filteredTemplates);
-            
-            // Reset preview jika template yang dipilih tidak ada dalam hasil filter
-            if (currentTemplate && !filteredTemplates.some(t => t.id === currentTemplate.id)) {
-                document.getElementById('templatePreview').innerHTML = `
-                    <div class="no-template-selected">
-                        <i class="fas fa-clipboard-list"></i>
-                        <h3>Pilih template dari daftar</h3>
-                        <p>Klik pada salah satu template di sebelah kiri untuk melihat isinya</p>
-                    </div>
-                `;
-                currentTemplate = null;
-            }
-        }
-
-        // Inisialisasi
-        document.addEventListener('DOMContentLoaded', () => {
-            displayTemplateList();
-            
-            // Event listener untuk pencarian
-            document.getElementById('searchInput').addEventListener('input', searchTemplates);
-            
-            // Event listener untuk filter
-            document.querySelectorAll('.filter-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    searchTemplates();
-                });
-            });
-        });
-    </script>
 </body>
 </html>
