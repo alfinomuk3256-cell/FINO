@@ -1,0 +1,2273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Hadiah Togel - One Piece Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0c2340;
+            --secondary-color: #1e3a8a;
+            --accent-color: #dc2626;
+            --highlight-color: #fbbf24;
+            --gold-color: #fbbf24;
+            --straw-color: #f59e0b;
+            --text-color: #f5f5f5;
+            --ocean-blue: #0ea5e9;
+            --dark-blue: #0f172a;
+            --light-blue: #1e40af;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0c2340 0%, #1e3a8a 100%);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/8yX6k1m.jpg') no-repeat center center;
+            background-size: cover;
+            opacity: 0.15;
+            z-index: -1;
+        }
+        
+        .parallax-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .parallax-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 110%;
+            height: 110%;
+            background: url('https://i.imgur.com/8yX6k1m.jpg') no-repeat center center;
+            background-size: cover;
+            will-change: transform;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(12, 35, 64, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(220, 38, 38, 0.5);
+            overflow: hidden;
+            border: 3px solid rgba(251, 191, 36, 0.5);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #dc2626, #fbbf24, #dc2626);
+            animation: wave 3s infinite linear;
+        }
+        
+        @keyframes wave {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #dc2626 0%, #fbbf24 100%);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            width: 200px;
+            height: 200px;
+            background: url('https://i.imgur.com/6WqGv9h.png') no-repeat center center;
+            background-size: contain;
+            opacity: 0.2;
+            transform: rotate(-15deg);
+        }
+        
+        .header h1 {
+            font-family: 'Pirata One', cursive;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            letter-spacing: 4px;
+            color: #0c2340;
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(251, 191, 36, 0.5); }
+            to { text-shadow: 0 0 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(251, 191, 36, 0.8); }
+        }
+        
+        .header p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            color: #0c2340;
+            font-weight: bold;
+        }
+        
+        .one-piece-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .one-piece-icon {
+            font-size: 2rem;
+            color: #0c2340;
+            animation: bounce 2s infinite;
+        }
+        
+        .one-piece-icon:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .one-piece-icon:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .tabs {
+            display: flex;
+            background: rgba(30, 58, 138, 0.8);
+            border-bottom: 3px solid rgba(251, 191, 36, 0.4);
+            position: relative;
+            z-index: 10;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-bottom: 4px solid transparent;
+            position: relative;
+            min-width: 150px;
+        }
+        
+        .tab:hover {
+            background: rgba(220, 38, 38, 0.2);
+        }
+        
+        .tab.active {
+            background: rgba(220, 38, 38, 0.3);
+            border-bottom: 4px solid var(--gold-color);
+            color: var(--gold-color);
+        }
+        
+        .tab::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold-color), transparent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .tab.active::after {
+            transform: scaleX(1);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 50px;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 35px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: var(--gold-color);
+            font-size: 1.3rem;
+        }
+        
+        select, input {
+            width: 100%;
+            padding: 20px;
+            background: rgba(30, 58, 138, 0.8);
+            border: 3px solid rgba(251, 191, 36, 0.3);
+            border-radius: 12px;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+            transform: translateY(-3px);
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            background: rgba(30, 58, 138, 0.6);
+            padding: 20px 30px;
+            border-radius: 12px;
+            border: 3px solid rgba(251, 191, 36, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+        
+        .radio-option:hover {
+            background: rgba(220, 38, 38, 0.2);
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .radio-option input {
+            width: auto;
+            margin-right: 15px;
+            transform: scale(1.3);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #dc2626 0%, #fbbf24 100%);
+            color: #0c2340;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.3rem;
+            font-weight: 700;
+            flex: 1;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Pirata One', cursive;
+        }
+        
+        button.reset {
+            background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
+        }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.5s ease;
+        }
+        
+        button:hover::before {
+            left: 100%;
+        }
+        
+        button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.5);
+        }
+        
+        .result-container {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .result-box {
+            background: rgba(30, 58, 138, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            border: 3px solid rgba(251, 191, 36, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .result-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #dc2626, #fbbf24);
+        }
+        
+        .result-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-color);
+        }
+        
+        .result-box h3 {
+            color: var(--gold-color);
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .result-box h3 i {
+            margin-right: 15px;
+            font-size: 2rem;
+        }
+        
+        .result-box p {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--highlight-color);
+            margin-bottom: 15px;
+        }
+        
+        .result-box .small {
+            font-size: 1.1rem;
+            color: rgba(245, 245, 245, 0.7);
+        }
+        
+        .copy-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(251, 191, 36, 0.2);
+            border: 2px solid rgba(251, 191, 36, 0.4);
+            color: var(--gold-color);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-button:hover {
+            background: rgba(251, 191, 36, 0.4);
+            transform: scale(1.2);
+        }
+        
+        .info-box {
+            background: rgba(220, 38, 38, 0.2);
+            border-left: 8px solid var(--gold-color);
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 0 15px 15px 0;
+        }
+        
+        .info-box h3 {
+            color: var(--gold-color);
+            margin-bottom: 25px;
+            font-size: 1.7rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-box h3 i {
+            margin-right: 15px;
+            font-size: 2rem;
+        }
+        
+        .info-box ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .info-box li {
+            margin-bottom: 15px;
+            padding-left: 35px;
+            position: relative;
+            font-size: 1.2rem;
+        }
+        
+        .info-box li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--gold-color);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+            color: rgba(245, 245, 245, 0.7);
+            border-top: 2px solid rgba(251, 191, 36, 0.1);
+        }
+        
+        .footer .one-piece-icons {
+            margin-top: 20px;
+        }
+        
+        .footer p {
+            margin-bottom: 15px;
+        }
+        
+        .footer .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .footer .social-links a {
+            color: var(--gold-color);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        
+        .notification {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(16, 185, 129, 0.95);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transform: translateX(500px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .notification i {
+            font-size: 1.5rem;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .loading {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(12, 35, 64, 0.95);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            backdrop-filter: blur(5px);
+        }
+        
+        .loading.show {
+            display: flex;
+        }
+        
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(251, 191, 36, 0.3);
+            border-top: 8px solid var(--gold-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: var(--gold-color);
+            font-family: 'Pirata One', cursive;
+            text-align: center;
+        }
+        
+        .history-section {
+            margin-top: 50px;
+            background: rgba(30, 58, 138, 0.5);
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid rgba(251, 191, 36, 0.2);
+        }
+        
+        .history-section h3 {
+            color: var(--gold-color);
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .history-section h3 i {
+            margin-right: 15px;
+            font-size: 2rem;
+        }
+        
+        .clear-history {
+            background: rgba(220, 38, 38, 0.3);
+            border: 1px solid rgba(220, 38, 38, 0.5);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .clear-history:hover {
+            background: rgba(220, 38, 38, 0.5);
+        }
+        
+        .history-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .history-item {
+            background: rgba(12, 35, 64, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--gold-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .history-item-info {
+            flex: 1;
+        }
+        
+        .history-item-type {
+            color: var(--gold-color);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .history-item-details {
+            font-size: 0.9rem;
+            color: rgba(245, 245, 245, 0.7);
+        }
+        
+        .history-item-result {
+            font-weight: 700;
+            color: var(--highlight-color);
+            font-size: 1.1rem;
+        }
+        
+        .empty-history {
+            text-align: center;
+            padding: 30px;
+            color: rgba(245, 245, 245, 0.5);
+            font-style: italic;
+        }
+        
+        .digit-selector {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .digit-option {
+            flex: 1;
+            background: rgba(30, 58, 138, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid rgba(251, 191, 36, 0.2);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .digit-option:hover {
+            background: rgba(220, 38, 38, 0.2);
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .digit-option.active {
+            background: rgba(220, 38, 38, 0.3);
+            border-color: var(--gold-color);
+            color: var(--gold-color);
+        }
+        
+        .digit-option input {
+            display: none;
+        }
+        
+        .digit-option-label {
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .digit-option-value {
+            font-size: 1.3rem;
+            color: var(--highlight-color);
+        }
+        
+        @media (max-width: 768px) {
+            .result-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .tab {
+                font-size: 1rem;
+                padding: 20px 10px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .footer {
+                padding: 30px 20px;
+            }
+            
+            .footer .social-links {
+                gap: 15px;
+            }
+            
+            .notification {
+                right: 20px;
+                top: 20px;
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+            
+            .digit-selector {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                min-width: 100%;
+            }
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax-container">
+        <div class="parallax-layer"></div>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>ONE PIECE</h1>
+            <p>Kalkulator Hadiah Togel - Edisi Bajak Laut</p>
+            <div class="one-piece-icons">
+                <i class="fas fa-anchor one-piece-icon"></i>
+                <i class="fas fa-flag one-piece-icon"></i>
+                <i class="fas fa-skull one-piece-icon"></i>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="bet-full">Bet Full</div>
+            <div class="tab" data-tab="discount">Discount</div>
+            <div class="tab" data-tab="bb">BB/BOLAKBALIK</div>
+            <div class="tab" data-tab="colok-bebas">Colok Bebas</div>
+            <div class="tab" data-tab="colok-bebas-2d">Colok Bebas 2D</div>
+            <div class="tab" data-tab="colok-naga">Colok Naga</div>
+        </div>
+        
+        <div class="content">
+            <!-- Tab Bet Full -->
+            <div class="tab-content active" id="bet-full">
+                <div class="info-box">
+                    <h3><i class="fas fa-coins"></i> Informasi Bet Full</h3>
+                    <ul>
+                        <li>Pilih pasaran dan jenis taruhan untuk menghitung hadiah bet full</li>
+                        <li>Hadiah langsung tanpa diskon</li>
+                        <li>Navigasi lautan togel dengan kapal kalkulator ini!</li>
+                    </ul>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pasaran-bet-full"><i class="fas fa-map"></i> Pilih Pulau (Pasaran):</label>
+                    <select id="pasaran-bet-full">
+                        <option value="all">All Pasaran (kecuali Sydney & Hongkong)</option>
+                        <option value="sydney-hongkong">Sydney & Hongkong</option>
+                        <option value="kingkong-toto-macau-4d">Kingkong & Toto Macau 4D</option>
+                        <option value="toto-macau-5d">Toto Macau 5D</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="jenis-taruhan-bet-full"><i class="fas fa-dice"></i> Pilih Jenis Taruhan:</label>
+                    <select id="jenis-taruhan-bet-full">
+                        <option value="2d">2D</option>
+                        <option value="3d">3D</option>
+                        <option value="4d">4D</option>
+                        <option value="5d" class="hidden">5D</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="jumlah-taruhan-bet-full"><i class="fas fa-gem"></i> Jumlah Taruhan (Berry):</label>
+                    <input type="number" id="jumlah-taruhan-bet-full" min="0" step="1000" placeholder="Contoh: 10000">
+                </div>
+                
+                <div class="button-group">
+                    <button id="hitung-bet-full"><i class="fas fa-anchor"></i> Hitung Harta Karun</button>
+                    <button id="reset-bet-full" class="reset"><i class="fas fa-redo"></i> Reset</button>
+                </div>
+                
+                <div class="result-container">
+                    <div class="result-box">
+                        <div class="copy-button" title="Salin Pembayaran">
+                            <i class="fas fa-copy"></i>
+                        </div>
+                        <h3><i class="fas fa-hand-holding-usd"></i> Pembayaran</h3>
+                        <p id="pembayaran-bet-full">Berry 0</p>
+                        <p class="small" id="pasaran-info-bet-full">Pulau: -</p>
+                    </div>
+                    
+                    <div class="result-box">
+                        <div class="copy-button" title="Salin Hadiah">
+                            <i class="fas fa-copy"></i>
+                        </div>
+                        <h3><i class="fas fa-treasure-chest"></i> Harta Karun</h3>
+                        <p id="hadiah-bet-full">Berry 0</p>
+                        <p class="small" id="hadiah-info-bet-full">Multiplier: x0</p>
+                    </div>
+                </div>
+                
+                <div class="history-section">
+                    <h3>
+                        <span><i class="fas fa-history"></i> Riwayat Perhitungan</span>
+                        <span class="clear-history" id="clear-history-bet-full">Hapus Riwayat</span>
+                    </h3>
+                    <div class="history-list" id="history-list-bet-full">
+                        <div class="empty-history">Belum ada riwayat perhitungan</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab Discount -->
+            <div class="tab-content" id="discount">
+                <div class="info-box">
+                    <h3><i class="fas fa-percentage"></i> Informasi Discount</h3>
+                    <ul>
+                        <li>Pilih pasaran dan jenis taruhan untuk menghitung hadiah dengan discount</li>
+                        <li>Pembayaran setelah diskon dan hadiah kemenangan</li>
+                        <li>Navigasi lautan togel dengan kapal kalkulator ini!</li>
+                    </ul>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pasaran-discount"><i class="fas fa-map"></i> Pilih Pulau (Pasaran):</label>
+                    <select id="pasaran-discount">
+                        <option value="all">All Pasaran (kecuali Toto macau 4D, Kingkong 4D, Jakarta pools, Hokidraw & Toto mali)</option>
+                        <option value="toto-macau-kingkong">Toto macau 4D & Kingkong 4D</option>
+                        <option value="jakarta-pools">Jakarta pools</option>
+                        <option value="toto-mali">Toto Mali</option>
+                        <option value="hokidraw">Hokidraw</option>
+                        <option value="super-discount">Super Discount Totomacau 4D</option>
+                        <option value="toto-macau-5d">Toto macau 5D</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="jenis-taruhan-discount"><i class="fas fa-dice"></i> Pilih Jenis Taruhan:</label>
+                    <select id="jenis-taruhan-discount">
+                        <option value="2d">2D</option>
+                        <option value="3d">3D</option>
+                        <option value="4d">4D</option>
+                        <option value="2d-depan">2D Depan</option>
+                        <option value="2d-tengah">2D Tengah</option>
+                        <option value="5d" class="hidden">5D</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="jumlah-taruhan-discount"><i class="fas fa-gem"></i> Jumlah Taruhan (Berry):</label>
+                    <input type="number" id="jumlah-taruhan-discount" min="0" step="1000" placeholder="Contoh: 10000">
+                </div>
+                
+                <div class="button-group">
+                    <button id="hitung-discount"><i class="fas fa-anchor"></i> Hitung Harta Karun</button>
+                    <button id="reset-discount" class="reset"><i class="fas fa-redo"></i> Reset</button>
+                </div>
+                
+                <div class="result-container">
+                    <div class="result-box">
+                        <div class="copy-button" title="Salin Pembayaran">
+                            <i class="fas fa-copy"></i>
+                        </div>
+                        <h3><i class="fas fa-hand-holding-usd"></i> Pembayaran</h3>
+                        <p id="pembayaran-discount">Berry 0</p>
+                        <p class="small" id="diskon-info-discount">Diskon: 0%</p>
+                    </div>
+                    
+                    <div class="result-box">
+                        <div class="copy-button" title="Salin Hadiah">
+                            <i class="fas fa-copy"></i>
+                        </div>
+                        <h3><i class="fas fa-treasure-chest"></i> Harta Karun</h3>
+                        <p id="hadiah-discount">Berry 0</p>
+                        <p class="small" id="hadiah-info-discount">Multiplier: x0</p>
+                    </div>
+                </div>
+                
+                <div class="history-section">
+                    <h3>
+                        <span><i class="fas fa-history"></i> Riwayat Perhitungan</span>
+                        <span class="clear-history" id="clear-history-discount">Hapus Riwayat</span>
+                    </h3>
+                    <div class="history-list" id="history-list-discount">
+                        <div class="empty-history">Belum ada riwayat perhitungan</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab BB/BOLAKBALIK -->
+            <div class="tab-content" id="bb">
+                <div class="info-box">
+                    <h3><i class="fas fa-exchange-alt"></i> Informasi BB/BOLAKBALIK</h3>
+                    <ul>
+                        <li>Pilih pasaran dan jenis taruhan untuk menghitung hadiah BB/BOLAKBALIK</li>
+                        <li>Pilih antara harta utama atau harta terbalik</li>
+                        <li>Navigasi lautan togel dengan kapal kalkulator ini!</li>
+                    </ul>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pasaran-bb"><i class="fas fa-map"></i> Pilih Pulau (Pasaran):</label>
+                    <select id="pasaran-bb">
+                        <option value="all">All Pasaran (kecuali Hokidraw dan Totomacau 5d)</option>
+                        <option value="hokidraw">Hokidraw</option>
+                        <option value="totomacau-5d">TOTOMACAU 5D</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="jenis-taruhan-bb"><i class="fas fa-dice"></i> Pilih Jenis Taruhan:</label>
+                    <select id="jenis-taruhan-bb">
+                        <option value="2d">2D</option>
+                        <option value="3d">3D</option>
+                        <option value="4d">4D</option>
+                        <option value="5d" class="hidden">5D</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-coins"></i> Pilih Jenis Harta Karun:</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="hadiah-utama-bb" name="jenis-hadiah-bb" value="utama" checked>
+                            <label for="hadiah-utama-bb">Harta Utama</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="hadiah-terbalik-bb" name="jenis-hadiah-bb" value="terbalik">
+                            <label for="hadiah-terbalik-bb">Harta Terbalik</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="jumlah-taruhan-bb"><i class="fas fa-gem"></i> Jumlah Taruhan (Berry):</label>
+                    <input type="number" id="jumlah-taruhan-bb" min="0" step="1000" placeholder="Contoh: 10000">
+                </div>
+                
+                <div class="button-group">
+                    <button id="hitung-bb"><i class="fas fa-anchor"></i> Hitung Harta Karun</button>
+                    <button id="reset-bb" class="reset"><i class="fas fa-redo"></i> Reset</button>
+                </div>
+                
+                <div class="result-container">
+                    <div class="result-box">
+                        <div class="copy-button" title="Salin Pembayaran">
+                            <i class="fas fa-copy"></i>
+                        </div>
+                        <h3><i class="fas fa-hand-holding-usd"></i> Pembayaran</h3>
+                        <p id="pembayaran-bb">Berry 0</p>
+                        <p class="small" id="pasaran-info-bb">Pulau: -</p>
+                    </div>
+                    
+                    <div class="result-box">
+                        <div class="copy-button" title="Salin Hadiah">
+                            <i class="fas fa-copy"></i>
+                        </div>
+                        <h3><i class="fas fa-treasure-chest"></i> Harta Karun</h3>
+                        <p id="hadiah-bb">Berry 0</p>
+                        <p class="small" id="hadiah-info-bb">Multiplier: x0</p>
+                    </div>
+                </div>
+                
+                <div class="history-section">
+                    <h3>
+                        <span><i class="fas fa-history"></i> Riwayat Perhitungan</span>
+                        <span class="clear-history" id="clear-history-bb">Hapus Riwayat</span>
+                    </h3>
+                    <div class="history-list" id="history-list-bb">
+                        <div class="empty-history">Belum ada riwayat perhitungan</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab Colok Bebas -->
+            <div class="tab-content" id="colok-bebas">
+                <div class="info-box">
+                    <h3><i class="fas fa-fingerprint"></i> Informasi Colok Bebas</h3>
+                    <ul>
+                        <li>Pilih pasaran dan jumlah digit untuk menghitung hadiah colok bebas</li>
+                        <li>Hadiah berdasarkan jumlah digit yang dipasang</li>
+                        <li>Navigasi lautan togel dengan kapal kalkulator ini!</li>
+                    </ul>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pasaran-colok-bebas"><i class="fas fa-map"></i> Pilih Pulau (Pasaran):</label>
+                    <select id="pasaran-colok-bebas">
+                        <option value="all">All Pasaran (kecuali Toto Macau, King Kong 4D, Jakarta Pools, Hoki Draw dan Totomali)</option>
+                        <option value="hokidraw">Hokidraw</option>
+                        <option value="toto-macau-kingkong-jakarta-mali">Toto Macau, King Kong 4D, Jakarta Pools & Totomali</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-sort-numeric-up"></i> Pilih Jumlah Digit:</label>
+                    <div class="digit-selector">
+                        <div class="digit-option active" data-digit="1">
+                            <input type="radio" name="digit-colok-bebas" id="digit-1" value="1" checked>
+                            <label for="digit-1" class="digit-option-label">1 Digit</label>
+                            <div class="digit-option-value">x1.5</div>
+                        </div>
+                        <div class="digit-option" data-digit="2">
+                            <input type="radio" name="digit-colok-bebas" id="digit-2" value="2">
+                            <label for="digit-2" class="digit-option-label">2 Digit</label>
+                            <div class="digit-option-value">x3</div>
+                        </div>
+                        <div class="digit-option" data-digit="3">
+                            <input type="radio" name="digit-colok-bebas" id="digit-3" value="3">
+                            <label for="digit-3" class="digit-option-label">3 Digit</label>
+                            <div class="digit-option-value">x4.5</div>
+                        </div>
+                        <div class="digit-option" data-digit="4">
+                            <input type="radio" name="digit-colok-bebas" id="digit-4" value="4">
+                            <label for="digit-4" class="digit-option-label">4 Digit</label>
+                            <div class="digit-option-value">x6</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="jumlah-taruhan-colok-bebas"><i class="fas fa-gem"></i> Jumlah Taruhan (Berry):</label>
+                    <input type="number" id="jumlah-taruhan-colok-bebas" min="0" step="1000" placeholder="Contoh: 10000">
+                </div>
+                
+                <div class="button-group">
+                    <button id="hitung-colok-bebas"><i class="fas fa-anchor"></i> Hitung Harta Karun</button>
+                    <button id="reset-colok-bebas" class="reset"><i class="fas fa-redo"></i> Reset</button>
+                </div>
+                
+                <div class="result-container">
+                    <div class="result-box">
+                        <div class="copy-button" title="Salin Pembayaran">
+                            <i class="fas fa-copy"></i>
+                        </div>
+                        <h3><i class="fas fa-hand-holding-usd"></i> Pembayaran</h3>
+                        <p id="pembayaran-colok-bebas">Berry 0</p>
+                        <p class="small" id="pasaran-info-colok-bebas">Pulau: -</p>
+                    </div>
+                    
+                    <div class="result-box">
+                        <div class="copy-button" title="Salin Hadiah">
+                            <i class="fas fa-copy"></i>
+                        </div>
+                        <h3><i class="fas fa-treasure-chest"></i> Harta Karun</h3>
+                        <p id="hadiah-colok-bebas">Berry 0</p>
+                        <p class="small" id="hadiah-info-colok-bebas">Multiplier: x0</p>
+                    </div>
+                </div>
+                
+                <div class="history-section">
+                    <h3>
+                        <span><i class="fas fa-history"></i> Riwayat Perhitungan</span>
+                        <span class="clear-history" id="clear-history-colok-bebas">Hapus Riwayat</span>
+                    </h3>
+                    <div class="history-list" id="history-list-colok-bebas">
+                        <div class="empty-history">Belum ada riwayat perhitungan</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab Colok Bebas 2D -->
+            <div class="tab-content" id="colok-bebas-2d">
+                <div class="info-box">
+                    <h3><i class="fas fa-fingerprint"></i> Informasi Colok Bebas 2D</h3>
+                    <ul>
+                        <li>Pilih pasaran dan jumlah digit untuk menghitung hadiah colok bebas 2D</li>
+                        <li>Hadiah berdasarkan jumlah digit yang dipasang</li>
+                        <li>Navigasi lautan togel dengan kapal kalkulator ini!</li>
+                    </ul>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pasaran-colok-bebas-2d"><i class="fas fa-map"></i> Pilih Pulau (Pasaran):</label>
+                    <select id="pasaran-colok-bebas-2d">
+                        <option value="all">All Pasaran (kecuali Toto Macau, King Kong 4D, Jakarta Pools, Hoki Draw dan Totomali)</option>
+                        <option value="hokidraw">Hokidraw</option>
+                        <option value="toto-macau-kingkong-jakarta-mali">Toto Macau, King Kong 4D, Jakarta Pools & Totomali</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-sort-numeric-up"></i> Pilih Jumlah Digit:</label>
+                    <div class="digit-selector">
+                        <div class="digit-option active" data-digit="2">
+                            <input type="radio" name="digit-colok-bebas-2d" id="digit-2d-2" value="2" checked>
+                            <label for="digit-2d-2" class="digit-option-label">2 Digit</label>
+                            <div class="digit-option-value">x7</div>
+                        </div>
+                        <div class="digit-option" data-digit="3">
+                            <input type="radio" name="digit-colok-bebas-2d" id="digit-2d-3" value="3">
+                            <label for="digit-2d-3" class="digit-option-label">3 Digit</label>
+                            <div class="digit-option-value">x11</div>
+                        </div>
+                        <div class="digit-option" data-digit="4">
+                            <input type="radio" name="digit-colok-bebas-2d" id="digit-2d-4" value="4">
+                            <label for="digit-2d-4" class="digit-option-label">4 Digit</label>
+                            <div class="digit-option-value">x18</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="jumlah-taruhan-colok-bebas-2d"><i class="fas fa-gem"></i> Jumlah Taruhan (Berry):</label>
+                    <input type="number" id="jumlah-taruhan-colok-bebas-2d" min="0" step="1000" placeholder="Contoh: 10000">
+                </div>
+                
+                <div class="button-group">
+                    <button id="hitung-colok-bebas-2d"><i class="fas fa-anchor"></i> Hitung Harta Karun</button>
+                    <button id="reset-colok-bebas-2d" class="reset"><i class="fas fa-redo"></i> Reset</button>
+                </div>
+                
+                <div class="result-container">
+                    <div class="result-box">
+                        <div class="copy-button" title="Salin Pembayaran">
+                            <i class="fas fa-copy"></i>
+                        </div>
+                        <h3><i class="fas fa-hand-holding-usd"></i> Pembayaran</h3>
+                        <p id="pembayaran-colok-bebas-2d">Berry 0</p>
+                        <p class="small" id="pasaran-info-colok-bebas-2d">Pulau: -</p>
+                    </div>
+                    
+                    <div class="result-box">
+                        <div class="copy-button" title="Salin Hadiah">
+                            <i class="fas fa-copy"></i>
+                        </div>
+                        <h3><i class="fas fa-treasure-chest"></i> Harta Karun</h3>
+                        <p id="hadiah-colok-bebas-2d">Berry 0</p>
+                        <p class="small" id="hadiah-info-colok-bebas-2d">Multiplier: x0</p>
+                    </div>
+                </div>
+                
+                <div class="history-section">
+                    <h3>
+                        <span><i class="fas fa-history"></i> Riwayat Perhitungan</span>
+                        <span class="clear-history" id="clear-history-colok-bebas-2d">Hapus Riwayat</span>
+                    </h3>
+                    <div class="history-list" id="history-list-colok-bebas-2d">
+                        <div class="empty-history">Belum ada riwayat perhitungan</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab Colok Naga -->
+            <div class="tab-content" id="colok-naga">
+                <div class="info-box">
+                    <h3><i class="fas fa-dragon"></i> Informasi Colok Naga</h3>
+                    <ul>
+                        <li>Pilih pasaran dan jumlah digit untuk menghitung hadiah colok naga</li>
+                        <li>Hadiah berdasarkan jumlah digit yang dipasang</li>
+                        <li>Navigasi lautan togel dengan kapal kalkulator ini!</li>
+                    </ul>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pasaran-colok-naga"><i class="fas fa-map"></i> Pilih Pulau (Pasaran):</label>
+                    <select id="pasaran-colok-naga">
+                        <option value="all">All Pasaran (kecuali Toto Macau, King Kong 4D, Jakarta Pools, Hoki Draw dan Totomali)</option>
+                        <option value="hokidraw">Hokidraw</option>
+                        <option value="toto-macau-kingkong-jakarta-mali">Toto Macau, King Kong 4D, Jakarta Pools & Totomali</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-sort-numeric-up"></i> Pilih Jumlah Digit:</label>
+                    <div class="digit-selector">
+                        <div class="digit-option active" data-digit="3">
+                            <input type="radio" name="digit-colok-naga" id="digit-naga-3" value="3" checked>
+                            <label for="digit-naga-3" class="digit-option-label">3 Digit</label>
+                            <div class="digit-option-value">x23</div>
+                        </div>
+                        <div class="digit-option" data-digit="4">
+                            <input type="radio" name="digit-colok-naga" id="digit-naga-4" value="4">
+                            <label for="digit-naga-4" class="digit-option-label">4 Digit</label>
+                            <div class="digit-option-value">x35</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="jumlah-taruhan-colok-naga"><i class="fas fa-gem"></i> Jumlah Taruhan (Berry):</label>
+                    <input type="number" id="jumlah-taruhan-colok-naga" min="0" step="1000" placeholder="Contoh: 10000">
+                </div>
+                
+                <div class="button-group">
+                    <button id="hitung-colok-naga"><i class="fas fa-anchor"></i> Hitung Harta Karun</button>
+                    <button id="reset-colok-naga" class="reset"><i class="fas fa-redo"></i> Reset</button>
+                </div>
+                
+                <div class="result-container">
+                    <div class="result-box">
+                        <div class="copy-button" title="Salin Pembayaran">
+                            <i class="fas fa-copy"></i>
+                        </div>
+                        <h3><i class="fas fa-hand-holding-usd"></i> Pembayaran</h3>
+                        <p id="pembayaran-colok-naga">Berry 0</p>
+                        <p class="small" id="pasaran-info-colok-naga">Pulau: -</p>
+                    </div>
+                    
+                    <div class="result-box">
+                        <div class="copy-button" title="Salin Hadiah">
+                            <i class="fas fa-copy"></i>
+                        </div>
+                        <h3><i class="fas fa-treasure-chest"></i> Harta Karun</h3>
+                        <p id="hadiah-colok-naga">Berry 0</p>
+                        <p class="small" id="hadiah-info-colok-naga">Multiplier: x0</p>
+                    </div>
+                </div>
+                
+                <div class="history-section">
+                    <h3>
+                        <span><i class="fas fa-history"></i> Riwayat Perhitungan</span>
+                        <span class="clear-history" id="clear-history-colok-naga">Hapus Riwayat</span>
+                    </h3>
+                    <div class="history-list" id="history-list-colok-naga">
+                        <div class="empty-history">Belum ada riwayat perhitungan</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2023 One Piece Togel Calculator | Navigasi Lautan Togel</p>
+            <p>Dibuat dengan <i class="fas fa-heart" style="color: #dc2626;"></i> oleh Bajak Laut</p>
+            <div class="one-piece-icons">
+                <i class="fas fa-anchor one-piece-icon"></i>
+                <i class="fas fa-flag one-piece-icon"></i>
+                <i class="fas fa-skull one-piece-icon"></i>
+            </div>
+            <div class="social-links">
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Menghitung Harta Karun...</div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notification-text">Berhasil disalin!</span>
+    </div>
+
+    <script>
+        // Data aturan untuk Bet Full
+        const aturanBetFull = {
+            'all': {
+                '4d': 10000,
+                '3d': 1000,
+                '2d': 100
+            },
+            'sydney-hongkong': {
+                '4d': 9800,
+                '3d': 980,
+                '2d': 98
+            },
+            'kingkong-toto-macau-4d': {
+                '4d': 9000,
+                '3d': 950,
+                '2d': 95
+            },
+            'toto-macau-5d': {
+                '5d': 88000,
+                '4d': 9000,
+                '3d': 950,
+                '2d': 95
+            }
+        };
+        
+        // Data aturan untuk Discount
+        const aturanDiscount = {
+            'all': {
+                '4d': { hadiah: 3000, diskon: 66.5 },
+                '3d': { hadiah: 400, diskon: 59.5 },
+                '2d': { hadiah: 70, diskon: 29.5 },
+                '2d-depan': { hadiah: 65, diskon: 29.5 },
+                '2d-tengah': { hadiah: 65, diskon: 29.5 }
+            },
+            'toto-macau-kingkong': {
+                '4d': { hadiah: 6000, diskon: 33 },
+                '3d': { hadiah: 700, diskon: 24 },
+                '2d': { hadiah: 80, diskon: 15 }
+            },
+            'jakarta-pools': {
+                '4d': { hadiah: 3000, diskon: 66 },
+                '3d': { hadiah: 400, diskon: 59 },
+                '2d': { hadiah: 70, diskon: 29 }
+            },
+            'toto-mali': {
+                '4d': { hadiah: 3000, diskon: 67 },
+                '3d': { hadiah: 400, diskon: 57 },
+                '2d': { hadiah: 70, diskon: 27 }
+            },
+            'hokidraw': {
+                '4d': { hadiah: 7000, diskon: 20 },
+                '3d': { hadiah: 750, diskon: 20 },
+                '2d': { hadiah: 75, diskon: 20 }
+            },
+            'super-discount': {
+                '4d': { hadiah: 3000, diskon: 66 },
+                '3d': { hadiah: 400, diskon: 59 },
+                '2d': { hadiah: 70, diskon: 29 }
+            },
+            'toto-macau-5d': {
+                '5d': { hadiah: 50000, diskon: 38 },
+                '4d': { hadiah: 7000, diskon: 20 },
+                '3d': { hadiah: 750, diskon: 20 },
+                '2d': { hadiah: 75, diskon: 20 }
+            }
+        };
+        
+        // Data aturan untuk BB/BOLAKBALIK
+        const aturanBB = {
+            'all': {
+                '4d': { utama: 4000, terbalik: 200 },
+                '3d': { utama: 400, terbalik: 100 },
+                '2d': { utama: 70, terbalik: 20 }
+            },
+            'hokidraw': {
+                '4d': { utama: 5000, terbalik: 180 },
+                '3d': { utama: 500, terbalik: 75 },
+                '2d': { utama: 80, terbalik: 15 }
+            },
+            'totomacau-5d': {
+                '5d': { utama: 50000, terbalik: 350 },
+                '4d': { utama: 5000, terbalik: 180 },
+                '3d': { utama: 500, terbalik: 75 },
+                '2d': { utama: 80, terbalik: 15 }
+            }
+        };
+        
+        // Data aturan untuk Colok Bebas
+        const aturanColokBebas = {
+            'all': {
+                '1': 1.5,
+                '2': 3,
+                '3': 4.5,
+                '4': 6
+            },
+            'hokidraw': {
+                '1': 0.9,
+                '2': 1.8,
+                '3': 2.7,
+                '4': 3.6
+            },
+            'toto-macau-kingkong-jakarta-mali': {
+                '1': 1.6,
+                '2': 3.2,
+                '3': 4.8,
+                '4': 6.4
+            }
+        };
+        
+        // Data aturan untuk Colok Bebas 2D
+        const aturanColokBebas2D = {
+            'all': {
+                '2': 7,
+                '3': 11,
+                '4': 18
+            },
+            'hokidraw': {
+                '2': 4,
+                '3': 6,
+                '4': 20
+            },
+            'toto-macau-kingkong-jakarta-mali': {
+                '2': 7,
+                '3': 13,
+                '4': 21
+            }
+        };
+        
+        // Data aturan untuk Colok Naga
+        const aturanColokNaga = {
+            'all': {
+                '3': 23,
+                '4': 35
+            },
+            'hokidraw': {
+                '3': 12,
+                '4': 30
+            },
+            'toto-macau-kingkong-jakarta-mali': {
+                '3': 27,
+                '4': 41
+            }
+        };
+        
+        // Parallax effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const parallaxLayer = document.querySelector('.parallax-layer');
+            
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.pageYOffset;
+                parallaxLayer.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+            });
+        });
+        
+        // Tab functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                this.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notification-text');
+            notificationText.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Function to copy to clipboard
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        }
+        
+        // Function to create confetti effect
+        function createConfetti() {
+            const colors = ['#dc2626', '#fbbf24', '#10b981', '#3b82f6', '#8b5cf6'];
+            const confettiCount = 100;
+            const container = document.querySelector('.container');
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = '15px';
+                confetti.style.height = '15px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-15px';
+                confetti.style.opacity = Math.random() + 0.5;
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.zIndex = '1000';
+                
+                container.appendChild(confetti);
+                
+                // Animate confetti
+                const animation = confetti.animate([
+                    { transform: `translateY(0) rotate(0deg)`, opacity: 1 },
+                    { transform: `translateY(${window.innerHeight}px) rotate(720deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 3000 + 1000,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                });
+                
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+        
+        // Function to save history to localStorage
+        function saveHistory(type, data) {
+            let history = JSON.parse(localStorage.getItem(`history-${type}`)) || [];
+            history.unshift({
+                ...data,
+                timestamp: new Date().toISOString()
+            });
+            
+            // Keep only last 10 items
+            if (history.length > 10) {
+                history = history.slice(0, 10);
+            }
+            
+            localStorage.setItem(`history-${type}`, JSON.stringify(history));
+            displayHistory(type);
+        }
+        
+        // Function to display history
+        function displayHistory(type) {
+            const historyList = document.getElementById(`history-list-${type}`);
+            const history = JSON.parse(localStorage.getItem(`history-${type}`)) || [];
+            
+            if (history.length === 0) {
+                historyList.innerHTML = '<div class="empty-history">Belum ada riwayat perhitungan</div>';
+                return;
+            }
+            
+            historyList.innerHTML = '';
+            history.forEach(item => {
+                const historyItem = document.createElement('div');
+                historyItem.className = 'history-item';
+                
+                const date = new Date(item.timestamp);
+                const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
+                
+                historyItem.innerHTML = `
+                    <div class="history-item-info">
+                        <div class="history-item-type">${item.type}</div>
+                        <div class="history-item-details">${item.details} • ${formattedDate}</div>
+                    </div>
+                    <div class="history-item-result">${item.result}</div>
+                `;
+                
+                historyList.appendChild(historyItem);
+            });
+        }
+        
+        // Function to clear history
+        function clearHistory(type) {
+            localStorage.removeItem(`history-${type}`);
+            displayHistory(type);
+            showNotification('Riwayat berhasil dihapus!');
+        }
+        
+        // Bet Full functionality
+        document.getElementById('pasaran-bet-full').addEventListener('change', function() {
+            const pasaran = this.value;
+            const jenisTaruhan = document.getElementById('jenis-taruhan-bet-full');
+            const opsi5d = jenisTaruhan.querySelector('option[value="5d"]');
+            
+            opsi5d.classList.add('hidden');
+            
+            if (pasaran === 'toto-macau-5d') {
+                opsi5d.classList.remove('hidden');
+            }
+            
+            if (pasaran !== 'toto-macau-5d' && jenisTaruhan.value === '5d') {
+                jenisTaruhan.value = '4d';
+            }
+        });
+        
+        document.getElementById('hitung-bet-full').addEventListener('click', function() {
+            const pasaran = document.getElementById('pasaran-bet-full').value;
+            const jenisTaruhan = document.getElementById('jenis-taruhan-bet-full').value;
+            const jumlahTaruhan = parseFloat(document.getElementById('jumlah-taruhan-bet-full').value) || 0;
+            
+            if (jumlahTaruhan <= 0) {
+                showNotification('Masukkan jumlah taruhan yang valid!');
+                return;
+            }
+            
+            document.getElementById('loading').classList.add('show');
+            
+            setTimeout(() => {
+                const pasaranAturan = aturanBetFull[pasaran];
+                const multiplier = pasaranAturan[jenisTaruhan];
+                
+                if (!multiplier) {
+                    document.getElementById('loading').classList.remove('show');
+                    showNotification('Jenis taruhan tidak tersedia untuk pulau ini!');
+                    return;
+                }
+                
+                const hadiah = jumlahTaruhan * multiplier;
+                
+                let pasaranText = '';
+                if (pasaran === 'all') {
+                    pasaranText = 'All Pasaran (kecuali Sydney & Hongkong)';
+                } else if (pasaran === 'sydney-hongkong') {
+                    pasaranText = 'Sydney & Hongkong';
+                } else if (pasaran === 'kingkong-toto-macau-4d') {
+                    pasaranText = 'Kingkong & Toto Macau 4D';
+                } else if (pasaran === 'toto-macau-5d') {
+                    pasaranText = 'Toto Macau 5D';
+                }
+                
+                const pembayaranText = `Berry ${jumlahTaruhan.toLocaleString('id-ID')}`;
+                const hadiahText = `Berry ${hadiah.toLocaleString('id-ID')}`;
+                
+                document.getElementById('pembayaran-bet-full').textContent = pembayaranText;
+                document.getElementById('pasaran-info-bet-full').textContent = `Pulau: ${pasaranText}`;
+                document.getElementById('hadiah-bet-full').textContent = hadiahText;
+                document.getElementById('hadiah-info-bet-full').textContent = `Multiplier: x${multiplier.toLocaleString('id-ID')}`;
+                
+                // Save to history
+                saveHistory('bet-full', {
+                    type: 'Bet Full',
+                    details: `${pasaranText} - ${jenisTaruhan.toUpperCase()}`,
+                    result: hadiahText
+                });
+                
+                document.getElementById('loading').classList.remove('show');
+                
+                document.querySelectorAll('#bet-full .result-box').forEach(box => {
+                    box.style.animation = 'pulse 0.5s';
+                    setTimeout(() => {
+                        box.style.animation = '';
+                    }, 500);
+                });
+                
+                createConfetti();
+            }, 1500);
+        });
+        
+        document.getElementById('reset-bet-full').addEventListener('click', function() {
+            document.getElementById('pasaran-bet-full').value = 'all';
+            document.getElementById('jenis-taruhan-bet-full').value = '2d';
+            document.getElementById('jumlah-taruhan-bet-full').value = '';
+            document.getElementById('pembayaran-bet-full').textContent = 'Berry 0';
+            document.getElementById('pasaran-info-bet-full').textContent = 'Pulau: -';
+            document.getElementById('hadiah-bet-full').textContent = 'Berry 0';
+            document.getElementById('hadiah-info-bet-full').textContent = 'Multiplier: x0';
+            
+            const opsi5d = document.getElementById('jenis-taruhan-bet-full').querySelector('option[value="5d"]');
+            opsi5d.classList.add('hidden');
+            
+            showNotification('Form Bet Full telah direset!');
+        });
+        
+        document.getElementById('clear-history-bet-full').addEventListener('click', function() {
+            clearHistory('bet-full');
+        });
+        
+        // Discount functionality
+        document.getElementById('pasaran-discount').addEventListener('change', function() {
+            const pasaran = this.value;
+            const jenisTaruhan = document.getElementById('jenis-taruhan-discount');
+            const opsi5d = jenisTaruhan.querySelector('option[value="5d"]');
+            const opsi2dDepan = jenisTaruhan.querySelector('option[value="2d-depan"]');
+            const opsi2dTengah = jenisTaruhan.querySelector('option[value="2d-tengah"]');
+            
+            opsi5d.classList.add('hidden');
+            opsi2dDepan.classList.add('hidden');
+            opsi2dTengah.classList.add('hidden');
+            
+            if (pasaran === 'toto-macau-5d') {
+                opsi5d.classList.remove('hidden');
+            } else if (pasaran === 'all') {
+                opsi2dDepan.classList.remove('hidden');
+                opsi2dTengah.classList.remove('hidden');
+            }
+            
+            if (pasaran !== 'toto-macau-5d' && jenisTaruhan.value === '5d') {
+                jenisTaruhan.value = '4d';
+            }
+            if (pasaran !== 'all' && (jenisTaruhan.value === '2d-depan' || jenisTaruhan.value === '2d-tengah')) {
+                jenisTaruhan.value = '2d';
+            }
+        });
+        
+        document.getElementById('hitung-discount').addEventListener('click', function() {
+            const pasaran = document.getElementById('pasaran-discount').value;
+            const jenisTaruhan = document.getElementById('jenis-taruhan-discount').value;
+            const jumlahTaruhan = parseFloat(document.getElementById('jumlah-taruhan-discount').value) || 0;
+            
+            if (jumlahTaruhan <= 0) {
+                showNotification('Masukkan jumlah taruhan yang valid!');
+                return;
+            }
+            
+            document.getElementById('loading').classList.add('show');
+            
+            setTimeout(() => {
+                const pasaranAturan = aturanDiscount[pasaran];
+                const taruhanAturan = pasaranAturan[jenisTaruhan];
+                
+                if (!taruhanAturan) {
+                    document.getElementById('loading').classList.remove('show');
+                    showNotification('Jenis taruhan tidak tersedia untuk pulau ini!');
+                    return;
+                }
+                
+                const multiplier = taruhanAturan.hadiah;
+                const diskon = taruhanAturan.diskon;
+                const pembayaran = jumlahTaruhan * (1 - diskon / 100);
+                const hadiah = jumlahTaruhan * multiplier;
+                
+                let pasaranText = '';
+                if (pasaran === 'all') {
+                    pasaranText = 'All Pasaran (kecuali Toto macau 4D, Kingkong 4D, Jakarta pools, Hokidraw & Toto mali)';
+                } else if (pasaran === 'toto-macau-kingkong') {
+                    pasaranText = 'Toto macau 4D & Kingkong 4D';
+                } else if (pasaran === 'jakarta-pools') {
+                    pasaranText = 'Jakarta pools';
+                } else if (pasaran === 'toto-mali') {
+                    pasaranText = 'Toto Mali';
+                } else if (pasaran === 'hokidraw') {
+                    pasaranText = 'Hokidraw';
+                } else if (pasaran === 'super-discount') {
+                    pasaranText = 'Super Discount Totomacau 4D';
+                } else if (pasaran === 'toto-macau-5d') {
+                    pasaranText = 'Toto macau 5D';
+                }
+                
+                const pembayaranText = `Berry ${pembayaran.toLocaleString('id-ID')}`;
+                const hadiahText = `Berry ${hadiah.toLocaleString('id-ID')}`;
+                
+                document.getElementById('pembayaran-discount').textContent = pembayaranText;
+                document.getElementById('diskon-info-discount').textContent = `Diskon: ${diskon}%`;
+                document.getElementById('hadiah-discount').textContent = hadiahText;
+                document.getElementById('hadiah-info-discount').textContent = `Multiplier: x${multiplier.toLocaleString('id-ID')}`;
+                
+                // Save to history
+                saveHistory('discount', {
+                    type: 'Discount',
+                    details: `${pasaranText} - ${jenisTaruhan.toUpperCase()}`,
+                    result: hadiahText
+                });
+                
+                document.getElementById('loading').classList.remove('show');
+                
+                document.querySelectorAll('#discount .result-box').forEach(box => {
+                    box.style.animation = 'pulse 0.5s';
+                    setTimeout(() => {
+                        box.style.animation = '';
+                    }, 500);
+                });
+                
+                createConfetti();
+            }, 1500);
+        });
+        
+        document.getElementById('reset-discount').addEventListener('click', function() {
+            document.getElementById('pasaran-discount').value = 'all';
+            document.getElementById('jenis-taruhan-discount').value = '2d';
+            document.getElementById('jumlah-taruhan-discount').value = '';
+            document.getElementById('pembayaran-discount').textContent = 'Berry 0';
+            document.getElementById('diskon-info-discount').textContent = 'Diskon: 0%';
+            document.getElementById('hadiah-discount').textContent = 'Berry 0';
+            document.getElementById('hadiah-info-discount').textContent = 'Multiplier: x0';
+            
+            const opsi5d = document.getElementById('jenis-taruhan-discount').querySelector('option[value="5d"]');
+            const opsi2dDepan = document.getElementById('jenis-taruhan-discount').querySelector('option[value="2d-depan"]');
+            const opsi2dTengah = document.getElementById('jenis-taruhan-discount').querySelector('option[value="2d-tengah"]');
+            
+            opsi5d.classList.add('hidden');
+            opsi2dDepan.classList.add('hidden');
+            opsi2dTengah.classList.add('hidden');
+            
+            showNotification('Form Discount telah direset!');
+        });
+        
+        document.getElementById('clear-history-discount').addEventListener('click', function() {
+            clearHistory('discount');
+        });
+        
+        // BB/BOLAKBALIK functionality
+        document.getElementById('pasaran-bb').addEventListener('change', function() {
+            const pasaran = this.value;
+            const jenisTaruhan = document.getElementById('jenis-taruhan-bb');
+            const opsi5d = jenisTaruhan.querySelector('option[value="5d"]');
+            
+            opsi5d.classList.add('hidden');
+            
+            if (pasaran === 'totomacau-5d') {
+                opsi5d.classList.remove('hidden');
+            }
+            
+            if (pasaran !== 'totomacau-5d' && jenisTaruhan.value === '5d') {
+                jenisTaruhan.value = '4d';
+            }
+        });
+        
+        document.getElementById('hitung-bb').addEventListener('click', function() {
+            const pasaran = document.getElementById('pasaran-bb').value;
+            const jenisTaruhan = document.getElementById('jenis-taruhan-bb').value;
+            const jenisHadiah = document.querySelector('input[name="jenis-hadiah-bb"]:checked').value;
+            const jumlahTaruhan = parseFloat(document.getElementById('jumlah-taruhan-bb').value) || 0;
+            
+            if (jumlahTaruhan <= 0) {
+                showNotification('Masukkan jumlah taruhan yang valid!');
+                return;
+            }
+            
+            document.getElementById('loading').classList.add('show');
+            
+            setTimeout(() => {
+                const pasaranAturan = aturanBB[pasaran];
+                const taruhanAturan = pasaranAturan[jenisTaruhan];
+                
+                if (!taruhanAturan) {
+                    document.getElementById('loading').classList.remove('show');
+                    showNotification('Jenis taruhan tidak tersedia untuk pulau ini!');
+                    return;
+                }
+                
+                const multiplier = taruhanAturan[jenisHadiah];
+                const hadiah = jumlahTaruhan * multiplier;
+                
+                let pasaranText = '';
+                if (pasaran === 'all') {
+                    pasaranText = 'All Pasaran (kecuali Hokidraw dan Totomacau 5d)';
+                } else if (pasaran === 'hokidraw') {
+                    pasaranText = 'Pulau Hokidraw';
+                } else if (pasaran === 'totomacau-5d') {
+                    pasaranText = 'TOTOMACAU 5D';
+                }
+                
+                const pembayaranText = `Berry ${jumlahTaruhan.toLocaleString('id-ID')}`;
+                const hadiahText = `Berry ${hadiah.toLocaleString('id-ID')}`;
+                
+                document.getElementById('pembayaran-bb').textContent = pembayaranText;
+                document.getElementById('pasaran-info-bb').textContent = `Pulau: ${pasaranText}`;
+                document.getElementById('hadiah-bb').textContent = hadiahText;
+                document.getElementById('hadiah-info-bb').textContent = `Multiplier: x${multiplier.toLocaleString('id-ID')}`;
+                
+                // Save to history
+                saveHistory('bb', {
+                    type: 'BB/BOLAKBALIK',
+                    details: `${pasaranText} - ${jenisTaruhan.toUpperCase()} - ${jenisHadiah.toUpperCase()}`,
+                    result: hadiahText
+                });
+                
+                document.getElementById('loading').classList.remove('show');
+                
+                document.querySelectorAll('#bb .result-box').forEach(box => {
+                    box.style.animation = 'pulse 0.5s';
+                    setTimeout(() => {
+                        box.style.animation = '';
+                    }, 500);
+                });
+                
+                createConfetti();
+            }, 1500);
+        });
+        
+        document.getElementById('reset-bb').addEventListener('click', function() {
+            document.getElementById('pasaran-bb').value = 'all';
+            document.getElementById('jenis-taruhan-bb').value = '2d';
+            document.getElementById('hadiah-utama-bb').checked = true;
+            document.getElementById('jumlah-taruhan-bb').value = '';
+            document.getElementById('pembayaran-bb').textContent = 'Berry 0';
+            document.getElementById('pasaran-info-bb').textContent = 'Pulau: -';
+            document.getElementById('hadiah-bb').textContent = 'Berry 0';
+            document.getElementById('hadiah-info-bb').textContent = 'Multiplier: x0';
+            
+            const opsi5d = document.getElementById('jenis-taruhan-bb').querySelector('option[value="5d"]');
+            opsi5d.classList.add('hidden');
+            
+            showNotification('Form BB/BOLAKBALIK telah direset!');
+        });
+        
+        document.getElementById('clear-history-bb').addEventListener('click', function() {
+            clearHistory('bb');
+        });
+        
+        // Colok Bebas functionality
+        document.querySelectorAll('#colok-bebas .digit-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove active class from all options
+                document.querySelectorAll('#colok-bebas .digit-option').forEach(opt => opt.classList.remove('active'));
+                
+                // Add active class to clicked option
+                this.classList.add('active');
+                
+                // Check the radio button
+                const radio = this.querySelector('input[type="radio"]');
+                radio.checked = true;
+            });
+        });
+        
+        document.getElementById('pasaran-colok-bebas').addEventListener('change', function() {
+            const pasaran = this.value;
+            
+            // Update multiplier values based on selected pasaran
+            const digitOptions = document.querySelectorAll('#colok-bebas .digit-option');
+            
+            digitOptions.forEach((option, index) => {
+                const digitValue = index + 1;
+                const multiplier = aturanColokBebas[pasaran][digitValue];
+                const valueElement = option.querySelector('.digit-option-value');
+                valueElement.textContent = `x${multiplier}`;
+            });
+        });
+        
+        document.getElementById('hitung-colok-bebas').addEventListener('click', function() {
+            const pasaran = document.getElementById('pasaran-colok-bebas').value;
+            const digit = document.querySelector('input[name="digit-colok-bebas"]:checked').value;
+            const jumlahTaruhan = parseFloat(document.getElementById('jumlah-taruhan-colok-bebas').value) || 0;
+            
+            if (jumlahTaruhan <= 0) {
+                showNotification('Masukkan jumlah taruhan yang valid!');
+                return;
+            }
+            
+            document.getElementById('loading').classList.add('show');
+            
+            setTimeout(() => {
+                const pasaranAturan = aturanColokBebas[pasaran];
+                const multiplier = pasaranAturan[digit];
+                
+                if (!multiplier) {
+                    document.getElementById('loading').classList.remove('show');
+                    showNotification('Jumlah digit tidak tersedia untuk pulau ini!');
+                    return;
+                }
+                
+                const hadiah = jumlahTaruhan * multiplier;
+                
+                let pasaranText = '';
+                if (pasaran === 'all') {
+                    pasaranText = 'All Pasaran (kecuali Toto Macau, King Kong 4D, Jakarta Pools, Hoki Draw dan Totomali)';
+                } else if (pasaran === 'hokidraw') {
+                    pasaranText = 'Hokidraw';
+                } else if (pasaran === 'toto-macau-kingkong-jakarta-mali') {
+                    pasaranText = 'Toto Macau, King Kong 4D, Jakarta Pools & Totomali';
+                }
+                
+                const pembayaranText = `Berry ${jumlahTaruhan.toLocaleString('id-ID')}`;
+                const hadiahText = `Berry ${hadiah.toLocaleString('id-ID')}`;
+                
+                document.getElementById('pembayaran-colok-bebas').textContent = pembayaranText;
+                document.getElementById('pasaran-info-colok-bebas').textContent = `Pulau: ${pasaranText}`;
+                document.getElementById('hadiah-colok-bebas').textContent = hadiahText;
+                document.getElementById('hadiah-info-colok-bebas').textContent = `Multiplier: x${multiplier}`;
+                
+                // Save to history
+                saveHistory('colok-bebas', {
+                    type: 'Colok Bebas',
+                    details: `${pasaranText} - ${digit} Digit`,
+                    result: hadiahText
+                });
+                
+                document.getElementById('loading').classList.remove('show');
+                
+                document.querySelectorAll('#colok-bebas .result-box').forEach(box => {
+                    box.style.animation = 'pulse 0.5s';
+                    setTimeout(() => {
+                        box.style.animation = '';
+                    }, 500);
+                });
+                
+                createConfetti();
+            }, 1500);
+        });
+        
+        document.getElementById('reset-colok-bebas').addEventListener('click', function() {
+            document.getElementById('pasaran-colok-bebas').value = 'all';
+            document.getElementById('digit-1').checked = true;
+            document.querySelectorAll('#colok-bebas .digit-option').forEach(opt => opt.classList.remove('active'));
+            document.querySelector('#colok-bebas .digit-option[data-digit="1"]').classList.add('active');
+            document.getElementById('jumlah-taruhan-colok-bebas').value = '';
+            document.getElementById('pembayaran-colok-bebas').textContent = 'Berry 0';
+            document.getElementById('pasaran-info-colok-bebas').textContent = 'Pulau: -';
+            document.getElementById('hadiah-colok-bebas').textContent = 'Berry 0';
+            document.getElementById('hadiah-info-colok-bebas').textContent = 'Multiplier: x0';
+            
+            // Reset multiplier values
+            const digitOptions = document.querySelectorAll('#colok-bebas .digit-option');
+            digitOptions.forEach((option, index) => {
+                const digitValue = index + 1;
+                const multiplier = aturanColokBebas['all'][digitValue];
+                const valueElement = option.querySelector('.digit-option-value');
+                valueElement.textContent = `x${multiplier}`;
+            });
+            
+            showNotification('Form Colok Bebas telah direset!');
+        });
+        
+        document.getElementById('clear-history-colok-bebas').addEventListener('click', function() {
+            clearHistory('colok-bebas');
+        });
+        
+        // Colok Bebas 2D functionality
+        document.querySelectorAll('#colok-bebas-2d .digit-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove active class from all options
+                document.querySelectorAll('#colok-bebas-2d .digit-option').forEach(opt => opt.classList.remove('active'));
+                
+                // Add active class to clicked option
+                this.classList.add('active');
+                
+                // Check the radio button
+                const radio = this.querySelector('input[type="radio"]');
+                radio.checked = true;
+            });
+        });
+        
+        document.getElementById('pasaran-colok-bebas-2d').addEventListener('change', function() {
+            const pasaran = this.value;
+            
+            // Update multiplier values based on selected pasaran
+            const digitOptions = document.querySelectorAll('#colok-bebas-2d .digit-option');
+            
+            digitOptions.forEach((option, index) => {
+                const digitValue = index + 2; // Start from 2 digits
+                const multiplier = aturanColokBebas2D[pasaran][digitValue];
+                const valueElement = option.querySelector('.digit-option-value');
+                valueElement.textContent = `x${multiplier}`;
+            });
+        });
+        
+        document.getElementById('hitung-colok-bebas-2d').addEventListener('click', function() {
+            const pasaran = document.getElementById('pasaran-colok-bebas-2d').value;
+            const digit = document.querySelector('input[name="digit-colok-bebas-2d"]:checked').value;
+            const jumlahTaruhan = parseFloat(document.getElementById('jumlah-taruhan-colok-bebas-2d').value) || 0;
+            
+            if (jumlahTaruhan <= 0) {
+                showNotification('Masukkan jumlah taruhan yang valid!');
+                return;
+            }
+            
+            document.getElementById('loading').classList.add('show');
+            
+            setTimeout(() => {
+                const pasaranAturan = aturanColokBebas2D[pasaran];
+                const multiplier = pasaranAturan[digit];
+                
+                if (!multiplier) {
+                    document.getElementById('loading').classList.remove('show');
+                    showNotification('Jumlah digit tidak tersedia untuk pulau ini!');
+                    return;
+                }
+                
+                const hadiah = jumlahTaruhan * multiplier;
+                
+                let pasaranText = '';
+                if (pasaran === 'all') {
+                    pasaranText = 'All Pasaran (kecuali Toto Macau, King Kong 4D, Jakarta Pools, Hoki Draw dan Totomali)';
+                } else if (pasaran === 'hokidraw') {
+                    pasaranText = 'Hokidraw';
+                } else if (pasaran === 'toto-macau-kingkong-jakarta-mali') {
+                    pasaranText = 'Toto Macau, King Kong 4D, Jakarta Pools & Totomali';
+                }
+                
+                const pembayaranText = `Berry ${jumlahTaruhan.toLocaleString('id-ID')}`;
+                const hadiahText = `Berry ${hadiah.toLocaleString('id-ID')}`;
+                
+                document.getElementById('pembayaran-colok-bebas-2d').textContent = pembayaranText;
+                document.getElementById('pasaran-info-colok-bebas-2d').textContent = `Pulau: ${pasaranText}`;
+                document.getElementById('hadiah-colok-bebas-2d').textContent = hadiahText;
+                document.getElementById('hadiah-info-colok-bebas-2d').textContent = `Multiplier: x${multiplier}`;
+                
+                // Save to history
+                saveHistory('colok-bebas-2d', {
+                    type: 'Colok Bebas 2D',
+                    details: `${pasaranText} - ${digit} Digit`,
+                    result: hadiahText
+                });
+                
+                document.getElementById('loading').classList.remove('show');
+                
+                document.querySelectorAll('#colok-bebas-2d .result-box').forEach(box => {
+                    box.style.animation = 'pulse 0.5s';
+                    setTimeout(() => {
+                        box.style.animation = '';
+                    }, 500);
+                });
+                
+                createConfetti();
+            }, 1500);
+        });
+        
+        document.getElementById('reset-colok-bebas-2d').addEventListener('click', function() {
+            document.getElementById('pasaran-colok-bebas-2d').value = 'all';
+            document.getElementById('digit-2d-2').checked = true;
+            document.querySelectorAll('#colok-bebas-2d .digit-option').forEach(opt => opt.classList.remove('active'));
+            document.querySelector('#colok-bebas-2d .digit-option[data-digit="2"]').classList.add('active');
+            document.getElementById('jumlah-taruhan-colok-bebas-2d').value = '';
+            document.getElementById('pembayaran-colok-bebas-2d').textContent = 'Berry 0';
+            document.getElementById('pasaran-info-colok-bebas-2d').textContent = 'Pulau: -';
+            document.getElementById('hadiah-colok-bebas-2d').textContent = 'Berry 0';
+            document.getElementById('hadiah-info-colok-bebas-2d').textContent = 'Multiplier: x0';
+            
+            // Reset multiplier values
+            const digitOptions = document.querySelectorAll('#colok-bebas-2d .digit-option');
+            digitOptions.forEach((option, index) => {
+                const digitValue = index + 2; // Start from 2 digits
+                const multiplier = aturanColokBebas2D['all'][digitValue];
+                const valueElement = option.querySelector('.digit-option-value');
+                valueElement.textContent = `x${multiplier}`;
+            });
+            
+            showNotification('Form Colok Bebas 2D telah direset!');
+        });
+        
+        document.getElementById('clear-history-colok-bebas-2d').addEventListener('click', function() {
+            clearHistory('colok-bebas-2d');
+        });
+        
+        // Colok Naga functionality
+        document.querySelectorAll('#colok-naga .digit-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove active class from all options
+                document.querySelectorAll('#colok-naga .digit-option').forEach(opt => opt.classList.remove('active'));
+                
+                // Add active class to clicked option
+                this.classList.add('active');
+                
+                // Check the radio button
+                const radio = this.querySelector('input[type="radio"]');
+                radio.checked = true;
+            });
+        });
+        
+        document.getElementById('pasaran-colok-naga').addEventListener('change', function() {
+            const pasaran = this.value;
+            
+            // Update multiplier values based on selected pasaran
+            const digitOptions = document.querySelectorAll('#colok-naga .digit-option');
+            
+            digitOptions.forEach((option, index) => {
+                const digitValue = index + 3; // Start from 3 digits
+                const multiplier = aturanColokNaga[pasaran][digitValue];
+                const valueElement = option.querySelector('.digit-option-value');
+                valueElement.textContent = `x${multiplier}`;
+            });
+        });
+        
+        document.getElementById('hitung-colok-naga').addEventListener('click', function() {
+            const pasaran = document.getElementById('pasaran-colok-naga').value;
+            const digit = document.querySelector('input[name="digit-colok-naga"]:checked').value;
+            const jumlahTaruhan = parseFloat(document.getElementById('jumlah-taruhan-colok-naga').value) || 0;
+            
+            if (jumlahTaruhan <= 0) {
+                showNotification('Masukkan jumlah taruhan yang valid!');
+                return;
+            }
+            
+            document.getElementById('loading').classList.add('show');
+            
+            setTimeout(() => {
+                const pasaranAturan = aturanColokNaga[pasaran];
+                const multiplier = pasaranAturan[digit];
+                
+                if (!multiplier) {
+                    document.getElementById('loading').classList.remove('show');
+                    showNotification('Jumlah digit tidak tersedia untuk pulau ini!');
+                    return;
+                }
+                
+                const hadiah = jumlahTaruhan * multiplier;
+                
+                let pasaranText = '';
+                if (pasaran === 'all') {
+                    pasaranText = 'All Pasaran (kecuali Toto Macau, King Kong 4D, Jakarta Pools, Hoki Draw dan Totomali)';
+                } else if (pasaran === 'hokidraw') {
+                    pasaranText = 'Hokidraw';
+                } else if (pasaran === 'toto-macau-kingkong-jakarta-mali') {
+                    pasaranText = 'Toto Macau, King Kong 4D, Jakarta Pools & Totomali';
+                }
+                
+                const pembayaranText = `Berry ${jumlahTaruhan.toLocaleString('id-ID')}`;
+                const hadiahText = `Berry ${hadiah.toLocaleString('id-ID')}`;
+                
+                document.getElementById('pembayaran-colok-naga').textContent = pembayaranText;
+                document.getElementById('pasaran-info-colok-naga').textContent = `Pulau: ${pasaranText}`;
+                document.getElementById('hadiah-colok-naga').textContent = hadiahText;
+                document.getElementById('hadiah-info-colok-naga').textContent = `Multiplier: x${multiplier}`;
+                
+                // Save to history
+                saveHistory('colok-naga', {
+                    type: 'Colok Naga',
+                    details: `${pasaranText} - ${digit} Digit`,
+                    result: hadiahText
+                });
+                
+                document.getElementById('loading').classList.remove('show');
+                
+                document.querySelectorAll('#colok-naga .result-box').forEach(box => {
+                    box.style.animation = 'pulse 0.5s';
+                    setTimeout(() => {
+                        box.style.animation = '';
+                    }, 500);
+                });
+                
+                createConfetti();
+            }, 1500);
+        });
+        
+        document.getElementById('reset-colok-naga').addEventListener('click', function() {
+            document.getElementById('pasaran-colok-naga').value = 'all';
+            document.getElementById('digit-naga-3').checked = true;
+            document.querySelectorAll('#colok-naga .digit-option').forEach(opt => opt.classList.remove('active'));
+            document.querySelector('#colok-naga .digit-option[data-digit="3"]').classList.add('active');
+            document.getElementById('jumlah-taruhan-colok-naga').value = '';
+            document.getElementById('pembayaran-colok-naga').textContent = 'Berry 0';
+            document.getElementById('pasaran-info-colok-naga').textContent = 'Pulau: -';
+            document.getElementById('hadiah-colok-naga').textContent = 'Berry 0';
+            document.getElementById('hadiah-info-colok-naga').textContent = 'Multiplier: x0';
+            
+            // Reset multiplier values
+            const digitOptions = document.querySelectorAll('#colok-naga .digit-option');
+            digitOptions.forEach((option, index) => {
+                const digitValue = index + 3; // Start from 3 digits
+                const multiplier = aturanColokNaga['all'][digitValue];
+                const valueElement = option.querySelector('.digit-option-value');
+                valueElement.textContent = `x${multiplier}`;
+            });
+            
+            showNotification('Form Colok Naga telah direset!');
+        });
+        
+        document.getElementById('clear-history-colok-naga').addEventListener('click', function() {
+            clearHistory('colok-naga');
+        });
+        
+        // Copy to clipboard functionality
+        document.querySelectorAll('.copy-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const resultBox = this.closest('.result-box');
+                const text = resultBox.querySelector('p').textContent;
+                copyToClipboard(text);
+                showNotification('Berhasil disalin!');
+            });
+        });
+        
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Initialize history on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            displayHistory('bet-full');
+            displayHistory('discount');
+            displayHistory('bb');
+            displayHistory('colok-bebas');
+            displayHistory('colok-bebas-2d');
+            displayHistory('colok-naga');
+        });
+    </script>
+</body>
+</html>
