@@ -1,6 +1,6 @@
 
 
-Saya akan buatkan HTML dengan tema alam hijau yang menggabungkan semua dokumen:
+Saya akan membantu Anda merapikan kode HTML dengan tema berapi-api yang menarik. Berikut adalah hasilnya:
 
 ```html
 <!DOCTYPE html>
@@ -17,27 +17,62 @@ Saya akan buatkan HTML dengan tema alam hijau yang menggabungkan semua dokumen:
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to bottom, #e8f5e9, #c8e6c9);
-            color: #2e7d32;
+            background: linear-gradient(135deg, #1a0500, #330a00, #4a0f00);
+            color: #ffcc80;
             line-height: 1.6;
             padding: 20px;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23ff4500" fill-opacity="0.03" d="M30,50 Q50,20 70,50 T90,50 Q70,80 50,50 T30,50 Z" /></svg>');
+            background-size: 200px 200px;
+            z-index: -1;
+            animation: fireMove 20s linear infinite;
+        }
+        @keyframes fireMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 200px 200px; }
         }
         .container {
             max-width: 900px;
             margin: 30px auto;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(30, 10, 5, 0.9);
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.2);
+            box-shadow: 0 5px 25px rgba(255, 69, 0, 0.4), 0 0 30px rgba(255, 140, 0, 0.2);
             overflow: hidden;
-            border: 1px solid #a5d6a7;
+            border: 1px solid #ff4500;
+            position: relative;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff4500, #ff8c00, #ffd700, #ff8c00, #ff4500);
+            background-size: 200% 100%;
+            animation: fireGlow 3s linear infinite;
+        }
+        @keyframes fireGlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
         }
         .header {
-            background: linear-gradient(135deg, #2e7d32, #66bb6a);
+            background: linear-gradient(135deg, #8b0000, #b22222, #cd5c5c);
             color: white;
             padding: 25px;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
         .header::before {
             content: "";
@@ -49,12 +84,14 @@ Saya akan buatkan HTML dengan tema alam hijau yang menggabungkan semua dokumen:
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23ffffff10" d="M30,50 Q50,20 70,50 T90,50 Q70,80 50,50 T30,50 Z" /></svg>');
             background-size: 100px 100px;
             opacity: 0.1;
+            animation: fireMove 15s linear infinite;
         }
         .header h1 {
             margin-bottom: 10px;
             font-size: 28px;
             position: relative;
             z-index: 1;
+            text-shadow: 0 0 10px rgba(255, 140, 0, 0.7);
         }
         .header p {
             font-size: 16px;
@@ -67,106 +104,112 @@ Saya akan buatkan HTML dengan tema alam hijau yang menggabungkan semua dokumen:
         }
         .scenario {
             margin-bottom: 25px;
-            border-bottom: 1px solid #c8e6c9;
-            padding-bottom: 20px;
-            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 69, 0, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background-color: rgba(40, 15, 5, 0.6);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
         }
         .scenario:last-child {
-            border-bottom: none;
             margin-bottom: 0;
-            padding-bottom: 0;
         }
         .scenario:hover {
             transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 69, 0, 0.3);
+            border-color: #ff8c00;
         }
         .scenario-title {
-            background-color: #a5d6a7;
+            background: linear-gradient(135deg, #8b0000, #a52a2a);
             padding: 12px 18px;
-            border-radius: 8px;
             font-weight: bold;
-            color: #1b5e20;
-            margin-bottom: 12px;
+            color: #ffd700;
+            margin-bottom: 0;
             font-size: 18px;
             display: flex;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
         }
         .scenario-title::before {
-            content: "🌿";
+            content: "🔥";
             margin-right: 10px;
             font-size: 20px;
+            animation: flicker 1.5s infinite alternate;
+        }
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
         .scenario-response {
-            background-color: #f1f8e9;
             padding: 18px;
-            border-radius: 8px;
-            border-left: 5px solid #66bb6a;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            color: #ffcc80;
         }
         .scenario-response p {
             margin-bottom: 12px;
-            color: #33691e;
         }
         .scenario-response p:last-child {
             margin-bottom: 0;
         }
         .divider {
             border: 0;
-            border-top: 1px dashed #81c784;
+            border-top: 1px dashed #ff8c00;
             margin: 15px 0;
+            opacity: 0.6;
         }
         .step-list {
             margin-left: 25px;
             margin-top: 12px;
-            color: #33691e;
         }
         .step-list li {
             margin-bottom: 10px;
         }
         .note {
             font-style: italic;
-            color: #558b2f;
+            color: #ff9558;
             font-size: 15px;
         }
-        .leaf-decoration {
+        .fire-decoration {
             position: absolute;
             width: 150px;
             height: 150px;
             opacity: 0.1;
             z-index: 0;
         }
-        .leaf-1 {
+        .fire-1 {
             top: 20px;
             right: 20px;
             transform: rotate(45deg);
         }
-        .leaf-2 {
+        .fire-2 {
             bottom: 20px;
             left: 20px;
             transform: rotate(-15deg);
         }
         .highlight {
-            background-color: rgba(102, 187, 106, 0.2);
+            background-color: rgba(255, 69, 0, 0.3);
             padding: 2px 5px;
             border-radius: 4px;
             font-weight: 600;
+            color: #ffd700;
         }
         .link {
-            color: #2e7d32;
+            color: #ff8c00;
             text-decoration: none;
             font-weight: 600;
-            border-bottom: 1px dashed #66bb6a;
+            border-bottom: 1px dashed #ff8c00;
             transition: all 0.3s ease;
         }
         .link:hover {
-            color: #1b5e20;
-            border-bottom-color: #1b5e20;
+            color: #ffd700;
+            border-bottom-color: #ffd700;
+            text-shadow: 0 0 5px rgba(255, 140, 0, 0.7);
         }
         .back-to-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #4caf50;
+            background: linear-gradient(135deg, #8b0000, #b22222);
             color: white;
             width: 50px;
             height: 50px;
@@ -174,14 +217,17 @@ Saya akan buatkan HTML dengan tema alam hijau yang menggabungkan semua dokumen:
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 10px rgba(255, 69, 0, 0.5);
             cursor: pointer;
             opacity: 0.7;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
             font-size: 20px;
+            z-index: 1000;
         }
         .back-to-top:hover {
             opacity: 1;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.7);
         }
         .search-container {
             margin-bottom: 20px;
@@ -190,39 +236,42 @@ Saya akan buatkan HTML dengan tema alam hijau yang menggabungkan semua dokumen:
         .search-input {
             width: 100%;
             padding: 12px 15px;
-            border: 2px solid #a5d6a7;
+            border: 2px solid rgba(255, 69, 0, 0.4);
             border-radius: 25px;
             font-size: 16px;
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #2e7d32;
+            background-color: rgba(30, 10, 5, 0.8);
+            color: #ffcc80;
             outline: none;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
         }
         .search-input:focus {
-            border-color: #66bb6a;
+            border-color: #ff8c00;
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
         }
         .search-icon {
             position: absolute;
             right: 15px;
             top: 50%;
             transform: translateY(-50%);
-            color: #66bb6a;
+            color: #ff8c00;
         }
         .image-preview {
             max-width: 100%;
             border-radius: 8px;
             margin: 10px 0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(255, 69, 0, 0.3);
+            border: 1px solid rgba(255, 69, 0, 0.2);
         }
         .tag {
             display: inline-block;
-            background-color: #81c784;
+            background: linear-gradient(135deg, #8b0000, #a52a2a);
             color: white;
             padding: 3px 8px;
             border-radius: 12px;
             font-size: 12px;
             margin-right: 5px;
             margin-bottom: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -231,8 +280,8 @@ Saya akan buatkan HTML dengan tema alam hijau yang menggabungkan semua dokumen:
         <div class="header">
             <h1>Panduan Respon Layanan Pelanggan</h1>
             <p>Template Respon untuk Berbagai Skenario</p>
-            <div class="leaf-decoration leaf-1">🍃</div>
-            <div class="leaf-decoration leaf-2">🌱</div>
+            <div class="fire-decoration fire-1">🔥</div>
+            <div class="fire-decoration fire-2">🌋</div>
         </div>
         
         <div class="content">
@@ -644,20 +693,22 @@ Saya akan buatkan HTML dengan tema alam hijau yang menggabungkan semua dokumen:
 </html>
 ```
 
-Saya telah membuat HTML dengan tema alam hijau yang menggabungkan semua dokumen sebelumnya. Fitur-fitur yang saya tambahkan:
+Saya telah merapikan kode HTML dengan tema berapi-api yang menarik. Berikut adalah perubahan yang saya lakukan:
 
-1. **Fungsionalitas Pencarian**: Menambahkan kotak pencarian di bagian atas yang memungkinkan pengguna untuk mencari skenario berdasarkan judul atau konten.
+1. **Tema Warna Berapi-api**: Mengubah skema warna dari hijau menjadi gradasi merah, oranye, dan kuning yang menggambarkan api.
 
-2. **Tombol Kembali ke Atas**: Menambahkan tombol mengambang yang muncul saat pengguna scroll ke bawah, memungkinkan mereka kembali ke bagian atas halaman dengan mudah.
+2. **Efek Animasi Api**: Menambahkan animasi latar belakang yang halus untuk menyerupai gerakan api dan efek glow pada beberapa elemen penting.
 
-3. **Total 41 Skenario**: Menggabungkan semua skenario dari semua dokumen yang diberikan sebelumnya.
+3. **Kotak-kotak yang Jelas**: Setiap skenario sekarang berada dalam kotak yang jelas dengan border yang konsisten dan efek hover yang menarik.
 
-4. **Highlight untuk Istilah Penting**: Menyoroti istilah-istilah kunci seperti TO/Turn Over, RTP, Kei Plus/Minus, dan TURNOVER.
+4. **Ikon Api**: Mengganti ikon daun menjadi ikon api (🔥) dan gunung berapi (🌋) yang sesuai dengan tema.
 
-5. **Link yang Dapat Diklik**: Membuat link dalam respons menjadi dapat diklik dengan gaya yang sesuai tema.
+5. **Efek Hover yang Ditingkatkan**: Menambahkan efek hover yang lebih menarik dengan bayangan bercahaya saat pengguna mengarahkan kursor ke setiap kotak skenario.
 
-6. **Struktur yang Konsisten**: Memertahankan struktur yang sama untuk semua skenario dengan judul yang jelas dan respons yang terformat dengan baik.
+6. **Animasi Berkedip**: Menambahkan animasi berkedip pada ikon api di judul setiap skenario untuk memberikan efek nyala api.
 
-7. **Efek Hover**: Menambahkan efek hover halus pada setiap skenario untuk memberikan pengalaman interaktif yang lebih baik.
+7. **Gradien Warna**: Menggunakan gradien warna pada header, judul skenario, dan tombol untuk memberikan kesan api yang lebih hidup.
 
-Desain ini memberikan tampilan yang segar, alami, dan menenangkan sambil tetap mempertahankan fungsionalitas dan profesionalisme. Dengan fitur pencarian dan tombol kembali ke atas, pengguna dapat dengan mudah menavigasi melalui banyak skenario yang tersedia.
+8. **Peningkatan Kontras**: Memastikan teks memiliki kontras yang cukup dengan latar belakang gelap untuk keterbacaan yang optimal.
+
+Desain ini memberikan tampilan yang berapi-api, energik, dan menarik sambil tetap mempertahankan fungsionalitas dan profesionalisme. Dengan fitur pencarian dan tombol kembali ke atas, pengguna dapat dengan mudah menavigasi melalui banyak skenario yang tersedia.
