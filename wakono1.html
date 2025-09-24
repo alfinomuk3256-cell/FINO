@@ -1,4 +1,8 @@
-Saya akan menggabungkan kedua file tersebut dan memberikan background hijau yang menarik. Berikut adalah hasilnya:
+
+
+# Kode HTML Gabungan dengan Tema Alam Hijau
+
+Berikut adalah kode HTML yang menggabungkan Generator Template Pesan Customer Service dengan Informasi Deposit & Withdraw dalam satu halaman dengan tema alam hijau yang konsisten:
 
 ```html
 <!DOCTYPE html>
@@ -6,39 +10,38 @@ Saya akan menggabungkan kedua file tersebut dan memberikan background hijau yang
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template Respons Customer Service</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Generator Template & Informasi Customer Service - Tema Alam</title>
     <style>
-        :root {
-            --primary-color: #2e7d32;
-            --secondary-color: #558b2f;
-            --light-color: #e8f5e9;
-            --dark-color: #1b5e20;
-            --agent-color: #2e7d32;
-            --customer-color: #95a5a6;
-            --warning-color: #f39c12;
-            --danger-color: #e74c3c;
-            --info-color: #3498db;
-            --success-color: #2ecc71;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
         
+        :root {
+            --primary: #2e7d32;
+            --secondary: #4caf50;
+            --light: #e8f5e9;
+            --dark: #1b5e20;
+            --accent: #81c784;
+            --text: #1b5e20;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
         }
-        
+
         body {
-            background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #558b2f 100%);
-            color: #333;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            color: var(--text);
             line-height: 1.6;
             padding: 20px;
             min-height: 100vh;
             position: relative;
         }
-        
+
         body::before {
             content: "";
             position: fixed;
@@ -46,1093 +49,868 @@ Saya akan menggabungkan kedua file tersebut dan memberikan background hijau yang
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
+            background-image: url('https://www.transparenttextures.com/patterns/leaf.png');
+            opacity: 0.1;
             z-index: -1;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.2);
+            overflow: hidden;
+            border: 1px solid var(--accent);
         }
-        
+
         header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 30px 20px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            text-align: center;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         header::before {
             content: "";
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            z-index: 1;
-        }
-        
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .search-container {
-            margin-bottom: 40px;
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-        
-        #searchInput {
-            width: 70%;
-            padding: 15px 25px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.9);
-            position: relative;
-            z-index: 1;
-        }
-        
-        #searchInput:focus {
-            outline: none;
-            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
-            transform: translateY(-2px);
-        }
-        
-        .search-icon {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--primary-color);
-            z-index: 2;
-        }
-        
-        .template-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            animation: fadeInUp 0.6s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .template-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.6s ease-out;
-            animation-fill-mode: both;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .template-card:nth-child(1) { animation-delay: 0.1s; }
-        .template-card:nth-child(2) { animation-delay: 0.2s; }
-        .template-card:nth-child(3) { animation-delay: 0.3s; }
-        .template-card:nth-child(4) { animation-delay: 0.4s; }
-        .template-card:nth-child(5) { animation-delay: 0.5s; }
-        .template-card:nth-child(6) { animation-delay: 0.6s; }
-        .template-card:nth-child(7) { animation-delay: 0.7s; }
-        .template-card:nth-child(8) { animation-delay: 0.8s; }
-        .template-card:nth-child(9) { animation-delay: 0.9s; }
-        .template-card:nth-child(10) { animation-delay: 1.0s; }
-        
-        .template-card::before {
-            content: "";
-            position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/><path d="M0,0 L0,100 L100,100 Z" fill="rgba(0,0,0,0.1)"/></svg>');
+            background-size: cover;
         }
-        
-        .template-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .template-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .template-card h3 {
-            color: var(--dark-color);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            font-weight: 600;
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 2.2rem;
             position: relative;
-            padding-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-family: 'Merriweather', serif;
         }
-        
-        .template-card h3::after {
+
+        .description {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            position: relative;
+            opacity: 0.9;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            background-color: #f1f8e9;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--dark);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-tab:hover {
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+
+        .nav-tab.active {
+            color: white;
+            background: linear-gradient(to bottom, var(--secondary), var(--primary));
+        }
+
+        .nav-tab.active::after {
             content: "";
             position: absolute;
-            bottom: 0;
+            bottom: -2px;
             left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            border-radius: 2px;
-        }
-        
-        .template-content {
-            max-height: 200px;
-            overflow-y: auto;
-            padding-right: 10px;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            color: #555;
-        }
-        
-        .template-content::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        .template-content::-webkit-scrollbar-thumb {
-            background: #c5c5c5;
-            border-radius: 10px;
-        }
-        
-        .copy-btn {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
             width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            height: 2px;
+            background-color: var(--dark);
         }
-        
-        .copy-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
-        }
-        
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
-            z-index: 1000;
+
+        /* Tab Content */
+        .tab-content {
             display: none;
-            animation: slideInRight 0.5s, slideOutRight 0.5s 2.5s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            padding: 20px;
         }
-        
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
+
+        .tab-content.active {
+            display: block;
         }
-        
-        @keyframes slideOutRight {
-            from { opacity: 1; transform: translateX(0); }
-            to { opacity: 0; transform: translateX(50px); }
-        }
-        
-        .tag {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            font-weight: 500;
-            box-shadow: 0 2px 5px rgba(46, 125, 50, 0.2);
-        }
-        
-        .tags {
-            margin-bottom: 15px;
+
+        /* Generator Template Styles */
+        .main-content {
             display: flex;
             flex-wrap: wrap;
+            gap: 20px;
         }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
-        }
-        
-        .modal-content {
-            background-color: white;
-            padding: 40px;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: modalFadeIn 0.5s ease;
-        }
-        
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 28px;
-            cursor: pointer;
-            color: #999;
-            transition: all 0.3s ease;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-        
-        .close-btn:hover {
-            color: #333;
-            background: #f5f5f5;
-        }
-        
-        .modal-title {
-            margin-bottom: 20px;
-            color: var(--dark-color);
-            font-size: 1.8rem;
-            font-weight: 600;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #eee;
-        }
-        
-        .modal-text {
-            white-space: pre-line;
-            line-height: 1.8;
-            background-color: #f9f9f9;
-            padding: 20px;
+
+        .template-list {
+            flex: 1;
+            min-width: 300px;
+            padding: 15px;
+            background-color: rgba(232, 245, 233, 0.5);
             border-radius: 10px;
-            border-left: 4px solid var(--primary-color);
-            margin-bottom: 20px;
-            font-size: 1rem;
+            border: 1px solid var(--accent);
         }
-        
-        .copy-full-btn {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
+
+        .template-preview {
+            flex: 2;
+            min-width: 400px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            border: 1px solid var(--accent);
             display: flex;
-            align-items: center;
-            gap: 8px;
+            flex-direction: column;
         }
-        
-        .copy-full-btn:hover {
-            transform: translateY(-2px);
+
+        .template-item {
+            background: linear-gradient(to right, white, #f1f8e9);
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .template-item:hover {
+            background: linear-gradient(to right, #f1f8e9, #e8f5e9);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+            border-color: var(--secondary);
+        }
+
+        .template-item.active {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            color: white;
+            border-color: var(--dark);
             box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
         }
-        
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-        }
-        
-        /* Chat Container Styles */
-        .chat-container {
-            max-width: 800px;
-            margin: 40px auto;
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .chat-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .chat-header h2 {
-            font-size: 24px;
+
+        .template-title {
+            font-weight: bold;
             margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .template-content {
+            max-height: 100px;
+            overflow: hidden;
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
         
-        .chat-header p {
+        .active .template-content {
             opacity: 0.9;
-            font-size: 14px;
         }
-        
-        .chat-messages {
+
+        .preview-area {
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
             padding: 20px;
-            max-height: 600px;
+            min-height: 300px;
+            background-color: white;
+            margin-bottom: 15px;
+            white-space: pre-line;
+            flex-grow: 1;
             overflow-y: auto;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+            font-size: 1rem;
+            line-height: 1.7;
         }
-        
-        .message {
-            margin-bottom: 20px;
+
+        .actions {
             display: flex;
-            align-items: flex-start;
+            gap: 10px;
+            justify-content: flex-end;
         }
-        
-        .agent-message {
-            flex-direction: row;
-        }
-        
-        .customer-message {
-            flex-direction: row-reverse;
-        }
-        
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            gap: 8px;
+            font-size: 1rem;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+
+        .copy-btn {
+            background: linear-gradient(to right, #4caf50, #2e7d32);
             color: white;
-            margin: 0 10px;
-            flex-shrink: 0;
+        }
+
+        .copy-btn:hover {
+            background: linear-gradient(to right, #43a047, #1b5e20);
+        }
+
+        .format-btn {
+            background: linear-gradient(to right, #81c784, #4caf50);
+            color: white;
+        }
+
+        .format-btn:hover {
+            background: linear-gradient(to right, #66bb6a, #43a047);
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s;
         }
         
-        .agent-avatar {
-            background-color: var(--agent-color);
+        .search-box:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
         }
-        
-        .customer-avatar {
-            background-color: var(--customer-color);
+
+        .category-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
         }
-        
-        .message-content {
-            max-width: 70%;
-            padding: 12px 16px;
-            border-radius: 18px;
+
+        .category-btn {
+            background-color: #e8f5e9;
+            border: 1px solid #a5d6a7;
+            color: var(--dark);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .category-btn.active {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            color: white;
+            border-color: var(--dark);
+        }
+
+        /* Info Card Styles */
+        .info-card {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-left: 5px solid #4caf50;
+            background-color: #f1f8e9;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
         }
         
-        .agent-content {
-            background-color: var(--light-color);
-            border-top-left-radius: 5px;
-        }
-        
-        .customer-content {
-            background-color: var(--primary-color);
-            color: white;
-            border-top-right-radius: 5px;
-        }
-        
-        .message-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 14px;
-        }
-        
-        .message-text {
-            font-size: 14px;
-            white-space: pre-line;
-        }
-        
-        .timestamp {
-            font-size: 11px;
-            opacity: 0.7;
-            margin-top: 5px;
-            text-align: right;
-        }
-        
-        .category-tag {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        
-        .pending-tag {
-            background-color: var(--warning-color);
-            color: white;
-        }
-        
-        .failed-tag {
-            background-color: var(--danger-color);
-            color: white;
-        }
-        
-        .info-tag {
-            background-color: var(--info-color);
-            color: white;
-        }
-        
-        .success-tag {
-            background-color: var(--success-color);
-            color: white;
-        }
-        
-        .divider {
-            height: 1px;
-            background-color: #eee;
-            margin: 20px 0;
-            position: relative;
-            text-align: center;
-        }
-        
-        .divider-text {
-            background-color: white;
-            padding: 0 15px;
+        .info-card::before {
+            content: "";
             position: absolute;
-            top: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 12px;
-            color: #7f8c8d;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background-image: url('https://www.transparenttextures.com/patterns/leaf.png');
+            opacity: 0.1;
+            transform: rotate(45deg) translate(20px, -40px);
         }
         
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+        }
+        
+        .info-card h2 {
+            margin-top: 0;
+            color: #2e7d32;
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-card h2::before {
+            content: "🌱";
+            margin-right: 10px;
+        }
+        
+        .info-card p {
+            margin-bottom: 0;
+            text-align: justify;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: #1b5e20;
+            background-color: #c8e6c9;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+        
+        .separator {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.8), rgba(76, 175, 80, 0.1));
+            margin: 25px 0;
+        }
+        
+        .warning {
+            background-color: #fff8e1;
+            border-left-color: #8bc34a;
+        }
+        
+        .warning h2 {
+            color: #558b2f;
+        }
+        
+        .warning h2::before {
+            content: "🍃";
+        }
+        
+        .info {
+            background-color: #e8f5e9;
+            border-left-color: #4caf50;
+        }
+        
+        .info h2 {
+            color: #2e7d32;
+        }
+        
+        .danger {
+            background-color: #ffebee;
+            border-left-color: #66bb6a;
+        }
+        
+        .danger h2 {
+            color: #388e3c;
+        }
+        
+        .danger h2::before {
+            content: "🌳";
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+            border-top: 1px solid #a5d6a7;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 5px;
+        }
+
+        /* Animasi untuk efek alam */
+        .leaf {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #4caf50;
+            opacity: 0.7;
+            border-radius: 50% 0;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(100px, 100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Efek sukses saat menyalin */
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(to right, #4caf50, #2e7d32);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.3s;
+        }
+        
+        .success-message.show {
+            transform: translateX(0);
+        }
+
         @media (max-width: 768px) {
-            .template-grid {
-                grid-template-columns: 1fr;
+            .main-content {
+                flex-direction: column;
             }
             
-            #searchInput {
-                width: 90%;
+            .template-list, .template-preview {
+                min-width: 100%;
             }
             
-            .modal-content {
-                width: 95%;
-                padding: 20px;
+            h1 {
+                font-size: 1.8rem;
             }
             
-            header h1 {
-                font-size: 2rem;
-            }
-            
-            .message-content {
-                max-width: 85%;
-            }
-            
-            .chat-messages {
-                padding: 15px;
+            .nav-tab {
+                font-size: 0.9rem;
+                padding: 12px 5px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Efek daun jatuh -->
+    <div id="leafContainer"></div>
+    
+    <!-- Pesan sukses -->
+    <div class="success-message" id="successMessage">
+        Template berhasil disalin ke clipboard!
+    </div>
+    
     <div class="container">
         <header>
-            <h1>Template Respons Customer Service</h1>
-            <p class="subtitle">Klik pada template untuk melihat detail dan menyalin teks</p>
+            <h1>🌿 Customer Service Tools</h1>
+            <p class="description">Generator template pesan dan informasi deposit & withdraw untuk komunikasi dengan pelanggan.</p>
         </header>
-        
-        <div class="search-container">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" id="searchInput" placeholder="Cari template berdasarkan kata kunci...">
+
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-tab="generator">Generator Template</button>
+            <button class="nav-tab" data-tab="info">Informasi Deposit & Withdraw</button>
         </div>
-        
-        <div class="template-grid" id="templateContainer">
-            <!-- Template akan diisi oleh JavaScript -->
+
+        <!-- Generator Template Tab -->
+        <div id="generator" class="tab-content active">
+            <div class="main-content">
+                <div class="template-list">
+                    <h2 class="section-title">📋 Daftar Template</h2>
+                    
+                    <input type="text" class="search-box" placeholder="🔍 Cari template...">
+
+                    <div class="category-filter">
+                        <button class="category-btn active" data-category="all">Semua</button>
+                        <button class="category-btn" data-category="deposit">Deposit</button>
+                        <button class="category-btn" data-category="withdraw">Withdraw</button>
+                        <button class="category-btn" data-category="general">Umum</button>
+                    </div>
+
+                    <div id="templateContainer">
+                        <!-- Template items akan diisi oleh JavaScript -->
+                    </div>
+                </div>
+
+                <div class="template-preview">
+                    <h2 class="section-title">👁️ Preview Template</h2>
+                    <div class="preview-area" id="previewArea">
+                        Pilih template dari daftar di sebelah kiri untuk melihat preview di sini.
+                    </div>
+
+                    <div class="actions">
+                        <button class="copy-btn" id="copyBtn">
+                            <span>📋</span> Salin ke Clipboard
+                        </button>
+                        <button class="format-btn" id="formatBtn">
+                            <span>✨</span> Rapikan Format
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="chat-container">
-            <div class="chat-header">
-                <h2>Template Chat Customer Service</h2>
-                <p>Contoh respons untuk berbagai situasi customer service</p>
+
+        <!-- Informasi Deposit & Withdraw Tab -->
+        <div id="info" class="tab-content">
+            <div class="info-card info">
+                <h2>ADA TITIK DI FORM DEPOSIT</h2>
+                <p>Mohon maaf bosku, silahkan tidak menambahkan titik ataupun koma pada kolom Nominal ya bosku, dikarenakan titik tersebut otomatis dari sistem kami ya bosku. Terima kasih.</p>
             </div>
             
-            <div class="chat-messages">
-                <!-- DANA VIZ -->
-                <div class="message agent-message">
-                    <div class="avatar agent-avatar">CS</div>
-                    <div class="message-content agent-content">
-                        <div class="category-tag pending-tag">DANA VIZ</div>
-                        <div class="message-text">Yth, kami informasikan bahwa untuk saat ini sedang terjadi kendala akses masuk pada rekening
-Nama : 
-Jenis : E-wallet ( DANA )
-Yang dimana saat ini untuk tujuan transfer tersebut tidak dapat di akses masuk
-perihal permintaan deposit anda akan kami proses ketika rekening tersebut telah dapat kami akses ya bosku
-untuk estimasi selambatnya mohon menunggu dalam 3x24 jam
-mohon maaf atas kendala yang terjadi dan terima kasih atas pengertian nya ya bosku</div>
-                        <div class="timestamp">10:15 AM</div>
-                    </div>
-                </div>
+            <div class="info-card warning">
+                <h2>KAMI TIDAK MENGETAHUI BANK ONLINE</h2>
+                <p>Mohon maaf bos ku, kami disini adalah sebagai pihak situs ya bos ku, sementara yang gangguan adalah langsung pihak bank, dan kami bukanlah pihak bank ya bos ku, oleh karena itu kami tidak dapat mengetahui dikarenakan perihala apa terjadinya bank gangguan / sampai kapan bank akan gangguan atau kapan akan normal kembali, namun permintaan DEPOSIT anda akan segera kami proses ketika bank normal kembali ya bos ku. Terima kasih.</p>
+            </div>
+            
+            <div class="info-card info">
+                <h2>MAKSIMAL DEPOSIT</h2>
+                <p>Untuk maksimal deposit tidak ada batasan ya bos ku, namun deposit anda akan kami proses maksimal <span class="highlight">100,000,000 per 1 kali transaksi</span>.</p>
+            </div>
+            
+            <div class="info-card info">
+                <h2>UPGRADE PREMIUM</h2>
+                <p>Kami sarankan untuk melakukan aktivasi/upgrade premium ulang pada akun GOPAY anda menggunakan KTP dengan atas nama yang sama seperti yang terdaftar pada akun anda saat ini ya bosku.</p>
+            </div>
+            
+            <div class="info-card warning">
+                <h2>SILAHKAN MENGHUBUNGI PIHAK TERKAIT</h2>
+                <p>Untuk perihal tersebut silahkan anda menghubungi pihak bank yang terkait ya bosku di karenakan untuk bukti yang anda kirimkan belum berhasil terkirim dan tidak ada masuk ke mutasi bank kami ya bosku.</p>
+            </div>
+            
+            <div class="info-card danger">
+                <h2>WITHDRAW GAGAL DAN BANK TEBLOKIR</h2>
+                <p>Yth, Kepada member LINE TOGEL, untuk withdraw anda sebelum nya sudah kami proseskan namun terjadi kegagalan dari pihak bank serta bank yang mengirimkan dana tersebut terblokir dan saat ini masih belum dapat kami proseskan ya bosku di karenakan bank pengirim dana anda saat ini sedang terjadi kendala ya bosku dan kami belum dapat mengecek mutasi pengirim kami ya bosku, akan kami proseskan ketika kami sudah dapat mengakses bank terkendala tersebut ya bosku terimakasih.</p>
                 
-                <div class="divider">
-                    <span class="divider-text">Pembaruan Status</span>
-                </div>
+                <div class="separator"></div>
                 
-                <!-- DANA GAGAL -->
-                <div class="message agent-message">
-                    <div class="avatar agent-avatar">CS</div>
-                    <div class="message-content agent-content">
-                        <div class="category-tag failed-tag">DANA GAGAL</div>
-                        <div class="message-text">Mohon maaf bosku, dana yang anda kirimkan Gagal ( tulisan kuning diatas )  ya bosku
-Dana yang anda kirimkan akan kembali lagi ke rekening anda paling lama 1x24 jam kedepan ya bosku. 
-Terima Kasih.</div>
-                        <div class="timestamp">10:30 AM</div>
-                    </div>
-                </div>
+                <p>Sebelumnya sudah di coba untuk proses pengiriman namun bank yang mengirimkan terblokir sehingga kami tidak bisa memastikan apakah gagal atau berhasil ya bosku untuk estimasi waktu di luar kuasa kami ya bosku apabila bank pengirim dana tersebut sudah dapat diakses dan transaksi bosku tidak berhasil di proses maka akan kami proses kembali ya bosku. Terima kasih.</p>
                 
-                <!-- KOLOM USER ID -->
-                <div class="message agent-message">
-                    <div class="avatar agent-avatar">CS</div>
-                    <div class="message-content agent-content">
-                        <div class="category-tag info-tag">KOLOM USER ID</div>
-                        <div class="message-text">Mohon maaf bosku kami ingin mengkonfirmasi untuk bukti anda yang benar yang mana ya bosku ? untuk pengiriman bukti yang gagal sebelumnya di atas anda mengirim ke bank , dan bukti kedua anda mengirim ke qris ya bosku</div>
-                        <div class="timestamp">11:05 AM</div>
-                    </div>
-                </div>
+                <div class="separator"></div>
                 
-                <!-- HANYA DAPAT BERMAIN SAJA -->
-                <div class="message agent-message">
-                    <div class="avatar agent-avatar">CS</div>
-                    <div class="message-content agent-content">
-                        <div class="category-tag info-tag">HANYA DAPAT BERMAIN SAJA</div>
-                        <div class="message-text">untuk akun anda dapat kami aktfikan kembali namun anda hanya dapat untuk bermain saja ya bosku dan tidak dapat melakukan withdraw , jika anda melakukan withdraw kembali maka akun anda akan terblokir kembali secara otomatis oleh sistem kami ya bosku, dan untuk dapat membuka akun anda hanya dapat kami bantu satu kali saja ya bosku.
-
-=================================
-untuk akun anda sudah kami aktifkan kembali dan untuk saldo anda sudah kami kembalikan ke akun anda, namun anda untuk saat ini hanya dapat bermain saja ya bosku dan tidak dapat melakukan wd kembali, jika anda melakukan wd kembali maka untuk akun anda akan terblokir oleh sistem kami di karenakan rekening anda ..... ya bosku</div>
-                        <div class="timestamp">11:45 AM</div>
-                    </div>
-                </div>
-                
-                <!-- BUKTI DEPOSIT PENDING -->
-                <div class="message agent-message">
-                    <div class="avatar agent-avatar">CS</div>
-                    <div class="message-content agent-content">
-                        <div class="category-tag pending-tag">BUKTI DEPOSIT PENDING</div>
-                        <div class="message-text">Mohon maaf bosku untuk bukti transfer tersebut tidak berhasil ya bosku
-Dibantu bukti transfer anda yang berhasil ya bosku
-
-===================
-
-Mohon maaf bosku untuk bukti transfer yang anda kirimkan pada kami tidak berhasil atau sedang diproses ya bosku mohon untuk mengirimkan Bukti berhasil anda kepada kami ya bosku. Terima kasih</div>
-                        <div class="timestamp">12:20 PM</div>
-                    </div>
-                </div>
-                
-                <!-- ADA TITIK DI FORM DEPOSIT -->
-                <div class="message agent-message">
-                    <div class="avatar agent-avatar">CS</div>
-                    <div class="message-content agent-content">
-                        <div class="category-tag info-tag">ADA TITIK DI FORM DEPOSIT</div>
-                        <div class="message-text">Mohon maaf bosku, silahkan tidak menambahkan titik ataupun koma pada kolom Nominal ya bosku, dikarenakan titik tersebut otomatis dari sistem kami ya bosku, Terima kasih</div>
-                        <div class="timestamp">1:10 PM</div>
-                    </div>
-                </div>
-                
-                <!-- MAKSIMAL DEPOSIT -->
-                <div class="message agent-message">
-                    <div class="avatar agent-avatar">CS</div>
-                    <div class="message-content agent-content">
-                        <div class="category-tag info-tag">MAKSIMAL DEPOSIT</div>
-                        <div class="message-text">Untuk maksimal deposit tidak ada batasan ya bos ku, namun deposit anda akan kami proses maksimal 100,000,000 
-per 1 kali transaksi</div>
-                        <div class="timestamp">2:05 PM</div>
-                    </div>
-                </div>
-                
-                <!-- SILAHKAN MENGHUBUNGI PIHAK TERKAIT -->
-                <div class="message agent-message">
-                    <div class="avatar agent-avatar">CS</div>
-                    <div class="message-content agent-content">
-                        <div class="category-tag info-tag">SILAHKAN MENGHUBUNGI PIHAK TERKAIT</div>
-                        <div class="message-text">untuk perihal tersebut silahkan anda menghubungi pihak bank yang terkait ya bosku di karenakan untuk bukti yang anda kirimkan belum berhasil terkirim dan tidak ada masuk ke mutasi bank kami ya bosku</div>
-                        <div class="timestamp">3:15 PM</div>
-                    </div>
-                </div>
-                
-                <!-- Contoh respons customer -->
-                <div class="message customer-message">
-                    <div class="avatar customer-avatar">C</div>
-                    <div class="message-content customer-content">
-                        <div class="message-text">Terima kasih atas informasinya, saya akan menunggu</div>
-                        <div class="timestamp">3:20 PM</div>
-                    </div>
-                </div>
+                <p>Perihal pengiriman dana tersebut belum dapat kami memastikan apakah gagal atau berhasil dikarenakan bank yang mengirimkan terblokir ya bosku. Perihal tersebut sedang melakukan konfirmasikan kepada pihak bank terlebih dahulu. Untuk estimasi waktu di luar kuasa kami ya bosku. Apabila transaksi bosku tidak berhasil di proses maka akan kami proses kembali. Mohon maaf atas ketidaknyamananya.</p>
             </div>
         </div>
-        
+
         <footer>
-            <p>&copy; 2023 Template Respons Customer Service. All rights reserved.</p>
+            <p>Customer Service Tools dengan Tema Alam Hijau &copy; 2023</p>
         </footer>
     </div>
-    
-    <div class="modal" id="templateModal">
-        <div class="modal-content">
-            <span class="close-btn" id="closeModal">&times;</span>
-            <h2 class="modal-title" id="modalTitle">Judul Template</h2>
-            <div class="modal-text" id="modalText">Isi template akan muncul di sini</div>
-            <button class="copy-full-btn" id="copyFullBtn">
-                <i class="fas fa-copy"></i> Salin Teks Lengkap
-            </button>
-        </div>
-    </div>
-    
-    <div class="notification" id="notification">
-        <i class="fas fa-check-circle"></i> Template berhasil disalin!
-    </div>
-    
+
     <script>
-        // Data template
+        // Template data
         const templates = [
             {
-                title: "WITHDRAW PENDING",
-                content: `untuk permintaan penarikan dana anda sudah kami proses ya bosku
-untuk status pengiriman sedang dalam proses dan telah mengurangi saldo bank kami ya bosku
-jika terjadi keterlambatan dan masuk pada rekening anda maka kami sarankan di tunggu dalam estimasi selambatanya 7x24 jam ya bos
-terima kasih`,
-                tags: ["withdraw", "pending", "proses", "7x24 jam"]
+                id: 1,
+                title: "Deposit tidak masuk",
+                content: `Terimakasih atas deposit anda, deposit anda sudah kami terima dan sudah kami proseskan ya bosku. Saldo anda sudah bertambah.`,
+                category: "deposit"
             },
             {
-                title: "WITHDRAW INPROGRESS",
-                content: `Mohon maaf bosku sebelumnya withdraw anda sudah kami proseskan namun untuk status transaksi tersebut sedang dalam proses
-dan kemungkinan dana withdraw yang kami kirimkan terpending oleh pihak bank terkait namun
-pada saldo bank kami sudah terpotong ya bosku.
-
-==============================
-
-Mohon maaf bosku kami harus konfirmasi kendala tersebut kepada pihak bank terkait terlebih dahulu karena
-untuk saldo bank kami sudah terpotong dan belum ada dana kembali ke rekening kami ya bosku,
-Mohon maaf atas ketidaknyamanannya ya bosku dan mohon ditunggu hingga 7x24 jam ya bosku.
-
-======================
-Mohon maaf bosku jika dana yang dikirimkan sudah kembali ke rekening kami maka akan langsung kami proseskan
-kembali withdraw anda ke nomor rekening yang terdaftar pada User ID anda ya bosku.
-Mohon maaf atas ketidaknyamanannya ya bosku. Terima kasih atas pengertiannya.`,
-                tags: ["withdraw", "inprogress", "bank", "kendala", "7x24 jam"]
+                id: 2,
+                title: "Withdraw sedang diproses",
+                content: `Withdraw anda sedang dalam proses ya bosku, mohon kesediaannya untuk menunggu beberapa saat lagi ya bosku. Terima kasih.`,
+                category: "withdraw"
             },
             {
-                title: "DEPO BISA WD GAK BISA",
-                content: `Untuk perihal tersebut Deposit anda mengirimkan dana , sedangkan withdraw kami mengirimkan dana kepada anda. Namun anda dapat melakukan transaksi deposit / pengiriman dana anda dikarenakan di saat anda melakukan pendaftaran pada Nama rekening benar namun Nomor rekening salah / sudah terdaftar, kami memproseskan deposit bedasarkan nama rekening yang sama ya bosku bukan nomor rekening.
-Jika anda mendaftar dengan nomor rekening yang salah maka kami tidak dapat memproses dana withdraw anda ya bosku`,
-                tags: ["deposit", "withdraw", "rekening", "salah", "nama rekening"]
+                id: 3,
+                title: "Withdraw berhasil",
+                content: `Withdraw anda sudah berhasil kami proseskan ya bosku, mohon di cek kembali rekening anda. Terima kasih.`,
+                category: "withdraw"
             },
             {
-                title: "Withdraw dana",
-                content: `untuk withdraw DANA kami menggunakan bank dengan metode Top Up melalui bank ya bosku, yang dimana untuk maximal topup ke rekening DANA sebesar 20,000,000
-
-===========================
-
-Limit transaksi pengiriman top up dana ya bosku , bukan limit bulanan dana anda ya bosku`,
-                tags: ["withdraw", "dana", "top up", "limit", "20 juta"]
+                id: 4,
+                title: "Maintenance",
+                content: `Mohon maaf bosku, saat ini sedang terjadi maintenance pada sistem kami. Mohon untuk menunggu beberapa saat lagi ya bosku. Terima kasih.`,
+                category: "general"
             },
             {
+                id: 5,
+                title: "Kendala teknis",
+                content: `Mohon maaf bosku, saat ini sedang terjadi kendala teknis pada sistem kami. Tim kami sedang berusaha untuk memperbaikinya. Mohon untuk menunggu beberapa saat lagi ya bosku. Terima kasih.`,
+                category: "general"
+            },
+            {
+                id: 6,
+                title: "Deposit gagal",
+                content: `Mohon maaf bosku, deposit anda gagal kami proseskan. Silahkan untuk mencoba kembali atau menghubungi customer service kami. Terima kasih.`,
+                category: "deposit"
+            },
+            {
+                id: 7,
+                title: "Withdraw gagal",
+                content: `Mohon maaf bosku, withdraw anda gagal kami proseskan. Silahkan untuk mencoba kembali atau menghubungi customer service kami. Terima kasih.`,
+                category: "withdraw"
+            },
+            {
+                id: 8,
+                title: "Bank offline",
+                content: `Mohon maaf bosku, saat ini bank yang anda gunakan sedang offline. Silahkan untuk mencoba kembali beberapa saat lagi ya bosku. Terima kasih.`,
+                category: "deposit"
+            },
+            {
+                id: 9,
+                title: "Bank gangguan",
+                content: `Mohon maaf bosku, saat ini bank yang anda gunakan sedang mengalami gangguan. Silahkan untuk mencoba kembali beberapa saat lagi ya bosku. Terima kasih.`,
+                category: "deposit"
+            },
+            {
+                id: 10,
                 title: "Sudah premium tapi tidak keluar nama",
-                content: `silahkan anda menghubungi pihak dana dikarenakan perihal nama rekening anda masih tertera no rekening yakni dikarenakan anda barusan mempremiumkan dana anda sehingga untuk profil akun dana anda belum sycron antara nama rekening tersebut bosku`,
-                tags: ["premium", "nama", "rekening", "sinkronisasi", "dana"]
-            },
-            {
-                title: "KAMI TIDAK MENGETAHUI BANK ONLINE",
-                content: `Mohon maaf bos ku,kami disini adalah sebagai pihak situs ya bos ku, sementara yang gangguan adalah langsung pihak bank, dan kami bukanlah pihak bank ya bos ku, oleh karena itu kami tidak dapat mengetahui dikarenakan perihala apa terjadinya bank gangguan / sampai kapan bank akan gangguan atau kapan akan normal kembali,namun permintaan DEPOSIT anda akan segera kami proses ketika bank bank normal kembali ya bos ku. Terima kasih.`,
-                tags: ["bank", "gangguan", "deposit", "pihak bank", "tidak tahu"]
-            },
-            {
-                title: "UPGRADE PREMIUM",
-                content: `kami sarankan untuk melakukan aktivasi/upgrade premium ulang pada akun GOPAY anda menggunakan KTP dengan atas nama yang sama seperti yang terdaftar pada akun anda saat ini ya bosku`,
-                tags: ["upgrade", "premium", "gopay", "ktp", "aktivasi"]
-            },
-            {
-                title: "WITHDRAW GAGAL DAN BANK TEBLOKIR",
-                content: `Yth, Kepada member LINE TOGEL,untuk withdraw anda sebelum nya sudah kami proseskan namun terjadi kegagalan dari pihak bank serta bank yang mengirimkan dana tersebut  terblokir  dan saat ini masih belum dapat kami proseskan ya bosku di karenakan bank pengirim dana anda saat ini sedang terjadi kendala ya bosku dan kami belum dapat mengecek mutasi pengirim kami ya bosku , akan kami proseskan ketika kami sudah dapat mengakses bank terkendala tersebut ya bosku terimakasih
-
-=================================
-
-sebelumnya sudah di coba untuk proses pengiriman namun bank yang mengirimkan terblokir sehingga kami tidak bisa memastikan apakah gagal atau berhasil ya bosku untuk estimasi waktu di luar kuasa kami ya bosku apabila bank pengirim dana tersebut sudah dapat diakses dan transaksi bosku tidak berhasil di proses maka akan kami proses kembali ya bosku
-terima kasih
-
-==================================
-
-perihal pengiriman dana tersebut belum dapat kami memastikan apakah gagal atau berhasil dikarenakan bank yang mengirimkan terblokir ya bosku
-perihal tersebut sedang melakukan konfirmasikan kepada pihak bank terlebih dahulu
-untuk estimasi waktu di luar kuasa kami ya bosku
-apabila transaksi bosku tidak berhasil di proses maka akan kami proses kembali
-mohon maaf atas ketidaknyamananya`,
-                tags: ["withdraw", "gagal", "bank", "terblokir", "kendala", "konfirmasi"]
-            },
-            {
-                title: "2 USER ID REFFERAL BERBEDA",
-                content: `Mohon maaf bosku, apakah pendaftaran akun ( isi user id baru ) anda dilakukan atas kemauan anda sendiri atau terdapat pihak lain yang menyarankan untuk mendaftarkan akun tersebut ya bosku?`,
-                tags: ["user id", "referral", "beda", "pendaftaran", "akun"]
-            },
-            {
-                title: "TURN OVER",
-                content: `Kami cek saat ini untuk TO / Turn Over anda belum tercapai ya bosku oleh karna itu withdraw anda belum disetujui dan dikembalikan dana anda,
-untuk TO / Turn Over adalah x1 atau 300,000 ya bosku silahkan bosku bermain kembali agar TO / Turn Over anda tercapai.
-jika sudah tercapai otomatis withdraw anda terproses.`,
-                tags: ["turn over", "to", "withdraw", "300000", "x1"]
-            },
-            {
-                title: "CARA PREMIUM GOPAY",
-                content: `langkah -langkah Upgrade GoPay ke Premium :
--Buka aplikasi Gojek
--Pilih menu GoPay → tekan Lainnya → pilih Upgrade ke GoPay Plus
--Klik Upgrade Sekarang
--Foto e-KTP atau Paspor (pastikan jelas dan asli, bukan fotokopi)
--Ambil selfie sambil memegang identitas
--Tekan Kirim Dokumen untuk verifikasi`,
-                tags: ["gopay", "premium", "upgrade", "cara", "verifikasi"]
-            },
-            {
-                title: "PASARAN YANG TIDAK ADA DI TANYA",
-                content: `Mohon maaf bosku untuk pasaran tersebut kami tidak menyediakannya ya bosku
-Saran kami silahkan bermain pada pasaran lain yang tersedia di Line Togel ya bosku
-Terima Kasih.`,
-                tags: ["pasaran", "tidak ada", "tidak tersedia", "line togel"]
-            },
-            {
-                title: "RTP APA",
-                content: `Untuk RTP hanya jadi Pedoman/Panduan berdasarkan data kemenangan yang tinggi hari ini ya bosku. Namun untuk kemenangan kembali ke hoki masing-masing user ya bosku. Kami doakan anda agar beruntung ya bosku`,
-                tags: ["rtp", "kemenangan", "pedoman", "panduan", "hoki"]
-            },
-            {
-                title: "KEI PLUS & KEI MINUS",
-                content: `Kei + (Kei Plus): Pemain mendapatkan tambahan bayaran (komisi) jika menang
-Kei - (Kei Minus): Pemain akan dikenai potongan dari jumlah taruhan`,
-                tags: ["kei", "plus", "minus", "komisi", "potongan", "taruhan"]
-            },
-            {
-                title: "TELAT RESULT PASARAN",
-                content: `Yth kami ingin menginformasikan bahwa untuk pasaran tersebut untuk saat ini terjadi keterlambatan result dari pihak penyedia belum mengeluarkan angka result. Mohon untuk menunggu dan bersabar estimasi waktu tidak dapat kami tentukan, Terima kasih.`,
-                tags: ["telat", "result", "pasaran", "keterlambatan", "estimasi"]
-            },
-            {
-                title: "PERIHAL VIP",
-                content: `Perihal tersebut jika anda sudah menghubungi layanan whatsaap VIP maka silahkan melakukan konfirmasi lanjut pada layanan whatsapp ya bos
-
-=================================================
-untuk whatsapp pihak vip silahkan anda melakukan klik pada link ini ya bosku  https://heylink.me/linetogeltergacor/
-
-================================================
-
-perihal tersebut silahkan anda kofirmasi kembali ke whatsapp pihak vip kami ya bosku`,
-                tags: ["vip", "whatsapp", "konfirmasi", "link", "layanan"]
-            },
-            {
-                title: "Reset hanya user id saja",
-                content: "mohon maaf bosku untuk nomor rekening yang anda berikan tidak terdaftar pada situs kami ya bosku\nnamun untuk user id tersebut terdaftar dan untuk melakukan reset pasword tidak bisa melalui user id bosku",
-                tags: ["reset", "user id", "password", "rekening"]
-            },
-            {
-                title: "Bukti palsu",
-                content: "Mohon maaf bosku, mohon tidak melakukan pengiriman bukti transfer dengan bukti editan, dan akun anda akan terblokir secara permanen dikarenakan melakukan penipuan deposit",
-                tags: ["bukti", "palsu", "editan", "blokir", "penipuan"]
-            },
-            {
-                title: "RAHASIA USER ID",
-                content: "untuk perihal tersebut kami sarankan anda untuk menjaga data login anda berupa password anda tersebut agar akun anda tidak di salah gunakan oleh orang lain ya bosku\n=================\nseperti peraturan kami no 2 Setiap member wajib menjaga kerahasiaan akun masing-masing ya bosku \n=================\nuntuk keamanan akun anda tersebut seperti yang kami sampaikan di atas ya bosku agar menjaga kerahasian password dan user id anda agar akun anda aman ya bosku",
-                tags: ["rahasia", "user id", "password", "keamanan"]
-            },
-            {
-                title: "SAAT LOGIN FAILED",
-                content: "Mohon maaf ya bosku, untuk perihal tersebut jika terjadi Failed pada saat anda melakukan login saran kami silakan melakukan clear history cache (membersihkan riwayat penjelajahan) pada browser anda ya bosku.\nPertama-tama, anda close dahulu semua TAB Browser anda ya bosku.\nLalu melakukan clear history cache pada browser anda ya bosku",
-                tags: ["login", "failed", "cache", "history", "browser"]
-            },
-            {
-                title: "CEK KIRIM DANA KE REKENING SEBELUM NYA",
-                content: "Mohon maaf bosku, Dikarenakan anda mengirimkan dana ke rekening kami yang tidak aktif,\nKami membutuhkan waktu beberapa menit untuk mengecek dana anda ke rekening tersebut.\nSilahkan menunggu sebentar ya bossku.",
-                tags: ["cek", "dana", "rekening", "tidak aktif"]
-            },
-            {
-                title: "TIDAK ADA DI BANK LIST",
-                content: "Mohon maaf bosku, jika anda mengirimkan dana ke rekening kami yang tidak ada di bank list, maka anda harus menunggu hingga 1x24 jam, dan dana anda tidak dapat di proses dengan cepat ya bosku, terima kasih\n\n==========================================================\n\nBosku untuk nomor rekening tujuan bukan untuk dihafal atau disimpan, saran kami selalu mengecek nomor rekening tujuan anda dimenu deposit sebelum anda mengirimkan dana, dikarenakan nomor rekening tujuan tidak bersifat permanen atau dapat berubah sewaktu-waktu ya bosku\n\n==========================================================\n\nUntuk nomor rekening tujuan wajib di cek pada menu deposit ya bosku, dikarenakan nomor rekening deposit tidak bersifat permanent dan dapat berubah sewaktu-waktu ya bosku, saran kami silahkan di transfer dana anda sesuai dengan nomor rekening yang tertera pada menu deposit yang tersedia ya bosku",
-                tags: ["bank list", "rekening", "deposit", "1x24 jam"]
-            },
-            {
-                title: "CEK RRN WONDER BNI",
-                content: "Langkah-langkah pengecekan bukti transfer Qris di BNI WONDR :\n1. Buka aplikasi Wondr by BNI di smartphone kamu.\n2. Masuk ke akun kamu jika belum masuk.\n3. Pilih menu \"QRIS\" yang terletak di bagian atas layar.\n4. Cari bukti transaksi yang kamu inginkan di riwayat transaksi QRIS.\n5. Kamu bisa menyimpan bukti transaksi tersebut dengan melakukan screenshot atau tangkapan layar.\nseperti contoh berikut bosku https://imghostr.com/16253e_7x8",
-                tags: ["rrn", "wonder", "bni", "qris", "cek"]
-            },
-            {
-                title: "USER ID / DP BERHASIL",
-                content: "kami cekkan untuk user id tersebut tidak terdaftar pada situs kami ya bosku\n\n================================================\n\nkami cek deposit anda tidak salah dan sudah berhasil ya bosku",
-                tags: ["user id", "deposit", "berhasil", "cek"]
-            },
-            {
-                title: "TIDAK MENYIMPAN SANDI",
-                content: "saran kami login secara manual dan tidak menyimpan data userid dan password anda",
-                tags: ["sandi", "password", "login", "manual"]
-            },
-            {
-                title: "SESUAI DANA YANG ANDA KIRIMKAN",
-                content: "silahkan anda isi form deposit sesuai dana yang anda kirimkan, jangan\ndikurangi dan ditambahi bosku.\nterima kasih",
-                tags: ["deposit", "dana", "form", "sesuai"]
-            },
-            {
-                title: "TIDAK BISA MENAMBAH BANK",
-                content: "Kami informasikan kepada anda bosku untuk 1 akun hanya dapat menggunakan 1 nomor rekening saja ya bosku, tidak dapat melakukan penambahan nomor rekening pada akun anda ya bosku.",
-                tags: ["bank", "rekening", "tambah", "akun"]
-            },
-            {
-                title: "MEMBER TIDAK MAU KIRIM BUKTI",
-                content: "untuk perihal tersebut jika anda melakukan deposit dan mengklaim dana ke live chat diwajibkan mengirimkan bukti transfer ya bosku",
-                tags: ["member", "bukti", "deposit", "live chat"]
-            },
-            {
-                title: "TIDAK ADA KENDALA / PL HANTU",
-                content: "Akun anda akan kami buka kembali jika anda setuju untuk mengirimkan dana deposit ke rekening deposit kami dengan minimal deposit 10,000.\nuntuk perihal rekening depositnya akan kami kirimkan jika anda setuju untuk mengirimkan dana kepada kami agar akun anda dapat kami bantu buka kembali",
-                tags: ["kendala", "pl hantu", "deposit", "buka akun"]
-            },
-            {
-                title: "TUJUAN FORM",
-                content: "silahkan isi form deposit anda sesuai dengan bank yang anda kirimkan ya bosku , jika deposit ke BCA silahkan isi form deposit anda dengan tujuan BCA  juga ya bosku",
-                tags: ["form", "deposit", "tujuan", "bank"]
-            },
-            {
-                title: "BUKTI QRIS SAH",
-                content: "Dibantu bukti transfer yang sah harus mencantumkan nama QRIS (nama atau nomor rekening kami),\nlengkap dengan waktu pengiriman, serta lampirkan nama rekening pengirimnya.",
-                tags: ["bukti", "qris", "sah", "transfer"]
-            },
-            {
-                title: "BANK 24 JAM",
-                content: "untuk layanan bank BRI online 24 jam ya bosku, namun untuk saat ini sedang terjadi gangguan ya bosku",
-                tags: ["bank", "24 jam", "bri", "gangguan"]
-            },
-            {
-                title: "SALAH TUJUAN JENIS EWALLET",
-                content: "Mohon maaf bosku, yang kami cantumkan di form deposit adalah nomor OVO , namun anda transfer ke nomor tersebut ke DANA nya, sementara nomor tersebut tidak memiliki akun DANA .\nKedepannya mohon lebih teliti ya bosku dalam melakukan pengiriman dana agar tidak terjadi hal seperti ini lagi.\n===========================================================================================================================\nuntuk nomor tujuan tersebut kami hanya memiliki akun E-WALLET OVO ya bosku\nmohon maaf bosku, untuk dana deposit anda tidak bisa kami bantu dikarenakan untuk nomor tersebut kami hanya memiliki akun OVO  ya bosku\n==================================================================================================================================\nBaik bosku untuk tujuan akun yang anda kirim pada akun E-WALLET OVO ya bosku\nuntuk tujuan akun E-WALLET DANA tersebut bukan akun LINETOGEL ya bosku\n=============================================================================================================================\nmohon maaf bosku, untuk dana deposit anda kami tidak bisa membantu dikarenakan untuk nomor tujuan tersebut kami hanya memiliki akun OVO ya bosku\nuntuk tujuan akun E-WALLET DANA  tersebut bukan akun LINETOGEL ya bosku",
-                tags: ["ewallet", "ovo", "dana", "salah tujuan"]
-            },
-            {
-                title: "user id",
-                content: "Untuk user id yang anda gunakan dapat anda cek pada pojok kiri atas pada akun anda ya bosku\n\nContoh : https://prnt.sc/hu21nK_ehoTj",
-                tags: ["user id", "cek", "akun"]
-            },
-            {
-                title: "QRIS BCA",
-                content: "Mohon maaf ya bosku, dibantu dengan tertera RRN QRISnya ya bosku\n\nCara mengecek Mutasi / Bukti transfer QRIS menggunakan Layanan Bank BCA :\n\n1. Silahkan login terlebih dahulu dan silahkan klik Logo Qris yang ada di bawah seperti gambar berikut\nContoh : https://prnt.sc/3vxdh-8D-036\n2. Silahkan di klik Inbox untuk mengecek bukti transfer yang di anda lakukan\nContoh : https://prnt.sc/WC3ySyLteRpo\n3. Setelah itu akan muncul seluruh transaksi anda melakukan pengiriman dana ke Qris / Scan Barcode ya bosku\nContoh : https://prnt.sc/d2VrM_cAr3HR\n\n------------------------------------------------\n\nMohon maaf ya bosku, untuk bukti bca menggunakan qris diwajibkan melampirkan tampilan seperti di atas ya bosku dengan tertera RRN qris nya ya bosku\n\n------------------------------------------------\n\nPerihal kendala anda silahkan menghubungi pihak bank ya bosku agar kendala anda dapat terselesaikan ya bosku\n\n------------------------------------------------\n\nMohon maaf ya bosku, perihal tersebut tidak berhasil ya bosku apabila tanpa ada bukti berhasil yang dimana bukti dari inbox qris anda tidak masuk ya bosku , saran kami silahkan hubungi pihak bank ya bosku\n\n------------------------------------------------\n\nBaik bosku apabila tidak ada/ tidak tercetak pada Inbox Qris anda maka transaksi anda dinyatakan gagal ya bosku\nsaran kami silahkan hubungi pihak bank terkait dikarenakan saldo anda sudah terpotong ya bosku , terima kasih",
-                tags: ["qris", "bca", "rrn", "inbox", "bukti transfer"]
-            },
-            {
-                title: "PASARAN SINGAPORE",
-                content: "Untuk pasaran SINGAPORE saat ini normal ya bosku\nJika ada pengunduran hasil Result akan kami informasikan melalui memo pada akun anda ya bosku.",
-                tags: ["pasaran", "singapore", "normal", "result", "memo"]
+                content: `Silahkan anda menghubungi pihak dana dikarenakan perihal nama rekening anda masih tertera no rekening yakni dikarenakan anda barusan mempremiumkan dana anda sehingga untuk profil akun dana anda belum sycron antara nama rekening tersebut bosku`,
+                category: "general"
             }
         ];
 
-        // DOM Elements
+        // DOM elements
         const templateContainer = document.getElementById('templateContainer');
-        const searchInput = document.getElementById('searchInput');
-        const templateModal = document.getElementById('templateModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalText = document.getElementById('modalText');
-        const closeModal = document.getElementById('closeModal');
-        const copyFullBtn = document.getElementById('copyFullBtn');
-        const notification = document.getElementById('notification');
+        const previewArea = document.getElementById('previewArea');
+        const copyBtn = document.getElementById('copyBtn');
+        const formatBtn = document.getElementById('formatBtn');
+        const searchBox = document.querySelector('.search-box');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const successMessage = document.getElementById('successMessage');
+        const leafContainer = document.getElementById('leafContainer');
+        const navTabs = document.querySelectorAll('.nav-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
 
-        // Fungsi untuk menampilkan template
-        function displayTemplates(filteredTemplates = templates) {
+        // Variables
+        let selectedTemplate = null;
+        let filteredTemplates = [...templates];
+        let currentCategory = 'all';
+
+        // Inisialisasi daftar template
+        function renderTemplates() {
             templateContainer.innerHTML = '';
-            
-            filteredTemplates.forEach((template, index) => {
-                const card = document.createElement('div');
-                card.className = 'template-card';
-                
-                // Menambahkan tags jika ada
-                let tagsHtml = '';
-                if (template.tags && template.tags.length > 0) {
-                    tagsHtml = '<div class="tags">' + 
-                        template.tags.map(tag => `<span class="tag">${tag}</span>`).join('') + 
-                        '</div>';
-                }
-                
-                card.innerHTML = `
-                    <h3>${template.title}</h3>
-                    ${tagsHtml}
-                    <div class="template-content">${template.content.replace(/\n/g, '<br>')}</div>
-                    <button class="copy-btn" data-index="${index}">
-                        <i class="fas fa-eye"></i> Lihat Detail
-                    </button>
+
+            filteredTemplates.forEach(template => {
+                const templateItem = document.createElement('div');
+                templateItem.className = 'template-item';
+                templateItem.dataset.id = template.id;
+
+                templateItem.innerHTML = `
+                    <div class="template-title">${template.title}</div>
+                    <div class="template-content">${template.content}</div>
                 `;
-                
-                // Event listener untuk membuka modal
-                const copyBtn = card.querySelector('.copy-btn');
-                copyBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    openModal(index);
-                });
-                
-                // Event listener untuk membuka modal saat card diklik
-                card.addEventListener('click', () => {
-                    openModal(index);
-                });
-                
-                templateContainer.appendChild(card);
+
+                templateItem.addEventListener('click', (e) => selectTemplate(template, e));
+                templateContainer.appendChild(templateItem);
             });
         }
 
-        // Fungsi untuk membuka modal
-        function openModal(index) {
-            const template = templates[index];
-            modalTitle.textContent = template.title;
-            modalText.textContent = template.content;
-            templateModal.style.display = 'flex';
-            
-            // Update copy button data attribute
-            copyFullBtn.setAttribute('data-index', index);
-        }
+        // Pilih template
+        function selectTemplate(template, event) {
+            selectedTemplate = template;
+            previewArea.textContent = template.content;
 
-        // Fungsi untuk menyalin teks ke clipboard
-        function copyToClipboard(text) {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            
-            // Tampilkan notifikasi
-            notification.style.display = 'block';
-            
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 3000);
-        }
-
-        // Event listener untuk menutup modal
-        closeModal.addEventListener('click', function() {
-            templateModal.style.display = 'none';
-        });
-
-        // Event listener untuk menyalin teks lengkap dari modal
-        copyFullBtn.addEventListener('click', function() {
-            const index = this.getAttribute('data-index');
-            const textToCopy = templates[index].content;
-            
-            navigator.clipboard.writeText(textToCopy).then(function() {
-                notification.style.display = 'block';
-                setTimeout(() => {
-                    notification.style.display = 'none';
-                }, 3000);
-            }).catch(function() {
-                // Fallback jika navigator.clipboard tidak tersedia
-                copyToClipboard(textToCopy);
+            // Perbarui status aktif di daftar template
+            document.querySelectorAll('.template-item').forEach(item => {
+                item.classList.remove('active');
             });
-        });
 
-        // Fungsi untuk mencari template
-        function searchTemplates() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            
-            if (searchTerm.trim() === '') {
-                displayTemplates();
+            event.currentTarget.classList.add('active');
+        }
+
+        // Filter template berdasarkan kategori
+        function filterTemplatesByCategory(category) {
+            currentCategory = category;
+
+            if (category === 'all') {
+                filteredTemplates = [...templates];
+            } else {
+                filteredTemplates = templates.filter(template => template.category === category);
+            }
+
+            // Terapkan filter pencarian jika ada
+            if (searchBox.value) {
+                filterTemplatesBySearch(searchBox.value);
+            } else {
+                renderTemplates();
+            }
+        }
+
+        // Filter template berdasarkan kata kunci pencarian
+        function filterTemplatesBySearch(term) {
+            const searchTerm = term.toLowerCase();
+
+            if (currentCategory === 'all') {
+                filteredTemplates = templates.filter(template => 
+                    template.title.toLowerCase().includes(searchTerm) || 
+                    template.content.toLowerCase().includes(searchTerm)
+                );
+            } else {
+                filteredTemplates = templates.filter(template => 
+                    template.category === currentCategory && (
+                        template.title.toLowerCase().includes(searchTerm) || 
+                        template.content.toLowerCase().includes(searchTerm)
+                    )
+                );
+            }
+
+            renderTemplates();
+        }
+
+        // Format teks (hapus spasi berlebih, perbaiki line breaks)
+        function formatText(text) {
+            // Hapus spasi berlebih dan perbaiki line breaks
+            return text
+                .split('\n')
+                .map(line => line.trim())
+                .filter(line => line.length > 0)
+                .join('\n\n');
+        }
+
+        // Salin ke clipboard
+        function copyToClipboard() {
+            if (!selectedTemplate) {
+                showMessage('Pilih template terlebih dahulu!', 'error');
                 return;
             }
-            
-            const filteredTemplates = templates.filter(template => {
-                return template.title.toLowerCase().includes(searchTerm) ||
-                       template.content.toLowerCase().includes(searchTerm) ||
-                       (template.tags && template.tags.some(tag => tag.toLowerCase().includes(searchTerm)));
-            });
-            
-            displayTemplates(filteredTemplates);
+
+            const textToCopy = previewArea.textContent;
+
+            navigator.clipboard.writeText(textToCopy)
+                .then(() => {
+                    showMessage('Template berhasil disalin ke clipboard!', 'success');
+                })
+                .catch(err => {
+                    console.error('Gagal menyalin teks: ', err);
+                    showMessage('Gagal menyalin teks. Silakan coba lagi.', 'error');
+                });
         }
 
-        // Event listener untuk pencarian
-        document.getElementById('searchInput').addEventListener('input', searchTemplates);
-
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            if (event.target === templateModal) {
-                templateModal.style.display = 'none';
+        // Tampilkan pesan sukses
+        function showMessage(message, type) {
+            if (type === 'success') {
+                successMessage.textContent = message;
+                successMessage.style.background = 'linear-gradient(to right, #4caf50, #2e7d32)';
+                successMessage.classList.add('show');
+                
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 3000);
+            } else {
+                alert(message);
             }
+        }
+
+        // Buat efek daun jatuh
+        function createLeaves() {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const leaf = document.createElement('div');
+                    leaf.className = 'leaf';
+                    leaf.style.left = Math.random() * 100 + 'vw';
+                    leaf.style.animationDuration = (15 + Math.random() * 10) + 's';
+                    leaf.style.width = (15 + Math.random() * 10) + 'px';
+                    leaf.style.height = leaf.style.width;
+                    leafContainer.appendChild(leaf);
+                    
+                    // Hapus daun setelah animasi selesai
+                    setTimeout(() => {
+                        leaf.remove();
+                    }, 25000);
+                }, i * 1000);
+            }
+        }
+
+        // Event Listeners
+        copyBtn.addEventListener('click', copyToClipboard);
+
+        formatBtn.addEventListener('click', () => {
+            if (!selectedTemplate) {
+                showMessage('Pilih template terlebih dahulu!', 'error');
+                return;
+            }
+
+            const formattedText = formatText(previewArea.textContent);
+            previewArea.textContent = formattedText;
+
+            // Perbarui konten template
+            selectedTemplate.content = formattedText;
+            
+            showMessage('Format teks telah diperbaiki!', 'success');
         });
 
-        // Tampilkan template saat halaman dimuat
-        displayTemplates();
+        searchBox.addEventListener('input', (e) => {
+            filterTemplatesBySearch(e.target.value);
+        });
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Perbarui tombol kategori aktif
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+
+                // Filter template
+                filterTemplatesByCategory(e.target.dataset.category);
+            });
+        });
+
+        // Tab navigation
+        navTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Hapus kelas aktif dari semua tab dan konten
+                navTabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Tambahkan kelas aktif ke tab yang diklik
+                tab.classList.add('active');
+                
+                // Tampilkan konten tab yang sesuai
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Inisialisasi
+        renderTemplates();
+        createLeaves();
+        
+        // Buat daun baru setiap 20 detik
+        setInterval(createLeaves, 20000);
     </script>
 </body>
 </html>
 ```
 
-## Perubahan yang saya lakukan:
+## Fitur Gabungan:
 
-1. **Background hijau yang menarik**: Menggunakan gradien hijau dari #1b5e20 (hijau gelap) ke #558b2f (hijau lumut) untuk memberikan kesan alami dan segar.
+1. **Navigasi Tab**: 
+   - Tab "Generator Template" untuk mengakses fitur generator template pesan
+   - Tab "Informasi Deposit & Withdraw" untuk mengakses informasi-informasi penting
 
-2. **Efek glassmorphism**: Menambahkan efek glassmorphism pada header dengan background semi-transparan dan backdrop-filter untuk tampilan yang modern.
+2. **Generator Template**:
+   - Daftar template pesan customer service yang dapat difilter berdasarkan kategori
+   - Fitur pencarian template
+   - Preview template
+   - Tombol salin ke clipboard
+   - Tombol rapikan format
 
-3. **Integrasi template chat**: Menggabungkan template chat customer service dengan desain yang konsisten menggunakan warna hijau.
+3. **Informasi Deposit & Withdraw**:
+   - Informasi-informasi penting seputar deposit dan withdraw
+   - Desain kartu informasi dengan kategori warna yang berbeda
+   - Efek hover pada kartu informasi
 
-4. **Variabel CSS**: Menambahkan variabel CSS untuk memudahkan pengaturan warna di seluruh halaman.
+4. **Tema Alam Hijau**:
+   - Desain yang konsisten dengan tema alam hijau di seluruh halaman
+   - Efek daun jatuh sebagai animasi background
+   - Warna hijau yang dominan dengan gradasi yang menarik
+   - Ikon-ikon alam (🌿, 🌱, 🍃, 🌳) pada elemen-elemen penting
 
-5. **Konsistensi warna**: Semua elemen menggunakan skema warna hijau yang konsisten, termasuk tombol, tag, border, dan efek hover.
+5. **Responsif**:
+   - Tampilan yang menyesuaikan pada berbagai ukuran layar
+   - Navigasi tab yang tetap fungsional pada layar kecil
 
-6. **Animasi yang halus**: Menambahkan animasi fade-in untuk kartu template dan efek hover yang menarik.
-
-7. **Desain responsif**: Memastikan tampilan tetap baik di berbagai ukuran layar.
-
-8. **Pattern background halus**: Menambahkan pattern background dengan warna hijau transparan untuk tekstur visual yang menarik.
-
-Dengan perubahan ini, halaman memiliki tampilan yang menarik dengan tema hijau yang konsisten, menggabungkan fungsionalitas template respons customer service dengan contoh chat dalam satu halaman yang terintegrasi dengan baik.
+Dengan menggabungkan kedua fitur ini dalam satu halaman, customer service dapat dengan mudah beralih antara menggunakan template pesan dan merujuk ke informasi penting seputar deposit dan withdraw tanpa harus membuka halaman terpisah.
