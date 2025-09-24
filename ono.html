@@ -1,714 +1,275 @@
-
-
-Saya akan membantu Anda merapikan kode HTML dengan tema berapi-api yang menarik. Berikut adalah hasilnya:
-
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panduan Respon Layanan Pelanggan</title>
+    <title>Informasi Bonus</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a0500, #330a00, #4a0f00);
-            color: #ffcc80;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
+            margin: 0;
             padding: 20px;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23ff4500" fill-opacity="0.03" d="M30,50 Q50,20 70,50 T90,50 Q70,80 50,50 T30,50 Z" /></svg>');
-            background-size: 200px 200px;
-            z-index: -1;
-            animation: fireMove 20s linear infinite;
-        }
-        @keyframes fireMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 200px 200px; }
+            background-color: #f5f5f5;
         }
         .container {
-            max-width: 900px;
-            margin: 30px auto;
-            background-color: rgba(30, 10, 5, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(255, 69, 0, 0.4), 0 0 30px rgba(255, 140, 0, 0.2);
-            overflow: hidden;
-            border: 1px solid #ff4500;
-            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .container::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #ff4500, #ff8c00, #ffd700, #ff8c00, #ff4500);
-            background-size: 200% 100%;
-            animation: fireGlow 3s linear infinite;
-        }
-        @keyframes fireGlow {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
-        }
-        .header {
-            background: linear-gradient(135deg, #8b0000, #b22222, #cd5c5c);
-            color: white;
-            padding: 25px;
+        h1 {
+            color: #333;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 30px;
         }
-        .header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23ffffff10" d="M30,50 Q50,20 70,50 T90,50 Q70,80 50,50 T30,50 Z" /></svg>');
-            background-size: 100px 100px;
-            opacity: 0.1;
-            animation: fireMove 15s linear infinite;
+        .bonus-section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
         }
-        .header h1 {
-            margin-bottom: 10px;
-            font-size: 28px;
-            position: relative;
-            z-index: 1;
-            text-shadow: 0 0 10px rgba(255, 140, 0, 0.7);
+        .bonus-section:last-child {
+            border-bottom: none;
         }
-        .header p {
-            font-size: 16px;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
-        .content {
-            padding: 25px;
-        }
-        .scenario {
-            margin-bottom: 25px;
-            border: 1px solid rgba(255, 69, 0, 0.3);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            background-color: rgba(40, 15, 5, 0.6);
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-        }
-        .scenario:last-child {
-            margin-bottom: 0;
-        }
-        .scenario:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 69, 0, 0.3);
-            border-color: #ff8c00;
-        }
-        .scenario-title {
-            background: linear-gradient(135deg, #8b0000, #a52a2a);
-            padding: 12px 18px;
+        .bonus-title {
+            font-size: 1.2em;
             font-weight: bold;
-            color: #ffd700;
-            margin-bottom: 0;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .scenario-title::before {
-            content: "🔥";
-            margin-right: 10px;
-            font-size: 20px;
-            animation: flicker 1.5s infinite alternate;
-        }
-        @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-        .scenario-response {
-            padding: 18px;
-            color: #ffcc80;
-        }
-        .scenario-response p {
-            margin-bottom: 12px;
-        }
-        .scenario-response p:last-child {
-            margin-bottom: 0;
-        }
-        .divider {
-            border: 0;
-            border-top: 1px dashed #ff8c00;
-            margin: 15px 0;
-            opacity: 0.6;
-        }
-        .step-list {
-            margin-left: 25px;
-            margin-top: 12px;
-        }
-        .step-list li {
+            color: #2c3e50;
             margin-bottom: 10px;
+        }
+        .bonus-content {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        .bonus-list {
+            padding-left: 20px;
+        }
+        .bonus-list li {
+            margin-bottom: 8px;
         }
         .note {
             font-style: italic;
-            color: #ff9558;
-            font-size: 15px;
-        }
-        .fire-decoration {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            opacity: 0.1;
-            z-index: 0;
-        }
-        .fire-1 {
-            top: 20px;
-            right: 20px;
-            transform: rotate(45deg);
-        }
-        .fire-2 {
-            bottom: 20px;
-            left: 20px;
-            transform: rotate(-15deg);
-        }
-        .highlight {
-            background-color: rgba(255, 69, 0, 0.3);
-            padding: 2px 5px;
-            border-radius: 4px;
-            font-weight: 600;
-            color: #ffd700;
-        }
-        .link {
-            color: #ff8c00;
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 1px dashed #ff8c00;
-            transition: all 0.3s ease;
-        }
-        .link:hover {
-            color: #ffd700;
-            border-bottom-color: #ffd700;
-            text-shadow: 0 0 5px rgba(255, 140, 0, 0.7);
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #8b0000, #b22222);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 10px rgba(255, 69, 0, 0.5);
-            cursor: pointer;
-            opacity: 0.7;
-            transition: all 0.3s ease;
-            font-size: 20px;
-            z-index: 1000;
-        }
-        .back-to-top:hover {
-            opacity: 1;
-            transform: scale(1.1);
-            box-shadow: 0 0 15px rgba(255, 140, 0, 0.7);
-        }
-        .search-container {
-            margin-bottom: 20px;
-            position: relative;
-        }
-        .search-input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid rgba(255, 69, 0, 0.4);
-            border-radius: 25px;
-            font-size: 16px;
-            background-color: rgba(30, 10, 5, 0.8);
-            color: #ffcc80;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-        .search-input:focus {
-            border-color: #ff8c00;
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
-        }
-        .search-icon {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #ff8c00;
-        }
-        .image-preview {
-            max-width: 100%;
-            border-radius: 8px;
-            margin: 10px 0;
-            box-shadow: 0 2px 8px rgba(255, 69, 0, 0.3);
-            border: 1px solid rgba(255, 69, 0, 0.2);
-        }
-        .tag {
-            display: inline-block;
-            background: linear-gradient(135deg, #8b0000, #a52a2a);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 12px;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            color: #7f8c8d;
+            margin-top: 10px;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Panduan Respon Layanan Pelanggan</h1>
-            <p>Template Respon untuk Berbagai Skenario</p>
-            <div class="fire-decoration fire-1">🔥</div>
-            <div class="fire-decoration fire-2">🌋</div>
+        <h1>Informasi Bonus</h1>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">BONUS ALL</div>
+            <div class="bonus-content">
+                <p>Untuk promo bonus saat ini kami memiliki :</p>
+                <ul class="bonus-list">
+                    <li>Bonus Referral Togel = Bonus referral sebesar 0,5% (dibagikan setiap hari Setiap buka pasaran)</li>
+                    <li>Bonus Referral Slot = Bonus Referral sebesar 0.1% (dibagikan setiap hari)</li>
+                    <li>Bonus Referral Live Games = Bonus Referral sebesar 0.1% (dibagikan setiap hari)</li>
+                    <li>Bonus Referral Live Games PRAGMATIC = Bonus Referral sebesar 0.1% (dibagikan setiap hari)</li>
+                    <li>Bonus Referral ARCADE = Bonus Referral sebesar 0.1% (dibagikan setiap hari)</li>
+                    <li>Bonus Referral E-lottery = Bonus Referral sebesar 0.1% (dibagikan setiap hari)</li>
+                    <li>Bonus Rollingan turnover LIVE GAMES sebesar 0,5% dari total bettingan (dibagikan setiap hari KAMIS setelah jadwal maintenance selesai)</li>
+                    <li>Bonus Rollingan turnover SLOT sebesar 0,5% dari total bettingan (dibagikan setiap hari KAMIS setelah jadwal maintenance selesai)</li>
+                    <li>Bonus Rollingan turnover LIVE GAMES PRAGMATIC 0,5% dari total bettingan (dibagikan setiap hari KAMIS setelah maintenance selesai)</li>
+                    <li>Bonus Rollingan turnover ARCADE sebesar 0,5% dari total bettingan (dibagikan setiap hari KAMIS setelah maintenance selesai)</li>
+                    <li>Bonus Rollingan turnover E-lottery sebesar 0,5% dari total bettingan (dibagikan setiap hari KAMIS setelah maintenance selesai)</li>
+                    <li>Bonus Cashback up to 5% (Live Games) = Bonus Kekalahan 5% hanya berlaku untuk permainan Live Games. Minimal kekalahan Rp.100.000, untuk nominal 100,000-249,999,999 = Bonus yang didapat 2,5% dari total kekalahan. Untuk nominal 250,000,000 - 999,999,999,999 = Bonus yang didapat 5% dari total kekalahan, Otomatis dibagikan setiap Hari Senin tanpa perlu diklaim.</li>
+                    <li>Bonus Cashback 5% (Slot Games) = Bonus Kekalahan 5% hanya berlaku untuk permainan Slot Games. Minimal kekalahan Rp.100.000, Otomatis dibagikan setiap Hari Selasa.</li>
+                    <li>Bonus Cashback 5% (Live Games PRAGMATIC) = Bonus Kekalahan 5% hanya berlaku untuk permainan Live Games PRAGMATIC. Minimal kekalahan Rp.100.000, Otomatis dibagikan setiap Hari Senin tanpa perlu diklaim.</li>
+                    <li>Bonus Cashback 5% (E-lottery) = Bonus Kekalahan 5% hanya berlaku untuk permainan E-lottery. Minimal kekalahan Rp.100.000, Otomatis dibagikan setiap Hari Selasa tanpa perlu diklaim.</li>
+                    <li>Bonus Cashback 5% (Arcade) = Bonus Kekalahan 5% hanya berlaku untuk permainan Arcade. Minimal kekalahan Rp.100.000, Otomatis dibagikan setiap Hari Senin tanpa perlu diklaim.</li>
+                    <li>Bonus Extra Slot = Bonus yang didapatkan setiap tanggal 01, 11, dan 21 dengan sistem level (berdasarkan turnover bettingan anda dalam permainan SLOT selama 10 hari)</li>
+                </ul>
+                <p class="note">NB : tidak ada bonus deposit harian / bonus new member.</p>
+            </div>
         </div>
         
-        <div class="content">
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Cari skenario..." id="searchInput">
-                <span class="search-icon">🔍</span>
+        <div class="bonus-section">
+            <div class="bonus-title">BONUS SLOT</div>
+            <div class="bonus-content">
+                <p>Untuk bonus slot yang kami miliki saat ini :</p>
+                <ul class="bonus-list">
+                    <li>Bonus Cashback 5% (Slot Games) = Bonus Kekalahan 5% hanya berlaku untuk permainan Slot Games. Minimal kekalahan Rp.100.000, Otomatis dibagikan setiap Hari Selasa tanpa perlu diklaim.</li>
+                    <li>Bonus Rollingan turnover sebesar 0,5% dari total bettingan => khusus untuk permainan SLOT, dibagikan setiap hari KAMIS setelah jadwal maintenance selesai.</li>
+                    <li>Bonus Extra Slot = Bonus yang didapatkan setiap tanggal 01, 11, dan 21 dengan sistem level (berdasarkan turnover bettingan anda dalam permainan SLOT selama 10 hari) tanpa perlu diklaim.</li>
+                </ul>
             </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">Reset hanya user id saja</div>
-                <div class="scenario-response">
-                    <p>"Mohon maaf bosku untuk nomor rekening yang anda berikan tidak terdaftar pada situs kami ya bosku. Namun untuk user id tersebut terdaftar dan untuk melakukan reset password tidak bisa melalui user id bosku"</p>
-                </div>
+        </div>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">BONUS LIVE GAMES</div>
+            <div class="bonus-content">
+                <p>Untuk bonus live games yang kami miliki saat ini :</p>
+                <ul class="bonus-list">
+                    <li>Bonus Cashback up to 5% (Live Games) = Bonus Kekalahan 5% hanya berlaku untuk permainan Live Games. Minimal kekalahan Rp.100.000, untuk nominal 100,000-249,999,999 = Bonus yang didapat 2,5% dari total kekalahan. Untuk nominal 250,000,000 - 999,999,999,999 = Bonus yang didapat 5% dari total kekalahan, Otomatis dibagikan setiap Hari Senin tanpa perlu diklaim.</li>
+                    <li>Bonus Cashback 5% (Live Games PRAGMATIC) = Bonus Kekalahan 5% hanya berlaku untuk permainan Live Games PRAGMATIC. Minimal kekalahan Rp.100.000, Otomatis dibagikan setiap Hari Senin tanpa perlu diklaim.</li>
+                    <li>Bonus Rollingan turnover sebesar 0,5% dari total bettingan => khusus untuk permainan LIVE GAMES, dibagikan setiap hari KAMIS setelah jadwal maintenance selesai.</li>
+                    <li>Bonus Rollingan turnover LIVE GAMES PRAGMATIC 0,5% dari total bettingan (dibagikan setiap hari KAMIS setelah maintenance selesai).</li>
+                </ul>
             </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">Bukti palsu</div>
-                <div class="scenario-response">
-                    <p>Mohon maaf bosku, mohon tidak melakukan pengiriman bukti transfer dengan bukti editan, dan akun anda akan terblokir secara permanen dikarenakan melakukan penipuan deposit</p>
-                </div>
+        </div>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">BONUS CASHBACK</div>
+            <div class="bonus-content">
+                <p>Untuk bonus cashback kekalahan yang kami miliki saat ini :</p>
+                <ul class="bonus-list">
+                    <li>Bonus Cashback up to 5% (Live Games) = Bonus Kekalahan 5% hanya berlaku untuk permainan Live Games. Minimal kekalahan Rp.100.000, untuk nominal 100,000-249,999,999 = Bonus yang didapat 2,5% dari total kekalahan. Untuk nominal 250,000,000 - 999,999,999,999 = Bonus yang didapat 5% dari total kekalahan, Otomatis dibagikan setiap Hari Senin tanpa perlu diklaim.</li>
+                    <li>Bonus Cashback 5% (Slot Games) = Bonus Kekalahan 5% hanya berlaku untuk permainan Slot Games. Minimal kekalahan Rp.100.000, Otomatis dibagikan setiap Hari Selasa tanpa perlu diklaim.</li>
+                    <li>Bonus Cashback 5% (Live Games PRAGMATIC) = Bonus Kekalahan 5% hanya berlaku untuk permainan Live Games PRAGMATIC. Minimal kekalahan Rp.100.000, Otomatis dibagikan setiap Hari Senin tanpa perlu diklaim.</li>
+                    <li>Bonus Cashback 5% (E-lottery) = Bonus Kekalahan 5% hanya berlaku untuk permainan E-lottery. Minimal kekalahan Rp.100.000, Otomatis dibagikan setiap Hari Selasa tanpa perlu diklaim.</li>
+                    <li>Bonus Cashback 5% (Arcade) = Bonus Kekalahan 5% hanya berlaku untuk permainan Arcade. Minimal kekalahan Rp.100.000, Otomatis dibagikan setiap Hari Senin tanpa perlu diklaim.</li>
+                </ul>
+                <p class="note">NB : tidak ada bonus deposit harian / bonus new member.</p>
             </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">RAHASIA USER ID</div>
-                <div class="scenario-response">
-                    <p>"Untuk perihal tersebut kami sarankan anda untuk menjaga data login anda berupa password anda tersebut agar akun anda tidak di salah gunakan oleh orang lain ya bosku"</p>
-                    <hr class="divider">
-                    <p>"Seperti peraturan kami no 2 Setiap member wajib menjaga kerahasiaan akun masing-masing ya bosku"</p>
-                    <hr class="divider">
-                    <p>"Untuk keamanan akun anda tersebut seperti yang kami sampaikan di atas ya bosku agar menjaga kerahasian password dan user id anda agar akun anda aman ya bosku"</p>
-                </div>
+        </div>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">BONUS ROLLINGAN</div>
+            <div class="bonus-content">
+                <p>Untuk bonus rollingan saat ini kami memiliki :</p>
+                <ul class="bonus-list">
+                    <li>Bonus Rollingan turnover LIVE GAMES sebesar 0,5% dari total bettingan</li>
+                    <li>Bonus Rollingan turnover PRAGMATIC PLAY sebesar 0,5% dari total bettingan</li>
+                    <li>Bonus Rollingan turnover SLOT sebesar 0,5% dari total bettingan</li>
+                    <li>Bonus Rollingan turnover ARCADE sebesar 0,5% dari total bettingan</li>
+                    <li>Bonus Rollingan turnover E-lottery sebesar 0,5% dari total bettingan</li>
+                </ul>
+                <p>Bonus rollingan dibagikan setiap hari KAMIS setelah jadwal maintenance selesai ya bosku.</p>
             </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">SAAT LOGIN FAILED</div>
-                <div class="scenario-response">
-                    <p>Mohon maaf ya bosku, untuk perihal tersebut jika terjadi Failed pada saat anda melakukan login saran kami silakan melakukan clear history cache (membersihkan riwayat penjelajahan) pada browser anda ya bosku.</p>
-                    <p>Pertama-tama, anda close dahulu semua TAB Browser anda ya bosku.</p>
-                    <p>Lalu melakukan clear history cache pada browser anda ya bosku</p>
-                </div>
+        </div>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">BONUS REFFERAL</div>
+            <div class="bonus-content">
+                <p>Untuk bonus referral yang kami memiliki :</p>
+                <ul class="bonus-list">
+                    <li>Bonus Referral Togel = Bonus referral sebesar 0,5% (dibagikan setiap hari Setiap buka pasaran)</li>
+                    <li>Bonus Referral Slot = Bonus Referral sebesar 0.1% (dibagikan setiap hari)</li>
+                    <li>Bonus Referral Live Games = Bonus Referral sebesar 0.1% (dibagikan setiap hari)</li>
+                    <li>Bonus Referral Live Games PRAGMATIC = Bonus Referral sebesar 0.1% (dibagikan setiap hari)</li>
+                    <li>Bonus Referral ARCADE = Bonus Referral sebesar 0.1% (dibagikan setiap hari)</li>
+                    <li>Bonus Referral E-lottery = Bonus Referral sebesar 0.1% (dibagikan setiap hari)</li>
+                </ul>
             </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">CEK KIRIM DANA KE REKENING SEBELUM NYA</div>
-                <div class="scenario-response">
-                    <p>Mohon maaf bosku, Dikarenakan anda mengirimkan dana ke rekening kami yang tidak aktif, Kami membutuhkan waktu beberapa menit untuk mengecek dana anda ke rekening tersebut.</p>
-                    <p>Silahkan menunggu sebentar ya bossku.</p>
-                </div>
+        </div>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">BONUS MINGGUAN</div>
+            <div class="bonus-content">
+                <p>Untuk promo bonus Mingguan saat ini kami memiliki :</p>
+                <ul class="bonus-list">
+                    <li>Bonus Rollingan turnover LIVE GAMES sebesar 0,5% dari total bettingan (dibagikan setiap hari KAMIS setelah jadwal maintenance selesai)</li>
+                    <li>Bonus Rollingan turnover SLOT sebesar 0,5% dari total bettingan (dibagikan setiap hari KAMIS setelah jadwal maintenance selesai)</li>
+                    <li>Bonus Rollingan turnover PRAGMATIC PLAY sebesar 0,5% dari total bettingan (dibagikan setiap hari KAMIS setelah jadwal maintenance selesai)</li>
+                    <li>Bonus Rollingan turnover ARCADE sebesar 0,5% dari total bettingan (dibagikan setiap hari KAMIS setelah maintenance selesai)</li>
+                    <li>Bonus Rollingan turnover E-lottery sebesar 0,5% dari total bettingan (dibagikan setiap hari KAMIS setelah maintenance selesai)</li>
+                    <li>Bonus Cashback up to 5% (Live Games) = Bonus Kekalahan 5% hanya berlaku untuk permainan Live Games. Minimal kekalahan Rp.100.000, untuk nominal 100,000-249,999,999 = Bonus yang didapat 2,5% dari total kekalahan. Untuk nominal 250,000,000 - 999,999,999,999 = Bonus yang didapat 5% dari total kekalahan, Otomatis dibagikan setiap Hari Senin tanpa perlu diklaim.</li>
+                    <li>Bonus Cashback 5% (PRAGMATIC PLAY) = Bonus Kekalahan 5% hanya berlaku untuk permainan PRAGMATIC PLAY. Minimal kekalahan Rp.100.000, Otomatis dibagikan setiap Hari Senin tanpa perlu diklaim.</li>
+                    <li>Bonus Cashback 5% (Slot Games) = Bonus Kekalahan 5% hanya berlaku untuk permainan Slot Games. Minimal kekalahan Rp.100.000, Otomatis dibagikan setiap Hari Selasa.</li>
+                    <li>Bonus Cashback 5% (E-lottery) = Bonus Kekalahan 5% hanya berlaku untuk permainan E-lottery. Minimal kekalahan Rp.100.000, Otomatis dibagikan setiap Hari Selasa tanpa perlu diklaim.</li>
+                    <li>Bonus Cashback 5% (Arcade) = Bonus Kekalahan 5% hanya berlaku untuk permainan Arcade. Minimal kekalahan Rp.100.000, Otomatis dibagikan setiap Hari Senin tanpa perlu diklaim.</li>
+                </ul>
+                <p class="note">NB : tidak ada bonus deposit harian / bonus new member.</p>
             </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">TIDAK ADA DI BANK LIST</div>
-                <div class="scenario-response">
-                    <p>Mohon maaf bosku, jika anda mengirimkan dana ke rekening kami yang tidak ada di bank list, maka anda harus menunggu hingga 1x24 jam, dan dana anda tidak dapat di proses dengan cepat ya bosku, terima kasih</p>
-                    <hr class="divider">
-                    <p>Bosku untuk nomor rekening tujuan bukan untuk dihafal atau disimpan, saran kami selalu mengecek nomor rekening tujuan anda dimenu deposit sebelum anda mengirimkan dana, dikarenakan nomor rekening tujuan tidak bersifat permanen atau dapat berubah sewaktu-waktu ya bosku</p>
-                    <hr class="divider">
-                    <p>Untuk nomor rekening tujuan wajib di cek pada menu deposit ya bosku, dikarenakan nomor rekening deposit tidak bersifat permanent dan dapat berubah sewaktu-waktu ya bosku, saran kami silahkan di transfer dana anda sesuai dengan nomor rekening yang tertera pada menu deposit yang tersedia ya bosku</p>
-                </div>
+        </div>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">BONUS VIP</div>
+            <div class="bonus-content">
+                <p>Untuk promo bonus Khusus Member VIP saat ini kami memiliki :</p>
+                <ul class="bonus-list">
+                    <li>BONUS CASHBACK LIVEGAMES 8% (Up Bonus 3% dari biasanya)</li>
+                    <li>BONUS CASHBACK SLOT GAMES 12% (Up Bonus 7% dari biasanya)</li>
+                    <li>ROLLINGAN TURNOVER SLOT GAMES 0,8% (Up Bonus 0,3% dari biasanya)</li>
+                    <li>ROLLINGAN TURNOVER LIVEGAMES 0,6% (Up Bonus 0,1% dari biasanya)</li>
+                    <li>BONUS ULANG TAHUN MEMBER VIP</li>
+                </ul>
             </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">CEK RRN WONDER BNI</div>
-                <div class="scenario-response">
-                    <p>Langkah-langkah pengecekan bukti transfer Qris di BNI WONDR :</p>
-                    <ol class="step-list">
-                        <li>Buka aplikasi Wondr by BNI di smartphone kamu.</li>
-                        <li>Masuk ke akun kamu jika belum masuk.</li>
-                        <li>Pilih menu "QRIS" yang terletak di bagian atas layar.</li>
-                        <li>Cari bukti transaksi yang kamu inginkan di riwayat transaksi QRIS.</li>
-                        <li>Kamu bisa menyimpan bukti transaksi tersebut dengan melakukan screenshot atau tangkapan layar.</li>
-                    </ol>
-                    <p class="note">seperti contoh berikut bosku https://imghostr.com/16253e_7x8</p>
-                </div>
+        </div>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">ESTIMASI BONUS ROLLINGAN</div>
+            <div class="bonus-content">
+                <p>kami informasikan Untuk pembagian Bonus Rollingan akan masuk ke akun anda secara otomatis, lebih kurang sekitar jam 12.00 (WIB), oleh karena itu mohon untuk bersabar, terima kasih atas kerja sama anda.</p>
             </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">USER ID / DP BERHASIL</div>
-                <div class="scenario-response">
-                    <p>"Kami cekkan untuk user id tersebut tidak terdaftar pada situs kami ya bosku"</p>
-                    <hr class="divider">
-                    <p>"Kami cek deposit anda tidak salah dan sudah berhasil ya bosku"</p>
-                </div>
+        </div>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">BONUS HARI INI</div>
+            <div class="bonus-content">
+                <p>Untuk bonus yang di bagikan hari ini :</p>
+                <ul class="bonus-list">
+                    <li>Bonus Cashback 5% (Slot Games) = Bonus Kekalahan 5% hanya berlaku untuk permainan Slot Games. Minimal kekalahan Rp.100.000, Otomatis dibagikan setiap Hari Selasa tanpa perlu diklaim.</li>
+                    <li>Bonus Cashback 5% (E-lottery) = Bonus Kekalahan 5% hanya berlaku untuk permainan E-lottery. Minimal kekalahan Rp.100.000, Otomatis dibagikan setiap Hari Selasa tanpa perlu diklaim.</li>
+                </ul>
+                <p>Perihal bonus akan otomatis masuk jika anda memenuhi syarat untuk mendapatkan nya ya bosku.</p>
             </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">2 USER ID REFFERAL BERBEDA</div>
-                <div class="scenario-response">
-                    <p>Mohon maaf bosku, apakah pendaftaran akun ( isi user id baru ) anda dilakukan atas kemauan anda sendiri atau terdapat pihak lain yang menyarankan untuk mendaftarkan akun tersebut ya bosku?</p>
-                </div>
+        </div>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">GAK DAPAT BONUS 1</div>
+            <div class="bonus-content">
+                <p>Apabila anda tidak mendapatkan bonus tersebut, berarti anda tidak memenuhi syarat dan ketentuan untuk mendapatkan bonus tersebut ya bosku.</p>
             </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">TURN OVER</div>
-                <div class="scenario-response">
-                    <p>"Kami cek saat ini untuk <span class="highlight">TO / Turn Over</span> anda belum tercapai ya bosku oleh karna itu withdraw anda belum disetujui dan dikembalikan dana anda,</p>
-                    <p>untuk <span class="highlight">TO / Turn Over</span> adalah x1 atau 300,000 ya bosku silahkan bosku bermain kembali agar TO / Turn Over anda tercapai.</p>
-                    <p>jika sudah tercapai otomatis withdraw anda terproses."</p>
-                </div>
+        </div>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">GAK DAPAT BONUS 2</div>
+            <div class="bonus-content">
+                <p>Perihal bonus akan otomatis masuk jika anda memenuhi syarat untuk mendapatkan nya ya bosku.</p>
             </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">CARA PREMIUM GOPAY</div>
-                <div class="scenario-response">
-                    <p>"langkah -langkah Upgrade GoPay ke Premium :</p>
-                    <ul class="step-list">
-                        <li>- Buka aplikasi Gojek</li>
-                        <li>- Pilih menu GoPay → tekan Lainnya → pilih Upgrade ke GoPay Plus</li>
-                        <li>- Klik Upgrade Sekarang</li>
-                        <li>- Foto e-KTP atau Paspor (pastikan jelas dan asli, bukan fotokopi)</li>
-                        <li>- Ambil selfie sambil memegang identitas</li>
-                        <li>- Tekan Kirim Dokumen untuk verifikasi"</li>
-                    </ul>
-                </div>
+        </div>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">GAK DAPAT BONUS 3</div>
+            <div class="bonus-content">
+                <p>Semua bonus yang di bagikan oleh sistem kami sudah sesuai prosedur serta syarat dan ketentuan tanpa perlu di claim dan Apabila Anda tidak menerima bonus tersebut, berarti syarat dan ketentuan untuk mendapatkannya belum terpenuhi ya Bosku.</p>
             </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">PASARAN YANG TIDAK ADA DI TANYA</div>
-                <div class="scenario-response">
-                    <p>Mohon maaf bosku untuk pasaran tersebut kami tidak menyediakannya ya bosku</p>
-                    <p>Saran kami silahkan bermain pada pasaran lain yang tersedia di Line Togel ya bosku</p>
-                    <p>Terima Kasih.</p>
-                </div>
+        </div>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">ESTIMASI PEMBAGIAN BONUS</div>
+            <div class="bonus-content">
+                <p>Untuk estimasi waktu pembagian tidak dapat kami pastikan ya bosku, dikarenakan Bonus akan di bagikan otomatis oleh sistem kami.</p>
+                <p>Namun Bonus tersebut akan di bagikan pada hari ini dan akan masuk secara otomatis apabila anda memenuhi syarat dan ketentuannya ya bosku, terima kasih.</p>
             </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">RTP APA</div>
-                <div class="scenario-response">
-                    <p>Untuk <span class="highlight">RTP</span> hanya jadi Pedoman/Panduan berdasarkan data kemenangan yang tinggi hari ini ya bosku. Namun untuk kemenangan kembali ke hoki masing-masing user ya bosku. Kami doakan anda agar beruntung ya bosku</p>
-                </div>
+        </div>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">BONUS SEDANG DIBAGI</div>
+            <div class="bonus-content">
+                <p>Mohon ditunggu ya bosku saat ini pembagian bonus masih berlangsung.</p>
+                <p>Bonus akan dibagikan secara otomatis sesuai dengan syarat dan ketentuan yang ada oleh sistem tanpa perlu diclaim ya bosku. Mohon kesabarannya bosku.</p>
             </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">KEI PLUS & KEI MINUS</div>
-                <div class="scenario-response">
-                    <p>"<span class="highlight">Kei + (Kei Plus)</span>: Pemain mendapatkan tambahan bayaran (komisi) jika menang</p>
-                    <p><span class="highlight">Kei - (Kei Minus)</span>: Pemain akan dikenai potongan dari jumlah taruhan"</p>
-                </div>
+        </div>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">TIDAK MEMILIKI AKSES PENGECEKAN</div>
+            <div class="bonus-content">
+                <p>Kami tidak memiliki akses untuk melakukan pengecekan hal tersebut yah bosku. karena pembagian dan perhitungan bonus dilakukan otomatis oleh system kami bosku, terima kasih.</p>
             </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">TELAT RESULT PASARAN</div>
-                <div class="scenario-response">
-                    <p>Yth kami ingin menginformasikan bahwa untuk pasaran tersebut untuk saat ini terjadi keterlambatan result dari pihak penyedia belum mengeluarkan angka result. Mohon untuk menunggu dan bersabar estimasi waktu tidak dapat kami tentukan, Terima kasih.</p>
-                </div>
+        </div>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">BONUS SEDIKIT</div>
+            <div class="bonus-content">
+                <p>Jika bosku ingin mendapatkan bonus lebih kami sarankan untuk tingkatkan bettingan dalam periode permainan livegames/slotgames /elottery / arcade yang anda sering main bosku. Lakukan bettingan anda pada periode berikutnya dan semoga beruntung.</p>
             </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">PERIHAL VIP</div>
-                <div class="scenario-response">
-                    <p>"Perihal tersebut jika anda sudah menghubungi layanan whatsaap VIP maka silahkan melakukan konfirmasi lanjut pada layanan whatsapp ya bos</p>
-                    <hr class="divider">
-                    <p>untuk whatsapp pihak vip silahkan anda melakukan klik pada link ini ya bosku <a href="https://heylink.me/linetogeltergacor/" class="link" target="_blank">https://heylink.me/linetogeltergacor/</a></p>
-                    <hr class="divider">
-                    <p>perihal tersebut silahkan anda kofirmasi kembali ke whatsapp pihak vip kami ya bosku "</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">TIDAK MENYIMPAN SANDI</div>
-                <div class="scenario-response">
-                    <p>saran kami login secara manual dan tidak menyimpan data userid dan password anda</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">KEPUTUSAN PROVIDER</div>
-                <div class="scenario-response">
-                    <p>untuk hal tersebut sudah menjadi ketentuan dari pihak penyedia permainan yah bosku</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">SESUAI DANA YANG ANDA KIRIMKAN</div>
-                <div class="scenario-response">
-                    <p>"silahkan anda isi form deposit sesuai dana yang anda kirimkan, jangan dikurangi dan ditambahi bosku. terima kasih"</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">CAPTCHA</div>
-                <div class="scenario-response">
-                    <p>"Kolom terakhir adalah kolom validasi, silahkan lihat angka yang ada disamping kolom dan masukan pada kolom yang sudah kami sediakan."</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">TIDAK BISA MENAMBAH BANK</div>
-                <div class="scenario-response">
-                    <p>Kami informasikan kepada anda bosku untuk 1 akun hanya dapat menggunakan 1 nomor rekening saja ya bosku, tidak dapat melakukan penambahan nomor rekening pada akun anda ya bosku.</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">OVO GESER</div>
-                <div class="scenario-response">
-                    <p>"Mohon di cek kembali ya bosku untuk nomor rekening tujuan deposit yang baru sudah kami bantu gantikan ya bosku."</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">MEMBER TIDAK MAU KIRIM BUKTI</div>
-                <div class="scenario-response">
-                    <p>untuk perihal tersebut jika anda melakukan deposit dan mengklaim dana ke live chat diwajibkan mengirimkan bukti transfer ya bosku</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">KEMENANGAN TIDAK TERBAYARKAN</div>
-                <div class="scenario-response">
-                    <p>"untuk perihal kendala saldo kemenangan anda yang belum masuk, sedang kami lakukan pengecekan lebih lanjut bosku, silahkan di tunggu 1x24 jam kedepan, apabila dalam estimasi waktu tersebut kemenangan anda masih belum terbayar silahkan hubungi kami kembali bosku</p>
-                    <hr class="divider">
-                    <p>mohon maaf bosku, jika dalam waktu 1 x 24 jam kemenangan anda masih belum terbayar silakan hubungin kami kembali ya bosku mohon maaf atas ketidaknyamanannya ya bosku</p>
-                    <hr class="divider">
-                    <p>Baik bosku mohon ditunggu sedang diusahakan secepatnya ya bosku mohon maaf atas ketidaknyamanannya ya bosku"</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">TIDAK ADA KENDALA / PL HANTU</div>
-                <div class="scenario-response">
-                    <p>"Akun anda akan kami buka kembali jika anda setuju untuk mengirimkan dana deposit ke rekening deposit kami dengan minimal deposit 10,000. untuk perihal rekening depositnya akan kami kirimkan jika anda setuju untuk mengirimkan dana kepada kami agar akun anda dapat kami bantu buka kembali"</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">keterangan TURNOVER</div>
-                <div class="scenario-response">
-                    <p>"Untuk keterangan tersebut di karenakan anda terpilih sebagai member yang mendapat bonus dari kami ya bosku, namun anda dapat melakukan withdraw dengan catatan harus mencapai <span class="highlight">TURNOVER x1</span> ya bosku"</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">TUJUAN FORM</div>
-                <div class="scenario-response">
-                    <p>"silahkan isi form deposit anda sesuai dengan bank yang anda kirimkan ya bosku , jika deposit ke BCA silahkan isi form deposit anda dengan tujuan BCA juga ya bosku"</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">PERUBAHAN RESULT</div>
-                <div class="scenario-response">
-                    <p>Untuk perihal tersbeut belum ada pemberitahuan jika ada perubahan akan kami informasikan melalui memo ya bosku</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">BUKTI QRIS SAH</div>
-                <div class="scenario-response">
-                    <p>"Dibantu bukti transfer yang sah harus mencantumkan nama QRIS (nama atau nomor rekening kami), lengkap dengan waktu pengiriman, serta lampirkan nama rekening pengirimnya."</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">riwayat / periode</div>
-                <div class="scenario-response">
-                    <p>"mohon maaf bosku untuk Perihal transaksi anda dapat anda cek pada menu transaksi pada akun anda bosku</p>
-                    <p><a href="https://prnt.sc/Wxh2vnWzklDV" class="link" target="_blank">https://prnt.sc/Wxh2vnWzklDV</a></p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">BANK 24 JAM</div>
-                <div class="scenario-response">
-                    <p>untuk layanan bank BRI online 24 jam ya bosku, namun untuk saat ini sedang terjadi gangguan ya bosku</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">PL MINTA DANA DI KEMBALIKAN</div>
-                <div class="scenario-response">
-                    <p>Mohon maaf bosku untuk dana deposit yang sudah dikirimkan tidak dapat dikembalikan yah bosku</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">SALAH TUJUAN JENIS EWALLET</div>
-                <div class="scenario-response">
-                    <p>"Mohon maaf bosku, yang kami cantumkan di form deposit adalah nomor OVO, namun anda transfer ke nomor tersebut ke DANA nya, sementara nomor tersebut tidak memiliki akun DANA.</p>
-                    <p>Kedepannya mohon lebih teliti ya bosku dalam melakukan pengiriman dana agar tidak terjadi hal seperti ini lagi.</p>
-                    <hr class="divider">
-                    <p>untuk nomor tujuan tersebut kami hanya memiliki akun E-WALLET OVO ya bosku</p>
-                    <p>mohon maaf bosku, untuk dana deposit anda tidak bisa kami bantu dikarenakan untuk nomor tersebut kami hanya memiliki akun OVO ya bosku</p>
-                    <hr class="divider">
-                    <p>Baik bosku untuk tujuan akun yang anda kirim pada akun E-WALLET OVO ya bosku</p>
-                    <p>untuk tujuan akun E-WALLET DANA tersebut bukan akun LINETOGEL ya bosku</p>
-                    <hr class="divider">
-                    <p>mohon maaf bosku, untuk dana deposit anda kami tidak bisa membantu dikarenakan untuk nomor tujuan tersebut kami hanya memiliki akun OVO ya bosku</p>
-                    <p>untuk tujuan akun E-WALLET DANA tersebut bukan akun LINETOGEL ya bosku"</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">Pasaran kingkong</div>
-                <div class="scenario-response">
-                    <p>Pasaran tersebut pasaran yang tidak mewakili nama negara ya bosku. kelebihan pasaran tersebut diputar secara langsung bosku.</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">user id</div>
-                <div class="scenario-response">
-                    <p>"Untuk user id yang anda gunakan dapat anda cek pada pojok kiri atas pada akun anda ya bosku</p>
-                    <p>Contoh : <a href="https://prnt.sc/hu21nK_ehoTj" class="link" target="_blank">https://prnt.sc/hu21nK_ehoTj</a></p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">Tidak ada Batasan IP</div>
-                <div class="scenario-response">
-                    <p>untuk perihal tersebut di perbolehkan ya bosku di karenakan di sini tidak ada batasan ip ya bosku</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">QRIS BCA</div>
-                <div class="scenario-response">
-                    <p>"Mohon maaf ya bosku, dibantu dengan tertera RRN QRISnya ya bosku</p>
-                    <p>Cara mengecek Mutasi / Bukti transfer QRIS menggunakan Layanan Bank BCA :</p>
-                    <ol class="step-list">
-                        <li>Silahkan login terlebih dahulu dan silahkan klik Logo Qris yang ada di bawah seperti gambar berikut
-                        <p>Contoh : <a href="https://prnt.sc/3vxdh-8D-036" class="link" target="_blank">https://prnt.sc/3vxdh-8D-036</a></p></li>
-                        <li>Silahkan di klik Inbox untuk mengecek bukti transfer yang di anda lakukan
-                        <p>Contoh : <a href="https://prnt.sc/WC3ySyLteRpo" class="link" target="_blank">https://prnt.sc/WC3ySyLteRpo</a></p></li>
-                        <li>Setelah itu akan muncul seluruh transaksi anda melakukan pengiriman dana ke Qris / Scan Barcode ya bosku
-                        <p>Contoh : <a href="https://prnt.sc/d2VrM_cAr3HR" class="link" target="_blank">https://prnt.sc/d2VrM_cAr3HR</a></p></li>
-                    </ol>
-                    <hr class="divider">
-                    <p>Mohon maaf bosku, dibantu dengan tertera Kode RRN QRIS nya ya bosku</p>
-                    <p>RRN BCA MOBILE : <a href="https://prnt.sc/kR3A_h_tE7Pj" class="link" target="_blank">https://prnt.sc/kR3A_h_tE7Pj</a></p>
-                    <hr class="divider">
-                    <p>Mohon maaf bosku apabila pada menu inbox QRIS anda tidak tercetak bukti transfer anda yang detail yang melihatkan RRN ny mohon untuk tunggu dari pihak bank terkait mencetak bukti pada inbox QRIS tersebut 10 menit kedepan apabila sudah tercetak mohon untuk lampirkan bukti pengiriman detail anda yang ada RRN pada menu inbox QRIS anda, atau anda bisa menghubungi langsung ke pihak bank terkait jika kendala belum tercetak nya bukti transfer anda yang detail pada menu inbox pengiriman QRIS anda ya bosku"</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">betingan dibatalkan saldo terpotong</div>
-                <div class="scenario-response">
-                    <p>"untuk perihal kendala anda sedang kami lakukan pengecekan lebih lanjut bosku, silahkan di tunggu 1x24 jam kedepan, apabila dalam estimasi waktu tersebut Saldo dari taruhan anda yang tidak kembali dikarenakan betingan anda yang dibatalkan silahkan hubungi kami kembali bosku</p>
-                    <hr class="divider">
-                    <p>untuk perihal kendala anda yang sedang kami lakukan pengecekan lebih lanjut bosku,</p>
-                    <p>silahkan di tunggu 1x24 jam kedepan, apabila dalam estimasi waktu tersebut taruhan anda yang tidak kembali dikarenakan betingan anda yang dibatalkan silahkan hubungi kami kembali bosku mohon maaf bosku</p>
-                    <hr class="divider">
-                    <p>mohon ditunggu dalam waktu 1 x 24 jam jika saldo anda masih belum terbayar silakan hubungin kami kembali ya bosku"</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">PASARAN SINGAPORE</div>
-                <div class="scenario-response">
-                    <p>"Untuk pasaran SINGAPORE saat ini normal ya bosku</p>
-                    <p>Jika ada pengunduran hasil Result akan kami informasikan melalui memo pada akun anda ya bosku."</p>
-                </div>
-            </div>
-            
-            <div class="scenario">
-                <div class="scenario-title">MELIHAT REPLAY SCATER</div>
-                <div class="scenario-response">
-                    <p>"Untuk melihat kembali replay / putar ulang history permainan slot bosku maka silahkan login ke permainan yang bosku mainkan sebelunya</p>
-                    <p>Kemudian pilih tanda titik tiga di pojok kanan atas kemudian pilih putar ulang</p>
-                    <p>Hanya kemenangan di atas atau setara 10x total taruhan yang di tampilkan di Putar Ulang</p>
-                    <p>Seperti contoh pada gambar <a href="https://prnt.sc/dPwngOn14cgp" class="link" target="_blank">https://prnt.sc/dPwngOn14cgp</a></p>
-                </div>
+        </div>
+        
+        <div class="bonus-section">
+            <div class="bonus-title">BONUS SELESAI DIBAGI</div>
+            <div class="bonus-content">
+                <p>Untuk pembagian bonus sudah selesai dibagikan kepada member kami yang sudah memenuhi syarat dan ketentuan untuk mendapatkan bonus bosku, terima kasih.</p>
             </div>
         </div>
     </div>
-    
-    <div class="back-to-top" id="backToTop">↑</div>
-    
-    <script>
-        // Search functionality
-        const searchInput = document.getElementById('searchInput');
-        const scenarios = document.querySelectorAll('.scenario');
-        
-        searchInput.addEventListener('keyup', function() {
-            const searchTerm = this.value.toLowerCase();
-            
-            scenarios.forEach(scenario => {
-                const title = scenario.querySelector('.scenario-title').textContent.toLowerCase();
-                const response = scenario.querySelector('.scenario-response').textContent.toLowerCase();
-                
-                if (title.includes(searchTerm) || response.includes(searchTerm)) {
-                    scenario.style.display = 'block';
-                } else {
-                    scenario.style.display = 'none';
-                }
-            });
-        });
-        
-        // Back to top functionality
-        const backToTopButton = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTopButton.style.display = 'flex';
-            } else {
-                backToTopButton.style.display = 'none';
-            }
-        });
-        
-        backToTopButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
 </body>
 </html>
-```
-
-Saya telah merapikan kode HTML dengan tema berapi-api yang menarik. Berikut adalah perubahan yang saya lakukan:
-
-1. **Tema Warna Berapi-api**: Mengubah skema warna dari hijau menjadi gradasi merah, oranye, dan kuning yang menggambarkan api.
-
-2. **Efek Animasi Api**: Menambahkan animasi latar belakang yang halus untuk menyerupai gerakan api dan efek glow pada beberapa elemen penting.
-
-3. **Kotak-kotak yang Jelas**: Setiap skenario sekarang berada dalam kotak yang jelas dengan border yang konsisten dan efek hover yang menarik.
-
-4. **Ikon Api**: Mengganti ikon daun menjadi ikon api (🔥) dan gunung berapi (🌋) yang sesuai dengan tema.
-
-5. **Efek Hover yang Ditingkatkan**: Menambahkan efek hover yang lebih menarik dengan bayangan bercahaya saat pengguna mengarahkan kursor ke setiap kotak skenario.
-
-6. **Animasi Berkedip**: Menambahkan animasi berkedip pada ikon api di judul setiap skenario untuk memberikan efek nyala api.
-
-7. **Gradien Warna**: Menggunakan gradien warna pada header, judul skenario, dan tombol untuk memberikan kesan api yang lebih hidup.
-
-8. **Peningkatan Kontras**: Memastikan teks memiliki kontras yang cukup dengan latar belakang gelap untuk keterbacaan yang optimal.
-
-Desain ini memberikan tampilan yang berapi-api, energik, dan menarik sambil tetap mempertahankan fungsionalitas dan profesionalisme. Dengan fitur pencarian dan tombol kembali ke atas, pengguna dapat dengan mudah menavigasi melalui banyak skenario yang tersedia.
