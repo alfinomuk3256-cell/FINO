@@ -1,415 +1,262 @@
+
+
+Berikut adalah kode HTML dengan tema alam hijau yang telah dirapikan:
+
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template Balasan Customer Service</title>
+    <title>Informasi Deposit & Withdraw</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
         
         body {
-            background-color: #f5f7fa;
-            color: #333;
+            font-family: 'Open Sans', sans-serif;
             line-height: 1.6;
+            margin: 0;
             padding: 20px;
+            background: linear-gradient(135deg, #e8f5e9 0%, #a5d6a7 100%);
+            color: #2e7d32;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/leaf.png');
+            opacity: 0.1;
+            z-index: -1;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
-            color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.15);
+            border: 1px solid rgba(76, 175, 80, 0.2);
         }
         
         h1 {
+            text-align: center;
+            color: #1b5e20;
+            margin-bottom: 40px;
+            font-family: 'Merriweather', serif;
             font-size: 2.2rem;
-            margin-bottom: 10px;
+            border-bottom: 3px solid #4caf50;
+            padding-bottom: 15px;
+            position: relative;
         }
         
-        .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
+        h1::after {
+            content: "🌿";
+            position: absolute;
+            right: 0;
+            bottom: -15px;
+            font-size: 1.5rem;
         }
         
-        .search-container {
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: center;
-        }
-        
-        #searchInput {
-            width: 70%;
-            padding: 12px 20px;
-            border: 1px solid #ddd;
-            border-radius: 50px;
-            font-size: 1rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        #searchInput:focus {
-            outline: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            border-color: #4b6cb7;
-        }
-        
-        .template-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-        }
-        
-        .template-card {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .info-card {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-left: 5px solid #4caf50;
+            background-color: #f1f8e9;
+            border-radius: 8px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
             position: relative;
             overflow: hidden;
         }
         
-        .template-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        .info-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background-image: url('https://www.transparenttextures.com/patterns/leaf.png');
+            opacity: 0.1;
+            transform: rotate(45deg) translate(20px, -40px);
         }
         
-        .template-card h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            border-bottom: 2px solid #4b6cb7;
-            padding-bottom: 8px;
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
         }
         
-        .template-content {
-            max-height: 200px;
-            overflow-y: auto;
-            padding-right: 10px;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-            color: #555;
+        .info-card h2 {
+            margin-top: 0;
+            color: #2e7d32;
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
         }
         
-        .template-content::-webkit-scrollbar {
-            width: 6px;
+        .info-card h2::before {
+            content: "🌱";
+            margin-right: 10px;
         }
         
-        .template-content::-webkit-scrollbar-thumb {
-            background: #c5c5c5;
-            border-radius: 10px;
+        .info-card p {
+            margin-bottom: 0;
+            text-align: justify;
         }
         
-        .copy-btn {
-            background: #4b6cb7;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background 0.3s ease;
-            width: 100%;
-        }
-        
-        .copy-btn:hover {
-            background: #3a5a9c;
-        }
-        
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #2ecc71;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            display: none;
-            animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; transform: translateY(0); }
-            to { opacity: 0; transform: translateY(-20px); }
-        }
-        
-        .tag {
-            display: inline-block;
-            background: #e74c3c;
-            color: white;
-            padding: 3px 8px;
+        .highlight {
+            font-weight: bold;
+            color: #1b5e20;
+            background-color: #c8e6c9;
+            padding: 2px 5px;
             border-radius: 4px;
-            font-size: 0.8rem;
-            margin-right: 5px;
-            margin-bottom: 5px;
         }
         
-        .tags {
-            margin-bottom: 15px;
+        .separator {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.8), rgba(76, 175, 80, 0.1));
+            margin: 25px 0;
+        }
+        
+        .warning {
+            background-color: #fff8e1;
+            border-left-color: #8bc34a;
+        }
+        
+        .warning h2 {
+            color: #558b2f;
+        }
+        
+        .warning h2::before {
+            content: "🍃";
+        }
+        
+        .info {
+            background-color: #e8f5e9;
+            border-left-color: #4caf50;
+        }
+        
+        .info h2 {
+            color: #2e7d32;
+        }
+        
+        .danger {
+            background-color: #ffebee;
+            border-left-color: #66bb6a;
+        }
+        
+        .danger h2 {
+            color: #388e3c;
+        }
+        
+        .danger h2::before {
+            content: "🌳";
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(76, 175, 80, 0.3);
+            color: #388e3c;
+            font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
-            .template-grid {
-                grid-template-columns: 1fr;
+            .container {
+                padding: 20px;
             }
-            
-            #searchInput {
-                width: 90%;
+            h1 {
+                font-size: 1.8rem;
+            }
+            .info-card h2 {
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Template Balasan Customer Service</h1>
-            <p class="subtitle">Klik pada template untuk menyalin ke clipboard</p>
-        </header>
+        <h1>Informasi Deposit & Withdraw</h1>
         
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Cari template berdasarkan kata kunci...">
+        <div class="info-card info">
+            <h2>ADA TITIK DI FORM DEPOSIT</h2>
+            <p>Mohon maaf bosku, silahkan tidak menambahkan titik ataupun koma pada kolom Nominal ya bosku, dikarenakan titik tersebut otomatis dari sistem kami ya bosku. Terima kasih.</p>
         </div>
         
-        <div class="template-grid" id="templateContainer">
-            <!-- Template akan diisi oleh JavaScript -->
+        <div class="info-card warning">
+            <h2>KAMI TIDAK MENGETAHUI BANK ONLINE</h2>
+            <p>Mohon maaf bos ku, kami disini adalah sebagai pihak situs ya bos ku, sementara yang gangguan adalah langsung pihak bank, dan kami bukanlah pihak bank ya bos ku, oleh karena itu kami tidak dapat mengetahui dikarenakan perihala apa terjadinya bank gangguan / sampai kapan bank akan gangguan atau kapan akan normal kembali, namun permintaan DEPOSIT anda akan segera kami proses ketika bank normal kembali ya bos ku. Terima kasih.</p>
+        </div>
+        
+        <div class="info-card info">
+            <h2>MAKSIMAL DEPOSIT</h2>
+            <p>Untuk maksimal deposit tidak ada batasan ya bos ku, namun deposit anda akan kami proses maksimal <span class="highlight">100,000,000 per 1 kali transaksi</span>.</p>
+        </div>
+        
+        <div class="info-card info">
+            <h2>UPGRADE PREMIUM</h2>
+            <p>Kami sarankan untuk melakukan aktivasi/upgrade premium ulang pada akun GOPAY anda menggunakan KTP dengan atas nama yang sama seperti yang terdaftar pada akun anda saat ini ya bosku.</p>
+        </div>
+        
+        <div class="info-card warning">
+            <h2>SILAHKAN MENGHUBUNGI PIHAK TERKAIT</h2>
+            <p>Untuk perihal tersebut silahkan anda menghubungi pihak bank yang terkait ya bosku di karenakan untuk bukti yang anda kirimkan belum berhasil terkirim dan tidak ada masuk ke mutasi bank kami ya bosku.</p>
+        </div>
+        
+        <div class="info-card danger">
+            <h2>WITHDRAW GAGAL DAN BANK TEBLOKIR</h2>
+            <p>Yth, Kepada member LINE TOGEL, untuk withdraw anda sebelum nya sudah kami proseskan namun terjadi kegagalan dari pihak bank serta bank yang mengirimkan dana tersebut terblokir dan saat ini masih belum dapat kami proseskan ya bosku di karenakan bank pengirim dana anda saat ini sedang terjadi kendala ya bosku dan kami belum dapat mengecek mutasi pengirim kami ya bosku, akan kami proseskan ketika kami sudah dapat mengakses bank terkendala tersebut ya bosku terimakasih.</p>
+            
+            <div class="separator"></div>
+            
+            <p>Sebelumnya sudah di coba untuk proses pengiriman namun bank yang mengirimkan terblokir sehingga kami tidak bisa memastikan apakah gagal atau berhasil ya bosku untuk estimasi waktu di luar kuasa kami ya bosku apabila bank pengirim dana tersebut sudah dapat diakses dan transaksi bosku tidak berhasil di proses maka akan kami proses kembali ya bosku. Terima kasih.</p>
+            
+            <div class="separator"></div>
+            
+            <p>Perihal pengiriman dana tersebut belum dapat kami memastikan apakah gagal atau berhasil dikarenakan bank yang mengirimkan terblokir ya bosku. Perihal tersebut sedang melakukan konfirmasikan kepada pihak bank terlebih dahulu. Untuk estimasi waktu di luar kuasa kami ya bosku. Apabila transaksi bosku tidak berhasil di proses maka akan kami proses kembali. Mohon maaf atas ketidaknyamananya.</p>
+        </div>
+        
+        <div class="footer">
+            <p>© 2023 Layanan Informasi | Dibuat dengan 🌿 untuk kenyamanan Anda</p>
         </div>
     </div>
-    
-    <div class="notification" id="notification">Template berhasil disalin!</div>
-    
-    <script>
-        // Data template
-        const templates = [
-            {
-                title: "WITHDRAW PENDING",
-                content: `untuk permintaan penarikan dana anda sudah kami proses ya bosku
-untuk status pengiriman sedang dalam proses dan telah mengurangi saldo bank kami ya bosku
-jika terjadi keterlambatan dan masuk pada rekening anda maka kami sarankan di tunggu dalam estimasi selambatanya 7x24 jam ya bos
-terima kasih`,
-                tags: ["withdraw", "pending", "proses", "7x24 jam"]
-            },
-            {
-                title: "WITHDRAW INPROGRESS",
-                content: `Mohon maaf bosku sebelumnya withdraw anda sudah kami proseskan namun untuk status transaksi tersebut sedang dalam proses
-dan kemungkinan dana withdraw yang kami kirimkan terpending oleh pihak bank terkait namun
-pada saldo bank kami sudah terpotong ya bosku.
-
-==============================
-
-Mohon maaf bosku kami harus konfirmasi kendala tersebut kepada pihak bank terkait terlebih dahulu karena
-untuk saldo bank kami sudah terpotong dan belum ada dana kembali ke rekening kami ya bosku,
-Mohon maaf atas ketidaknyamanannya ya bosku dan mohon ditunggu hingga 7x24 jam ya bosku.
-
-======================
-Mohon maaf bosku jika dana yang dikirimkan sudah kembali ke rekening kami maka akan langsung kami proseskan
-kembali withdraw anda ke nomor rekening yang terdaftar pada User ID anda ya bosku.
-Mohon maaf atas ketidaknyamanannya ya bosku. Terima kasih atas pengertiannya.`,
-                tags: ["withdraw", "inprogress", "bank", "kendala", "7x24 jam"]
-            },
-            {
-                title: "DEPO BISA WD GAK BISA",
-                content: `Untuk perihal tersebut Deposit anda mengirimkan dana , sedangkan withdraw kami mengirimkan dana kepada anda. Namun anda dapat melakukan transaksi deposit / pengiriman dana anda dikarenakan di saat anda melakukan pendaftaran pada Nama rekening benar namun Nomor rekening salah / sudah terdaftar, kami memproseskan deposit bedasarkan nama rekening yang sama ya bosku bukan nomor rekening.
-Jika anda mendaftar dengan nomor rekening yang salah maka kami tidak dapat memproses dana withdraw anda ya bosku`,
-                tags: ["deposit", "withdraw", "rekening", "salah", "nama rekening"]
-            },
-            {
-                title: "Withdraw dana",
-                content: `untuk withdraw DANA kami menggunakan bank dengan metode Top Up melalui bank ya bosku, yang dimana untuk maximal topup ke rekening DANA sebesar 20,000,000
-
-===========================
-
-Limit transaksi pengiriman top up dana ya bosku , bukan limit bulanan dana anda ya bosku`,
-                tags: ["withdraw", "dana", "top up", "limit", "20 juta"]
-            },
-            {
-                title: "Sudah premium tapi tidak keluar nama",
-                content: `silahkan anda menghubungi pihak dana dikarenakan perihal nama rekening anda masih tertera no rekening yakni dikarenakan anda barusan mempremiumkan dana anda sehingga untuk profil akun dana anda belum sycron antara nama rekening tersebut bosku`,
-                tags: ["premium", "nama", "rekening", "sinkronisasi", "dana"]
-            },
-            {
-                title: "KAMI TIDAK MENGETAHUI BANK ONLINE",
-                content: `Mohon maaf bos ku,kami disini adalah sebagai pihak situs ya bos ku, sementara yang gangguan adalah langsung pihak bank, dan kami bukanlah pihak bank ya bos ku, oleh karena itu kami tidak dapat mengetahui dikarenakan perihala apa terjadinya bank gangguan / sampai kapan bank akan gangguan atau kapan akan normal kembali,namun permintaan DEPOSIT anda akan segera kami proses ketika bank bank normal kembali ya bos ku. Terima kasih.`,
-                tags: ["bank", "gangguan", "deposit", "pihak bank", "tidak tahu"]
-            },
-            {
-                title: "UPGRADE PREMIUM",
-                content: `kami sarankan untuk melakukan aktivasi/upgrade premium ulang pada akun GOPAY anda menggunakan KTP dengan atas nama yang sama seperti yang terdaftar pada akun anda saat ini ya bosku`,
-                tags: ["upgrade", "premium", "gopay", "ktp", "aktivasi"]
-            },
-            {
-                title: "WITHDRAW GAGAL DAN BANK TEBLOKIR",
-                content: `Yth, Kepada member LINE TOGEL,untuk withdraw anda sebelum nya sudah kami proseskan namun terjadi kegagalan dari pihak bank serta bank yang mengirimkan dana tersebut  terblokir  dan saat ini masih belum dapat kami proseskan ya bosku di karenakan bank pengirim dana anda saat ini sedang terjadi kendala ya bosku dan kami belum dapat mengecek mutasi pengirim kami ya bosku , akan kami proseskan ketika kami sudah dapat mengakses bank terkendala tersebut ya bosku terimakasih
-
-=================================
-
-sebelumnya sudah di coba untuk proses pengiriman namun bank yang mengirimkan terblokir sehingga kami tidak bisa memastikan apakah gagal atau berhasil ya bosku untuk estimasi waktu di luar kuasa kami ya bosku apabila bank pengirim dana tersebut sudah dapat diakses dan transaksi bosku tidak berhasil di proses maka akan kami proses kembali ya bosku
-terima kasih
-
-==================================
-
-perihal pengiriman dana tersebut belum dapat kami memastikan apakah gagal atau berhasil dikarenakan bank yang mengirimkan terblokir ya bosku
-perihal tersebut sedang melakukan konfirmasikan kepada pihak bank terlebih dahulu
-untuk estimasi waktu di luar kuasa kami ya bosku
-apabila transaksi bosku tidak berhasil di proses maka akan kami proses kembali
-mohon maaf atas ketidaknyamananya`,
-                tags: ["withdraw", "gagal", "bank", "terblokir", "kendala", "konfirmasi"]
-            },
-            {
-                title: "2 USER ID REFFERAL BERBEDA",
-                content: `Mohon maaf bosku, apakah pendaftaran akun ( isi user id baru ) anda dilakukan atas kemauan anda sendiri atau terdapat pihak lain yang menyarankan untuk mendaftarkan akun tersebut ya bosku?`,
-                tags: ["user id", "referral", "beda", "pendaftaran", "akun"]
-            },
-            {
-                title: "TURN OVER",
-                content: `Kami cek saat ini untuk TO / Turn Over anda belum tercapai ya bosku oleh karna itu withdraw anda belum disetujui dan dikembalikan dana anda,
-untuk TO / Turn Over adalah x1 atau 300,000 ya bosku silahkan bosku bermain kembali agar TO / Turn Over anda tercapai.
-jika sudah tercapai otomatis withdraw anda terproses.`,
-                tags: ["turn over", "to", "withdraw", "300000", "x1"]
-            },
-            {
-                title: "CARA PREMIUM GOPAY",
-                content: `langkah -langkah Upgrade GoPay ke Premium :
--Buka aplikasi Gojek
--Pilih menu GoPay → tekan Lainnya → pilih Upgrade ke GoPay Plus
--Klik Upgrade Sekarang
--Foto e-KTP atau Paspor (pastikan jelas dan asli, bukan fotokopi)
--Ambil selfie sambil memegang identitas
--Tekan Kirim Dokumen untuk verifikasi`,
-                tags: ["gopay", "premium", "upgrade", "cara", "verifikasi"]
-            },
-            {
-                title: "PASARAN YANG TIDAK ADA DI TANYA",
-                content: `Mohon maaf bosku untuk pasaran tersebut kami tidak menyediakannya ya bosku
-Saran kami silahkan bermain pada pasaran lain yang tersedia di Line Togel ya bosku
-Terima Kasih.`,
-                tags: ["pasaran", "tidak ada", "tidak tersedia", "line togel"]
-            },
-            {
-                title: "RTP APA",
-                content: `Untuk RTP hanya jadi Pedoman/Panduan berdasarkan data kemenangan yang tinggi hari ini ya bosku. Namun untuk kemenangan kembali ke hoki masing-masing user ya bosku. Kami doakan anda agar beruntung ya bosku`,
-                tags: ["rtp", "kemenangan", "pedoman", "panduan", "hoki"]
-            },
-            {
-                title: "KEI PLUS & KEI MINUS",
-                content: `Kei + (Kei Plus): Pemain mendapatkan tambahan bayaran (komisi) jika menang
-Kei - (Kei Minus): Pemain akan dikenai potongan dari jumlah taruhan`,
-                tags: ["kei", "plus", "minus", "komisi", "potongan", "taruhan"]
-            },
-            {
-                title: "TELAT RESULT PASARAN",
-                content: `Yth kami ingin menginformasikan bahwa untuk pasaran tersebut untuk saat ini terjadi keterlambatan result dari pihak penyedia belum mengeluarkan angka result. Mohon untuk menunggu dan bersabar estimasi waktu tidak dapat kami tentukan, Terima kasih.`,
-                tags: ["telat", "result", "pasaran", "keterlambatan", "estimasi"]
-            },
-            {
-                title: "PERIHAL VIP",
-                content: `Perihal tersebut jika anda sudah menghubungi layanan whatsaap VIP maka silahkan melakukan konfirmasi lanjut pada layanan whatsapp ya bos
-
-=================================================
-untuk whatsapp pihak vip silahkan anda melakukan klik pada link ini ya bosku  https://heylink.me/linetogeltergacor/
-
-================================================
-
-perihal tersebut silahkan anda kofirmasi kembali ke whatsapp pihak vip kami ya bosku`,
-                tags: ["vip", "whatsapp", "konfirmasi", "link", "layanan"]
-            }
-        ];
-
-        // Fungsi untuk menampilkan template
-        function displayTemplates(filteredTemplates = templates) {
-            const container = document.getElementById('templateContainer');
-            container.innerHTML = '';
-            
-            filteredTemplates.forEach(template => {
-                const card = document.createElement('div');
-                card.className = 'template-card';
-                
-                card.innerHTML = `
-                    <h3>${template.title}</h3>
-                    <div class="tags">
-                        ${template.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                    </div>
-                    <div class="template-content">${template.content.replace(/\n/g, '<br>')}</div>
-                    <button class="copy-btn">Salin Template</button>
-                `;
-                
-                // Event listener untuk menyalin template
-                const copyBtn = card.querySelector('.copy-btn');
-                copyBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    copyToClipboard(template.content);
-                });
-                
-                // Event listener untuk menyalin saat card diklik
-                card.addEventListener('click', () => {
-                    copyToClipboard(template.content);
-                });
-                
-                container.appendChild(card);
-            });
-        }
-
-        // Fungsi untuk menyalin teks ke clipboard
-        function copyToClipboard(text) {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            
-            // Tampilkan notifikasi
-            const notification = document.getElementById('notification');
-            notification.style.display = 'block';
-            
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 3000);
-        }
-
-        // Fungsi untuk mencari template
-        function searchTemplates() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            
-            if (searchTerm.trim() === '') {
-                displayTemplates();
-                return;
-            }
-            
-            const filteredTemplates = templates.filter(template => {
-                return template.title.toLowerCase().includes(searchTerm) ||
-                       template.content.toLowerCase().includes(searchTerm) ||
-                       template.tags.some(tag => tag.toLowerCase().includes(searchTerm));
-            });
-            
-            displayTemplates(filteredTemplates);
-        }
-
-        // Event listener untuk pencarian
-        document.getElementById('searchInput').addEventListener('input', searchTemplates);
-
-        // Tampilkan template saat halaman dimuat
-        displayTemplates();
-    </script>
 </body>
 </html>
+```
+
+### Perubahan Tema Alam Hijau:
+
+1. **Skema Warna Hijau**:
+   - Background gradient hijau muda (#e8f5e9 ke #a5d6a7)
+   - Warna teks hijau gelap (#2e7d32)
+   - Border dan aksen hijau (#4caf50)
+
+2. **Elemen Visual Alam**:
+   - Pattern daun transparan sebagai background
+   - Ikon daun (🌿, 🌱, 🍃, 🌳) pada setiap judul
+   - Efek daun pada setiap kartu informasi
+
+3. **Tipografi**:
+   - Menggunakan font Merriweather untuk judul (memberikan kesan alami)
+   - Font Open Sans untuk konten (mudah dibaca)
+
+4. **Efek Visual**:
+   - Transisi halus saat hover pada kartu
+   - Bayangan hijau yang lembut
+   - Border dengan transparansi untuk kesan alami
+
+5. **Elemen Tambahan**:
+   - Footer dengan ikon daun
+   - Pemisah dengan gradient hijau
+   - Highlight dengan background hijau muda
+
+Tema alam hijau ini memberikan kesan segar, alami, dan menenangkan sambil tetap mempertahankan informasi yang jelas dan terstruktur.
